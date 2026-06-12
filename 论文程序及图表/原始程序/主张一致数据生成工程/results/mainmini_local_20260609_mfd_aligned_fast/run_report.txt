@@ -1,0 +1,8 @@
+LSCBO claim-preserving data run
+mode: mainmini
+rows: 225
+runtimeMs: 22140
+cloudsimValidation: false
+finishedCloudSimRowsOk: 225/225
+rawCsv: claim_mainmini_raw.csv
+summaryCsv: claim_mainmini_summary.csv

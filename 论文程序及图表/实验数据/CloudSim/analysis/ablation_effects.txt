@@ -1,0 +1,66 @@
+================================================================================
+E3: Ablation Study - Cohen's d + Holm-corrected Wilcoxon + Friedman
+================================================================================
+Data: D:\бшнд\thesis_main_workspace\experiments\revisions\ablation_cloudsim\cloudsim_ablation_results.csv
+
+============================================================
+Scale: N=500  (seeds per variant: 30)
+============================================================
+
+Variant               Mean Makespan      Std    N
+----------------------------------------------------
+CBO                          509.48    57.50   30
+CBO_noStatic                 455.29    48.73   30
+CBO_Levy                     483.50    47.83   30
+LSCBO-Fixed                  413.04    49.25   30
+
+Friedman test: chi2=40.4533, p=8.54e-09
+
+Pairwise LSCBO-Fixed vs variant  (d>0 means LSCBO-Fixed better)
+Comparison                    Cohen d   Wilcoxon p       Holm p   Sig
+------------------------------------------------------------------------
+LSCBO vs CBO                     1.77   3.5390e-08   1.0617e-07   ***
+LSCBO vs CBO_noStatic            0.85   1.4575e-03   1.4575e-03    **
+LSCBO vs CBO_Levy                1.43   1.1921e-06   2.3842e-06   ***
+
+============================================================
+Scale: N=1000  (seeds per variant: 30)
+============================================================
+
+Variant               Mean Makespan      Std    N
+----------------------------------------------------
+CBO                          552.35    60.96   30
+CBO_noStatic                 520.62    46.51   30
+CBO_Levy                     553.78    68.14   30
+LSCBO-Fixed                  497.42    43.92   30
+
+Friedman test: chi2=21.5180, p=8.22e-05
+
+Pairwise LSCBO-Fixed vs variant  (d>0 means LSCBO-Fixed better)
+Comparison                    Cohen d   Wilcoxon p       Holm p   Sig
+------------------------------------------------------------------------
+LSCBO vs CBO                     1.02   8.8565e-05   2.6570e-04   ***
+LSCBO vs CBO_noStatic            0.50   5.5664e-02   5.5664e-02    ns
+LSCBO vs CBO_Levy                0.97   2.0913e-04   4.1825e-04   ***
+
+
+% ====== LaTeX Table: Ablation Effect Sizes ======
+\begin{table}[ht]
+\centering
+\caption{Ablation Study: Cohen's $d$ and Holm-corrected Wilcoxon Tests}
+\label{tab:ablation_effects}
+\begin{tabular}{llcccc}
+\toprule
+\textbf{Scale} & \textbf{Comparison} & \textbf{Cohen's $d$} & \textbf{Wilcoxon $p$} & \textbf{Holm $p$} & \textbf{Sig.} \\
+\midrule
+N=500 & LSCBO vs CBO & 1.77 & 3.539e-08 & 1.062e-07 & *** \\
+N=500 & LSCBO vs CBO\_noStatic & 0.85 & 1.457e-03 & 1.457e-03 & ** \\
+N=500 & LSCBO vs CBO\_Levy & 1.43 & 1.192e-06 & 2.384e-06 & *** \\
+N=1000 & LSCBO vs CBO & 1.02 & 8.857e-05 & 2.657e-04 & *** \\
+N=1000 & LSCBO vs CBO\_noStatic & 0.50 & 5.566e-02 & 5.566e-02 & ns \\
+N=1000 & LSCBO vs CBO\_Levy & 0.97 & 2.091e-04 & 4.183e-04 & *** \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+[E3 DONE] Cohen's d + Holm-Wilcoxon + Friedman computed.

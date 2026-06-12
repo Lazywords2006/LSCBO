@@ -1,0 +1,50 @@
+========================================
+  Statistical Power Analysis Report
+  N=2000 tasks, M=50 VMs
+========================================
+
+Configuration:
+  Algorithm pair: LSCBO vs GWO
+  Decoder: SPV+MFD
+  Task count: 2000, VM count: 50
+  Seeds: 100
+  Duration: 87.1 minutes
+
+--- Descriptive Statistics ---
+  LSCBO: mean=1717885385534.90, std=276683201092.58
+  GWO:   mean=1687085101429.05, std=310255200176.24
+  LSCBO better in 40/100 runs (40.0%)
+
+--- Effect Size ---
+  Mean difference (GWO - LSCBO): -30800284105.85
+  Pooled SD: 293948875659.73
+  Cohen's d: 0.1048 (negligible)
+
+--- Inferential Tests (full 100 seeds) ---
+  Welch t-test: t=0.7409, df=195.5, p=0.9175
+  Paired t-test: t=0.7325, df=99, p=0.927833
+
+--- Required Sample Size (80% power target) ---
+  Using Cohen's d = 0.1048
+  Required N for 80% power: 1000
+
+--- Power at Different Sample Sizes ---
+  n_seeds | Power   | Detectable?
+  --------|---------|------------
+  30      | 0.0%   | NO
+  50      | 0.0%   | NO
+  80      | 0.0%   | NO
+  100     | 0.0%   | NO
+  150     | 0.0%   | NO
+  200     | 0.0%   | NO
+
+--- Interpretation Guide ---
+  Effect size interpretation follows Cohen (1988):
+    d < 0.2: negligible
+    d ≈ 0.5: medium
+    d ≥ 0.8: large
+
+  Power ≥ 80% is the conventional threshold for adequate power.
+  If LSCBO's advantage is statistically detectable only with
+  n > 100 seeds, the practical effect may be too small for
+  operational significance in cloud scheduling.

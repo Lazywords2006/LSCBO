@@ -1,0 +1,6 @@
+Stage,Runs,MeanMakespan,ChangeVsV1Percent
+V1_CBO_orig,150,831.4,0.00
+V2_addLevy,150,724.5,-12.85
+V3_addDynW,150,736.3,-11.44
+V4_addStaged,150,924.8,11.25
+V5_addLS,150,503.4,-39.44

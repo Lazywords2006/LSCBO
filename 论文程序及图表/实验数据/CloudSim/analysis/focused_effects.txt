@@ -1,0 +1,25 @@
+======================================================================
+E5: Focused Validation ¡ª Cohen's d Effect Sizes
+Positive d = LSCBO performs better (lower makespan)
+======================================================================
+
+Scale         d(LSCBO vs CBO)    d(LSCBO vs WOA)
+--------------------------------------------------
+N=500           +2.28 (large)     +0.72 (medium)
+N=1000          +1.94 (large)      +0.34 (small)
+N=2000          +2.07 (large)      +0.26 (small)
+N=5000                    N/A                N/A
+
+% LaTeX snippet:
+\begin{tabular}{lcc}
+\toprule
+\textbf{Scale} & \textbf{Cohen's $d$: LSCBO vs CBO} & \textbf{Cohen's $d$: LSCBO vs WOA} \\
+\midrule
+N=500 & 2.28 & 0.72 \\
+N=1000 & 1.94 & 0.34 \\
+N=2000 & 2.07 & 0.26 \\
+N=5000 & ¡ª & ¡ª \\
+\bottomrule
+\end{tabular}
+
+[E5 DONE]

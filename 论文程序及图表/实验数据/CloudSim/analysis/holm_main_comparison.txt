@@ -1,0 +1,19 @@
+============================================================
+E4: Holm-Bonferroni Correction: ¡ª LSCBO vs CBO (Makespan)
+============================================================
+Scale      Raw p        Holm p       alpha=0.05
+--------------------------------------------------
+N=100      0.0066       0.0396       * sig
+N=300      0.1910       0.1910         n.s.
+N=500      0.0497       0.1491         n.s.
+N=800      0.0293       0.1172         n.s.
+N=1000     0.0841       0.1682         n.s.
+N=1500     0.0015       0.0105       * sig
+N=2000     0.0197       0.0985         n.s.
+
+After Holm correction: 2/7 scales remain significant at ¦Á=0.05
+
+% LaTeX snippet for footnote:
+% Significant after Holm: N=100, N=1500
+
+[E4 DONE]

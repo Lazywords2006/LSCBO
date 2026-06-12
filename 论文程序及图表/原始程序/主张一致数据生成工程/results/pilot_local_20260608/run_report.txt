@@ -1,0 +1,8 @@
+LSCBO claim-preserving data run
+mode: pilot
+rows: 90
+runtimeMs: 5079
+cloudsimValidation: true
+finishedCloudSimRowsOk: 90/90
+rawCsv: claim_pilot_raw.csv
+summaryCsv: claim_pilot_summary.csv

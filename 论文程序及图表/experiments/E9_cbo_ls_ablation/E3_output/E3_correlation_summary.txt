@@ -1,0 +1,8 @@
+Energy-Makespan Correlation Analysis
+Source: /Volumes/Untitled 1/LSCBO/CloudSim_Project/results/E1_merged.csv
+Data points: 11700
+Pearson r (overall): 0.9441
+Spearman rho (overall): 0.9437
+R² (overall): 0.8913
+Linear model: Energy = 0.0219 + 0.0027 × Makespan
+Verdict: r > 0.9 claim is SUPPORTED

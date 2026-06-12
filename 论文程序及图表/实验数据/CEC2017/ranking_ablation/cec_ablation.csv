@@ -1,0 +1,7 @@
+Variant,avgRank
+V4-CBO+Levy,2.50
+CBO,2.80
+V1-NoGreedy,3.43
+V3-NoGreedy+Random,3.53
+V2-LevyRandom,4.27
+V0-Original,4.47

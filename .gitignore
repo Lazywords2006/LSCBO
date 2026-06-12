@@ -1,0 +1,14 @@
+.DS_Store
+target/
+*.class
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+.aris/

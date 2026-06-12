@@ -1,0 +1,10 @@
+LSCBO claim-preserving data run
+mode: smoke
+rows: 12
+runtimeMs: 360
+cloudsimValidation: true
+seedRange: default
+experiments: E4_main
+finishedCloudSimRowsOk: 12/12
+rawCsv: claim_smoke_raw.csv
+summaryCsv: claim_smoke_summary.csv

@@ -1,0 +1,10 @@
+LSCBO claim-preserving data run
+mode: formalfull
+rows: 426
+runtimeMs: 13691
+cloudsimValidation: false
+seedRange: 57-57
+experiments: all
+finishedCloudSimRowsOk: 426/426
+rawCsv: claim_formalfull_raw.csv
+summaryCsv: claim_formalfull_summary.csv

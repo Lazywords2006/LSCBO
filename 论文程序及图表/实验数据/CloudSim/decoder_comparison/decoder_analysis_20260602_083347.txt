@@ -1,0 +1,35 @@
+========================================
+  Cross-Decoder Comparison Analysis
+========================================
+
+
+--- VM Count: 10 ---
+Scale | Decoder     | LSCBO_MS  | GWO_MS   | CBO_MS   | Best
+------|-------------|-----------|----------|----------|-----
+N= 500 | SPV_MFD     |   1514.72 |  1514.10 |  1514.10 | GWO
+N= 500 | RANDOM_KEY  |   2425.17 |  2488.99 |  2488.99 | LSCBO
+N= 500 | GREEDY_REPAIR |   2350.47 |  2412.83 |  2412.83 | LSCBO
+N=1000 | SPV_MFD     |   3014.76 |  3014.98 |  3014.98 | LSCBO
+N=1000 | RANDOM_KEY  |   5098.30 |  5225.03 |  5225.03 | LSCBO
+N=1000 | GREEDY_REPAIR |   5008.52 |  5143.54 |  5143.54 | LSCBO
+N=2000 | SPV_MFD     |   6012.09 |  6011.89 |  6011.89 | GWO
+N=2000 | RANDOM_KEY  |  10955.53 | 11034.81 | 11034.81 | LSCBO
+N=2000 | GREEDY_REPAIR |  10859.98 | 10937.65 | 10937.65 | LSCBO
+
+--- VM Count: 50 ---
+Scale | Decoder     | LSCBO_MS  | GWO_MS   | CBO_MS   | Best
+------|-------------|-----------|----------|----------|-----
+N= 500 | SPV_MFD     |    316.20 |   316.39 |   316.39 | LSCBO
+N= 500 | RANDOM_KEY  |    695.13 |   700.85 |   700.85 | LSCBO
+N= 500 | GREEDY_REPAIR |    668.11 |   657.23 |   657.23 | GWO
+N=1000 | SPV_MFD     |    616.51 |   616.26 |   616.26 | GWO
+N=1000 | RANDOM_KEY  |   1352.68 |  1363.44 |  1363.44 | LSCBO
+N=1000 | GREEDY_REPAIR |   1304.40 |  1313.39 |  1313.39 | LSCBO
+N=2000 | SPV_MFD     |   1216.14 |  1216.35 |  1216.35 | LSCBO
+N=2000 | RANDOM_KEY  |   2625.69 |  2645.02 |  2645.02 | LSCBO
+N=2000 | GREEDY_REPAIR |   2566.41 |  2586.43 |  2586.43 | LSCBO
+
+Key Finding Template:
+Under SPV+MFD: GWO dominated X/Y scales
+Under Random-Key: [to be filled]
+Under Greedy-Repair: [to be filled]

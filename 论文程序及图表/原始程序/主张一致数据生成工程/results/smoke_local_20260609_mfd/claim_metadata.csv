@@ -1,0 +1,16 @@
+key,value
+createdAt,2026-06-09T19:21:37.561899
+mode,smoke
+rows,12
+runtimeMs,270
+cloudsimValidation,true
+cloudsimVersion,8.0.0
+populationSize,20
+maxIterations,20
+localSearchInterval,10
+localSearchMaxTrials,10
+levyBeta,1.5
+levyAlpha,0.05
+objective,weighted normalized makespan energy cost imbalance
+decoder,SPV plus minimum finish time
+datacenter,1 datacenter, 4 cores per host, host count expands when needed to allocate all VMs

@@ -1,0 +1,31 @@
+Function,LSCBO,CBO,PSO,GWO,DE,SA,GTO,BestAlgorithm
+Sphere,1,4,5,7,3,6,2,LSCBO
+Zakharov,3,5,6,7,1,4,2,DE
+Rosenbrock,2,4,5,7,3,6,1,GTO
+Rastrigin,2,5,4,7,1,6,3,DE
+Ackley,1,4,5,6,2,7,3,LSCBO
+Griewank,1,4,5,7,3,6,2,LSCBO
+Levy,1,4,5,7,2,6,3,LSCBO
+Schwefel,1,4,6,7,2,5,3,LSCBO
+Michalewicz,4,3,5,7,1,6,2,DE
+Bent Cigar,1,4,5,7,3,6,2,LSCBO
+Discus,1,5,4,7,3,6,2,LSCBO
+High Conditioned Elliptic,1,4,6,7,3,5,2,LSCBO
+Dixon-Price,2,4,5,7,3,6,1,GTO
+HappyCat,3,4,5,7,2,6,1,GTO
+Step,1,4,5,7,3,6,2,LSCBO
+Bohachevsky,1,4,5,7,3,6,2,LSCBO
+Quartic,1,4,5,7,3,6,2,LSCBO
+Exponential,1,4,5,6,3,7,2,LSCBO
+Alpine,2,4,5,7,1,6,3,DE
+Hybrid Function 1,3,4,5,7,1,6,2,DE
+Hybrid Function 2,2,4,6,7,3,5,1,GTO
+Expanded Schaffer F6,3,4,5,7,1,6,2,DE
+Pathological,3,4,5,7,2,6,1,GTO
+Periodic,2,4,5,7,3,6,1,GTO
+Salomon,3,4,5,6,2,7,1,GTO
+Styblinski-Tang,1,4,6,7,3,5,2,LSCBO
+Weierstrass,2,4,5,7,1,6,3,DE
+Xin-She Yang,3,4,5,7,2,6,1,GTO
+Sum Of Different Powers,2,4,5,6,3,7,1,GTO
+Average Rank,1.86,4.07,5.10,6.86,2.28,5.93,1.90,

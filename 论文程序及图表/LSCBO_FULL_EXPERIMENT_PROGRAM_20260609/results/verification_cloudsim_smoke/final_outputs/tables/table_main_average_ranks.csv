@@ -1,0 +1,10 @@
+algorithm,rank_makespan,blocks_makespan,rank_energy,blocks_energy,rank_cost,blocks_cost,rank_imbalance,blocks_imbalance,rank_objective,blocks_objective
+LSCBO,nan,0,nan,0,nan,0,nan,0,nan,0
+CBO,nan,0,nan,0,nan,0,nan,0,nan,0
+GTO,nan,0,nan,0,nan,0,nan,0,nan,0
+WOA,nan,0,nan,0,nan,0,nan,0,nan,0
+HHO,nan,0,nan,0,nan,0,nan,0,nan,0
+GWO,nan,0,nan,0,nan,0,nan,0,nan,0
+DBO,nan,0,nan,0,nan,0,nan,0,nan,0
+PSO,nan,0,nan,0,nan,0,nan,0,nan,0
+AOA,nan,0,nan,0,nan,0,nan,0,nan,0

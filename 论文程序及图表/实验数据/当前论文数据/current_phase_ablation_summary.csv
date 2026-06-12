@@ -1,0 +1,7 @@
+Variant,Runs,MeanMakespan,DeltaVsFULLPercent,WilcoxonP,EffectSizePairedD
+FULL,150,503.4,0.00,NA,NA
+LS-only,150,512.8,1.87,0.0059,0.07
+noPhase1,150,925.6,83.86,1.15e-26,0.89
+noPhase2,150,1074.7,113.47,1.16e-26,0.76
+noPhase3,150,1007.1,100.04,1.16e-26,0.93
+base,150,924.8,83.71,1.16e-26,0.95

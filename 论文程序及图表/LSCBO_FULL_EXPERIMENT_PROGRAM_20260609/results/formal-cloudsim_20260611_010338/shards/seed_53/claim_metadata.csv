@@ -1,0 +1,19 @@
+key,value
+createdAt,2026-06-11T01:06:07.2819826
+mode,formalfull
+rows,426
+runtimeMs,142087
+cloudsimValidation,true
+seedRange,53-53
+experiments,all
+parallelism,1
+cloudsimVersion,8.0.0
+populationSize,20
+maxIterations,20
+localSearchInterval,10
+localSearchMaxTrials,10
+levyBeta,1.5
+levyAlpha,0.05
+objective,weighted normalized makespan energy cost imbalance
+decoder,SPV ranking plus rank-modulo VM mapping
+datacenter,1 datacenter, 4 cores per host, host count expands when needed to allocate all VMs
