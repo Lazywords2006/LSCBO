@@ -488,6 +488,198 @@ def draw_cec_convergence(archive: Path, output: Path) -> None:
     save_figure(fig, output / "fig_cec_convergence_rank.png")
 
 
+def draw_cloud_multi_algorithm(cloud_csv: Path, output: Path) -> None:
+    data = pd.read_csv(cloud_csv)
+    if len(data) != 5_310:
+        raise ValueError(f"Expected 5310 canonical cloud rows, found {len(data)}")
+
+    main = data[data["experiment"] == "E4_main"].copy()
+    algorithms = ["GREEDY_LPT", "AOA", "WOA", "GWO", "PSO", "CBO", "LSCBO"]
+    task_counts = [200, 500, 1000, 2000, 5000]
+    if len(main) != 1_050:
+        raise ValueError(f"Expected 1050 E4_main rows, found {len(main)}")
+    if set(main["algorithm"]) != set(algorithms):
+        raise ValueError("Unexpected E4_main algorithm set")
+    if sorted(main["taskCount"].unique().tolist()) != task_counts:
+        raise ValueError("Unexpected E4_main task-count coverage")
+
+    metrics = ["objective", "makespan", "energy", "cost", "imbalance"]
+    means = main.groupby(["taskCount", "algorithm"])[metrics].mean()
+    expected_lscbo = {
+        200: 0.982632,
+        500: 0.982617,
+        1000: 0.983700,
+        2000: 0.983444,
+        5000: 0.985240,
+    }
+    for task_count, expected in expected_lscbo.items():
+        value = float(means.loc[(task_count, "LSCBO"), "objective"])
+        if not math.isclose(value, expected, rel_tol=0.0, abs_tol=5e-7):
+            raise ValueError(
+                f"LSCBO objective mismatch at N={task_count}: {value} vs {expected}"
+            )
+
+    labels = {
+        "LSCBO": "LSCBO + pair",
+        "CBO": "CBO",
+        "PSO": "PSO",
+        "GWO": "GWO",
+        "WOA": "WOA",
+        "AOA": "AOA",
+        "GREEDY_LPT": "Greedy-LPT",
+    }
+    colors = {
+        "LSCBO": RED,
+        "CBO": "#4D4D4D",
+        "PSO": BLUE,
+        "GWO": GREEN,
+        "WOA": PURPLE,
+        "AOA": ORANGE,
+        "GREEDY_LPT": "#9A9A9A",
+    }
+    markers = {
+        "LSCBO": "s",
+        "CBO": "o",
+        "PSO": "^",
+        "GWO": "x",
+        "WOA": "D",
+        "AOA": "v",
+        "GREEDY_LPT": None,
+    }
+    linestyles = {
+        "LSCBO": "-",
+        "CBO": "--",
+        "PSO": "-.",
+        "GWO": ":",
+        "WOA": "--",
+        "AOA": "-.",
+        "GREEDY_LPT": ":",
+    }
+    draw_order = ["GREEDY_LPT", "AOA", "WOA", "GWO", "PSO", "CBO", "LSCBO"]
+    x = np.arange(len(task_counts))
+
+    fig, axes = plt.subplots(
+        2,
+        3,
+        figsize=(11.2, 7.2),
+        gridspec_kw={"wspace": 0.34, "hspace": 0.40},
+    )
+    plot_axes = axes.ravel()[:5]
+    legend_ax = axes.ravel()[5]
+    panel_specs = [
+        ("objective", "(a) Reference-normalized objective", "Objective (lower is better)", (0.978, 1.002)),
+        ("makespan", "(b) Makespan", "Improvement over Greedy-LPT (%)", (-0.018, 0.015)),
+        ("energy", "(c) Energy", "Improvement over Greedy-LPT (%)", (-0.008, 0.078)),
+        ("cost", "(d) Execution cost", "Improvement over Greedy-LPT (%)", (-0.003, 0.029)),
+        ("imbalance", "(e) Load-balance ratio", "Improvement over Greedy-LPT (%)", (-0.4, 7.3)),
+    ]
+
+    for ax, (metric, title, ylabel, ylim) in zip(plot_axes, panel_specs):
+        greedy = np.asarray(
+            [means.loc[(task_count, "GREEDY_LPT"), metric] for task_count in task_counts],
+            dtype=float,
+        )
+        for algorithm in draw_order:
+            values = np.asarray(
+                [means.loc[(task_count, algorithm), metric] for task_count in task_counts],
+                dtype=float,
+            )
+            if metric != "objective":
+                values = 100.0 * (greedy - values) / greedy
+            ax.plot(
+                x,
+                values,
+                color=colors[algorithm],
+                linestyle=linestyles[algorithm],
+                linewidth=2.4 if algorithm == "LSCBO" else 1.25,
+                marker=markers[algorithm],
+                markersize=5.2 if algorithm == "LSCBO" else 4.2,
+                markerfacecolor="white" if markers[algorithm] not in {None, "x"} else colors[algorithm],
+                markeredgewidth=1.0,
+                label=labels[algorithm],
+                zorder=5 if algorithm == "LSCBO" else 2,
+            )
+        ax.set_title(title, loc="left", pad=6, weight="bold", fontsize=11.5)
+        ax.set_ylabel(ylabel, fontsize=10.5)
+        ax.set_xlabel("Number of tasks", fontsize=10.5)
+        ax.set_xticks(x)
+        ax.set_xticklabels([str(value) for value in task_counts])
+        ax.set_ylim(*ylim)
+        ax.axhline(
+            1.0 if metric == "objective" else 0.0,
+            color="#777777",
+            linestyle="--",
+            linewidth=0.8,
+            zorder=0,
+        )
+        ax.grid(axis="y", color="#E6E6E6", linestyle="--", linewidth=0.7, zorder=0)
+        for spine in ax.spines.values():
+            spine.set_visible(True)
+            spine.set_linewidth(0.8)
+            spine.set_color("#555555")
+        ax.tick_params(direction="out", length=3.5, width=0.8, labelsize=9.2)
+
+    plot_axes[0].text(
+        0.98,
+        0.10,
+        "GWO, WOA, and AOA overlap Greedy-LPT",
+        transform=plot_axes[0].transAxes,
+        ha="right",
+        va="bottom",
+        fontsize=8.2,
+        color=GRAY,
+    )
+
+    legend_ax.axis("off")
+    handles = [
+        Line2D(
+            [0],
+            [0],
+            color=colors[algorithm],
+            linestyle=linestyles[algorithm],
+            linewidth=2.4 if algorithm == "LSCBO" else 1.4,
+            marker=markers[algorithm],
+            markersize=5.5,
+            markerfacecolor="white" if markers[algorithm] not in {None, "x"} else colors[algorithm],
+            label=labels[algorithm],
+        )
+        for algorithm in reversed(draw_order)
+    ]
+    legend_ax.legend(
+        handles=handles,
+        loc="upper left",
+        frameon=True,
+        facecolor="white",
+        edgecolor="#BBBBBB",
+        ncol=2,
+        title="Compared methods",
+        fontsize=9.0,
+        title_fontsize=10,
+    )
+    legend_ax.text(
+        0.0,
+        0.48,
+        "All points are means over 30 paired seeds.\n"
+        "LSCBO + pair includes the Pareto-safe pair search;\n"
+        "the other population methods use only their global search.\n"
+        "Metric-specific vertical ranges expose the small differences.",
+        transform=legend_ax.transAxes,
+        ha="left",
+        va="top",
+        fontsize=9.0,
+        color=TEXT,
+        linespacing=1.45,
+    )
+    fig.suptitle(
+        "Cloud scheduling comparison across algorithms and task scales",
+        fontsize=13.5,
+        weight="bold",
+        y=0.995,
+    )
+
+    save_figure(fig, output / "fig_cloud_multi_algorithm_profiles.png")
+
+
 def paired_improvement(
     data: pd.DataFrame,
     experiment: str,
@@ -689,6 +881,7 @@ def main() -> None:
     draw_scheduling_model(output)
     draw_mechanism_workflow(output)
     draw_cec_convergence(archive, output)
+    draw_cloud_multi_algorithm(cloud_csv, output)
     draw_ablation_robustness(cloud_csv, output)
 
 

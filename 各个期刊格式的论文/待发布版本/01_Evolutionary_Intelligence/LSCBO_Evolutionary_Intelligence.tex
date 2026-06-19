@@ -362,12 +362,12 @@ $N=5000$ & 0.0002\% (10) & 0.0014\% (30) & 0.0005\% (30) & 5.6472\% (30) & 1.476
 }
 \end{table*}
 
-The no-regression rule is visible in Table~\ref{tab:main_improvement}: all mean changes are nonnegative and there are no component losses in any block. The practical effect is concentrated in LBR. Objective reductions are consistent but small and decline with task count.
+The no-regression rule is visible in Table~\ref{tab:main_improvement}: all mean changes are nonnegative and there are no component losses in any block. The practical effect is concentrated in LBR. Objective reductions are consistent but small and decline with task count. Figure~\ref{fig:cloud_multi_algorithm} places these results in the same scale-wise multi-algorithm view: LSCBO with pair reassignment remains below the reference objective at every task count, whereas CBO and PSO show only isolated departures and GWO, WOA, and AOA overlap Greedy-LPT.
 
 \begin{figure*}[htbp]
 \centering
-\includegraphics[width=0.95\textwidth]{figures/fig_main_multicost_improvement.png}
-\caption{Mean component-wise improvement of LSCBO over Greedy-LPT. The zero line denotes equality; positive values favor LSCBO.}\label{fig:multicost_profile}
+\includegraphics[width=\textwidth]{figures/fig_cloud_multi_algorithm_profiles.png}
+\caption{Cloud scheduling comparison across seven methods and five task scales. Panel (a) reports the reference-normalized scalar objective; panels (b)--(e) report component-wise improvement relative to Greedy-LPT. Each point is a mean over 30 paired seeds. Positive component values favor the method, while lower objective values are better. The LSCBO label includes Pareto-safe pair reassignment; the other population methods use only their global search under the common warm start and 6,000-evaluation budget. Metric-specific vertical ranges make the small differences visible.}\label{fig:cloud_multi_algorithm}
 \end{figure*}
 
 \begin{figure}[htbp]
