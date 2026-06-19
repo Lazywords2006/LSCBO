@@ -307,12 +307,18 @@ WOA            & 8.552 \\
 \noindent No function is omitted. The ranking is computed from the complete 7,830-run result set; per-run values, per-function summaries, convergence checkpoints, and paired statistical outputs are included in the reproducibility package.
 
 \subsubsection{Convergence Analysis on CEC2017}
-Figure~\ref{fig:cec_convergence} reports all saved checkpoints under the complete 29-function protocol rather than selecting individual functions. LSCBO's mean cross-function rank improves as the evaluation budget is consumed and reaches the final rank of 1.690 reported in Table~\ref{tab:cec_external}. The trajectory is descriptive; the final paired tests remain the basis for statistical comparison.
+Figure~\ref{fig:cec_convergence} reports all saved checkpoints under the complete 29-function protocol rather than selecting individual functions. LSCBO's mean cross-function rank improves as the evaluation budget is consumed and reaches the final rank of 1.690 reported in Table~\ref{tab:cec_external}. Figure~\ref{fig:cec_function_convergence} complements the aggregate rank curve with representative function-level traces. These trajectories are descriptive; the final paired tests remain the basis for statistical comparison.
 
 \begin{figure*}[htbp]
 \centering
 \includegraphics[width=0.78\textwidth]{figures/fig_cec_convergence_rank.png}
 \caption{CEC2017 convergence over all 29 functions. At each checkpoint, the 30-run mean error is ranked among the nine methods within each function, and the curves average those 29 ranks. Lower is better. Shading gives 95\% intervals across functions for LSCBO and CBO.}\label{fig:cec_convergence}
+\end{figure*}
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_cec_function_convergence_grid.png}
+\caption{Representative CEC2017 convergence profiles. Six functions are shown to make the checkpoint dynamics visible without replacing the complete-protocol ranking in Figure~\ref{fig:cec_convergence}. Each curve is the 30-run mean error for one optimizer; the vertical axis uses a log scale.}\label{fig:cec_function_convergence}
 \end{figure*}
 
 \subsection{Experimental Series 2: Cloud Task Scheduling}\label{sec:cloudsim_exp}
@@ -362,19 +368,21 @@ $N=5000$ & 0.0002\% (10) & 0.0014\% (30) & 0.0005\% (30) & 5.6472\% (30) & 1.476
 }
 \end{table*}
 
-The no-regression rule is visible in Table~\ref{tab:main_improvement}: all mean changes are nonnegative and there are no component losses in any block. The practical effect is concentrated in LBR. Objective reductions are consistent but small and decline with task count. Figure~\ref{fig:cloud_objective_comparison} presents the scalar comparison in a scale-wise multi-algorithm layout: LSCBO with pair reassignment is the only method with a visible objective reduction at every task count, while CBO and PSO remain near zero and GWO, WOA, and AOA coincide with Greedy-LPT. Figure~\ref{fig:cloud_component_profiles} separates the four reported components and shows that the visible improvement is concentrated in LBR; makespan, energy, and cost changes are much smaller.
+The no-regression rule is visible in Table~\ref{tab:main_improvement}: all mean changes are nonnegative and there are no component losses in any block. The practical effect is concentrated in LBR. Objective reductions are consistent but small and decline with task count. Figures~\ref{fig:cloud_small_scale_costs} and~\ref{fig:cloud_large_scale_costs} follow the task-scale cost-profile style used in recent cloud-scheduling studies: all method groups move with the workload scale, while the small vertical separations show that the reported improvement is a refinement on top of a strong Greedy-LPT warm start. GWO, WOA, and AOA coincide with Greedy-LPT under this protocol, so they are grouped rather than redrawn as identical traces.
 
 \begin{figure*}[htbp]
 \centering
-\includegraphics[width=0.95\textwidth]{figures/fig_cloud_objective_comparison.png}
-\caption{Scale-wise cloud objective comparison. Bars show paired mean objective improvement over Greedy-LPT across 30 seeds. Positive values indicate a lower reference-normalized scalar objective. GWO, WOA, and AOA are grouped with Greedy-LPT because their formal traces coincide with the deterministic warm-start schedule.}\label{fig:cloud_objective_comparison}
+\includegraphics[width=0.95\textwidth]{figures/fig_cloud_small_scale_cost_profiles.png}
+\caption{Small-scale cloud cost profiles. Values are indexed to the GWO/WOA/AOA/Greedy-LPT tied group at $N=200$ within each component. Horizontal positions are slightly dodged only to reveal overlapping traces; vertical values are unchanged.}\label{fig:cloud_small_scale_costs}
 \end{figure*}
 
 \begin{figure*}[htbp]
 \centering
-\includegraphics[width=0.95\textwidth]{figures/fig_cloud_component_profiles.png}
-\caption{Component-level cloud scheduling comparison across task scales. Positive values indicate component-wise improvement over Greedy-LPT. The figure separates makespan, energy, execution cost, and LBR to show that the main visible change comes from load-balance refinement, while physical-cost changes remain small. GWO, WOA, and AOA are grouped with Greedy-LPT because their formal traces are identical under the reported protocol.}\label{fig:cloud_component_profiles}
+\includegraphics[width=0.95\textwidth]{figures/fig_cloud_large_scale_cost_profiles.png}
+\caption{Large-scale cloud cost profiles. Values are indexed to the GWO/WOA/AOA/Greedy-LPT tied group at $N=1000$ within each component. The plots show workload scaling and component behavior, while Table~\ref{tab:main_improvement} reports the paired improvement magnitudes.}\label{fig:cloud_large_scale_costs}
 \end{figure*}
+
+\FloatBarrier
 
 For the scalar objective, the Friedman test across the seven methods gives $\chi^2=887.615$ and $p=1.79\times10^{-188}$. Two-sided Wilcoxon tests give 149 wins and one loss against CBO, and 150 wins against each other comparator; every Holm-adjusted value is at most $1.38\times10^{-25}$. These small $p$-values indicate consistency rather than a large physical reduction in makespan, energy, or cost. Against Greedy-LPT, the median paired objective difference is $-0.0146$ on a reference-normalized scale where the baseline is one.
 
