@@ -162,9 +162,9 @@ Every task-to-VM assignment has a corresponding vector, so the decoder does not 
 \subsection{Continuous LSCBO Core}
 The continuous core is identical in the CEC2017 and cloud implementations. A population of 30 is divided into coyote--badger pairs. During the first third of the core budget, the original tanh search is applied. During the second third, a two-coordinate rotation encircles the pair midpoint. During the final third, each individual moves halfway toward the best member of its half-population. In the first phase, an additional L\'{e}vy candidate is evaluated with probability $\rho_L=0.30$:
 \begin{equation}
-X_i^L=X_i+0.03\max(0.05,1-N_{eval}/B_g)L_i(1.5),
+X_i^L=X_i+0.03\,\Delta\,\max(0.05,1-N_{eval}/B_g)L_i(1.5),
 \end{equation}
-where $L_i$ follows the Mantegna construction~\cite{Mantegna1994}. The original CBO candidate and the additional L\'{e}vy candidate are separately counted and greedily accepted.
+where $L_i$ follows the Mantegna construction~\cite{Mantegna1994} and $\Delta$ is the coordinate span of the search domain. Thus $\Delta=200$ for the CEC2017 bounds $[-100,100]^D$ and $\Delta=1$ for the cloud decoder space $[0,1]^N$. The original CBO candidate and the additional L\'{e}vy candidate are separately counted and greedily accepted.
 
 \subsection{Pareto-Safe Pair Reassignment}\label{sec:local_search}
 The cloud run has a total budget $B=6000$. LSCBO allocates $B_g=600$ evaluations to its continuous core and the remaining $B_{ls}=5400$ to pair reassignment. The incumbent starts from the best schedule returned by the core. Local trials are processed in rounds of 400:
@@ -332,7 +332,7 @@ GWO / WOA / AOA / Greedy-LPT & 1.000000 & 1.000000 & 1.000000 & 1.000000 & 1.000
 
 \begin{table*}[ht]
 \centering
-\caption{Mean paired relative improvement of LSCBO over Greedy-LPT. Parentheses give paired wins out of 30 seeds; all remaining cases are ties, with no component losses.}\label{tab:main_improvement}
+\caption{Relative improvement of LSCBO over Greedy-LPT computed from scale-wise mean component values. Parentheses give paired wins out of 30 seeds; all remaining cases are ties, with no component losses.}\label{tab:main_improvement}
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{l c c c c c}
 \toprule
@@ -486,7 +486,7 @@ Tasgetiren MF, Liang YC, \c{S}evkli M, Gencyilmaz G (2007) A particle swarm opti
 Abdel-Basset M, Mohamed R, Azeem SAA, Jameel M, Abouhawwash M (2023) Kepler optimization algorithm: a new metaheuristic algorithm inspired by Kepler's laws of planetary motion. Knowl-Based Syst 268:110454. \url{https://doi.org/10.1016/j.knosys.2023.110454}
 
 \bibitem{Qian2025}
-Qian Z, Zhang Y, Pu D, Xie G, Pu D, Ye M (2025) A new hybrid improved Kepler optimization algorithm based on multi-strategy fusion and its applications. Mathematics 13(3):405. \url{https://doi.org/10.3390/math13030405}
+Qian Z, Zhang Y, Pu DQ, Xie G, Pu D, Ye M (2025) A new hybrid improved Kepler optimization algorithm based on multi-strategy fusion and its applications. Mathematics 13(3):405. \url{https://doi.org/10.3390/math13030405}
 
 \bibitem{Hashim2022}
 Hashim FA, Hussien AG (2022) Snake optimizer: a novel meta-heuristic optimization algorithm. Knowl-Based Syst 242:108320. \url{https://doi.org/10.1016/j.knosys.2022.108320}
