@@ -176,6 +176,14 @@ The cloud run has a total budget $B=6000$. LSCBO allocates $B_g=600$ evaluations
 \end{enumerate}
 The random stream used for pair sampling depends only on the workload, VM profile, seed, and weight profile. It is independent of the host optimizer and ablation label, which prevents different variants from receiving different local neighborhoods by accident.
 
+Figure~\ref{fig:mechanism_workflow} summarizes the two budgeted stages. The continuous core retains the best schedule found under its 600-evaluation allowance, after which the pair search uses the remaining evaluations without accepting a trade-off in any of the four reported scheduling criteria.
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=0.98\textwidth]{figures/fig_lscbo_mechanism_workflow.png}
+\caption{Budgeted LSCBO and Pareto-safe pair reassignment. (a) The continuous core progresses through searching, encircling, and attacking phases, with every original and auxiliary candidate counted against $B_g$. (b) A pair exchange is admissible only when makespan, energy, cost, and LBR are all non-worsening; the admissible trial with minimum $F$ updates the incumbent after each round.}\label{fig:mechanism_workflow}
+\end{figure*}
+
 \begin{algorithm}[ht]
 \caption{Cloud LSCBO with Pareto-Safe Pair Reassignment}\label{alg:lscbo}
 \begin{algorithmic}[1]
@@ -299,7 +307,13 @@ WOA            & 8.552 \\
 \noindent No function is omitted. The ranking is computed from the complete 7,830-run result set; per-run values, per-function summaries, convergence checkpoints, and paired statistical outputs are included in the reproducibility package.
 
 \subsubsection{Convergence Analysis on CEC2017}
-The CEC2017 convergence checkpoints are retained as diagnostic data in the reproducibility package. The primary CEC2017 evidence reported in this manuscript is the complete 29-function final-rank analysis, because final error ranks and paired tests provide a more stable basis for comparison than selected convergence curves.
+Figure~\ref{fig:cec_convergence} reports all saved checkpoints under the complete 29-function protocol rather than selecting individual functions. LSCBO's mean cross-function rank improves as the evaluation budget is consumed and reaches the final rank of 1.690 reported in Table~\ref{tab:cec_external}. The trajectory is descriptive; the final paired tests remain the basis for statistical comparison.
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=0.78\textwidth]{figures/fig_cec_convergence_rank.png}
+\caption{CEC2017 convergence over all 29 functions. At each checkpoint, the 30-run mean error is ranked among the nine methods within each function, and the curves average those 29 ranks. Lower is better. Shading gives 95\% intervals across functions for LSCBO and CBO.}\label{fig:cec_convergence}
+\end{figure*}
 
 \subsection{Experimental Series 2: Cloud Task Scheduling}\label{sec:cloudsim_exp}
 
@@ -390,6 +404,14 @@ Five profiles are tested over $N\in\{100,300,500,800,1000\}$: equal weights; mak
 
 \subsubsection{VM Heterogeneity}\label{sec:vm_heterogeneity}
 The VM study uses MIPS ratios of 1.5:1, 5:1, and 20:1 over three task scales and 30 seeds. Mean objectives for LSCBO versus Greedy-LPT are 0.997258 vs. 1.000000, 0.985625 vs. 1.000000, and 0.994473 vs. 1.000000. The operator improves all 90 blocks for the 5:1 and 20:1 profiles. Under the near-homogeneous 1.5:1 profile, it improves 38 blocks and ties 52, which is expected because pair exchanges have less room to change nearly identical VM assignments.
+
+Figure~\ref{fig:ablation_robustness} consolidates the mechanism and robustness results. The objective-only variant exposes the component trade-offs prevented by Pareto-safe acceptance, while the weight and VM studies show that the objective improvement remains positive across every tested profile and is largest when load balance is emphasized.
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_ablation_robustness.png}
+\caption{Mechanism ablation and robustness. (a) Mean component-wise improvement over Greedy-LPT for each ablation variant; positive values favor the variant, exact values are printed, and color intensity is clipped at $+10\%$. (b) Paired mean objective improvement over Greedy-LPT under five weight profiles and three VM-heterogeneity profiles; error bars are 95\% intervals over paired blocks.}\label{fig:ablation_robustness}
+\end{figure*}
 
 \section{Discussion}\label{sec6}
 
