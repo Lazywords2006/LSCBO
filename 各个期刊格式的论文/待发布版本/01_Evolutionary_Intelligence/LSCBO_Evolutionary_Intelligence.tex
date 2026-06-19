@@ -160,7 +160,42 @@ Every task-to-VM assignment has a corresponding vector, so the decoder does not 
 \section{The Proposed LSCBO Algorithm}\label{sec:algorithm}
 
 \subsection{Continuous LSCBO Core}
-The continuous core is identical in the CEC2017 and cloud implementations. A population of 30 is divided into coyote--badger pairs. During the first third of the core budget, the original tanh search is applied. During the second third, a two-coordinate rotation encircles the pair midpoint. During the final third, each individual moves halfway toward the best member of its half-population. In the first phase, an additional L\'{e}vy candidate is evaluated with probability $\rho_L=0.30$:
+The continuous core is identical in the CEC2017 and cloud implementations. It uses the dynamic branch of CBO~\cite{Khatab2025}. A population of 30 is divided into coyote--badger pairs. For pair $p$, let $X_p^c$ and $X_p^b$ denote the coyote and badger positions, and let
+\begin{equation}
+P_p=\frac{X_p^c+X_p^b}{2}
+\end{equation}
+be the prey/midpoint vector used in the dynamic CBO model. Following the original CBO allocation, the three stages use
+\begin{equation}
+Z_{\mathrm{srch}}=\left\lfloor\frac{Z}{3}\right\rfloor,\quad
+Z_{\mathrm{enc}}=\left\lfloor\frac{Z}{3}\right\rfloor,\quad
+Z_{\mathrm{attack}}=Z-2\left\lfloor\frac{Z}{3}\right\rfloor .
+\end{equation}
+In the evaluation-counted implementation, the same thirds are applied to the core budget $B_g$. During the searching stage, the dynamic CBO update is written for either animal in pair $p(i)$ as
+\begin{equation}
+\widetilde{X}_{i,d}=X_{i,d}\left[1+r_{i,d}\tanh(P_{p(i),d})\right],
+\quad r_{i,d}\sim U(-0.5,0.5).
+\end{equation}
+This is the indexed form of the original coyote and badger searching equations. During encircling, CBO rotates agents with a rotation matrix; the released implementation uses the corresponding two-coordinate rotation around the current pair midpoint:
+\begin{equation}
+\begin{bmatrix}
+\widetilde{X}_{i,a}-P_{p(i),a}\\
+\widetilde{X}_{i,b}-P_{p(i),b}
+\end{bmatrix}
+=
+\begin{bmatrix}
+\cos\theta & -\sin\theta\\
+\sin\theta & \cos\theta
+\end{bmatrix}
+\begin{bmatrix}
+X_{i,a}-P_{p(i),a}\\
+X_{i,b}-P_{p(i),b}
+\end{bmatrix},
+\end{equation}
+where $a\ne b$ are sampled coordinates and $\theta=\pi[1-3(\tau-1/3)]$ for core progress $\tau=N_{eval}/B_g\in[1/3,2/3)$. All other coordinates are unchanged. During attacking, each animal moves halfway toward the best member of its coyote or badger half-population:
+\begin{equation}
+\widetilde{X}_i=\frac{X_i+X_{\ell(i)}}{2}.
+\end{equation}
+Candidates are clipped to the search domain and retained when they do not worsen the incumbent individual. In the first phase, LSCBO also evaluates an additional L\'{e}vy candidate with probability $\rho_L=0.30$:
 \begin{equation}
 X_i^L=X_i+0.03\,\Delta\,\max(0.05,1-N_{eval}/B_g)L_i(1.5),
 \end{equation}
