@@ -1,0 +1,24 @@
+June 19, 2026
+
+Editor-in-Chief
+Evolutionary Intelligence
+
+Subject: Submission of original research article "Pareto-Safe Pair Reassignment for LSCBO-Based Multi-Cost Cloud Task Scheduling"
+
+Dear Editor,
+
+Please consider our manuscript entitled "Pareto-Safe Pair Reassignment for LSCBO-Based Multi-Cost Cloud Task Scheduling" for publication as an original research article in Evolutionary Intelligence.
+
+This manuscript studies a narrower and more defensible cloud-scheduling question: whether a population-based scheduler can refine a strong deterministic Greedy-LPT assignment without worsening any reported component. The proposed LSCBO-based scheduler uses the same direct task-assignment decoder, the same Greedy-LPT warm start, and the same 6,000-evaluation budget as the compared population methods. Its cloud-specific addition is a Pareto-safe task-pair reassignment search that accepts an exchange only when makespan, energy, execution cost, and load-balance ratio are all non-worsening.
+
+The method is evaluated in two separated experimental series under transparent protocols. First, on all 29 official CEC2017 functions with 30 paired runs and 300,000 evaluations per run, LSCBO obtains the best average rank (1.690) among nine optimizers; after Holm correction it is distinguished from CBO, PSO, GWO, WOA, AOA, HLBO, and GWCA, but not from simulated annealing. Second, on multi-cost cloud task scheduling, the canonical 5,310-row analytic dataset covers the main comparison, ablation, weight sensitivity, and VM-heterogeneity studies, with a 12-row CloudSim Plus smoke replay used as an implementation sanity check. Across the 150 main cloud blocks, Pareto-safe pair reassignment improves the reference-normalized scalar objective in every block and never worsens makespan, energy, cost, or load-balance ratio relative to Greedy-LPT. The mean objective reduction is 1.65%; it is driven mainly by a 6.68% relative reduction in load-balance ratio, while changes in the other physical components remain small.
+
+We believe the manuscript fits Evolutionary Intelligence because its central contribution is the mechanism-oriented empirical study of an evolution-inspired optimizer and a scheduling-specific neighborhood under strict attribution. The cloud-scheduling component deliberately reports a modest no-regression refinement rather than a broad superiority claim: ablation shows that the cloud-domain gain belongs to pair reassignment, not to the LSCBO host or the Levy trial. To support reproducibility without compromising anonymous review, the submission includes an anonymized archive containing the official CEC2017 program and 7,830-run result set, the canonical cloud dataset, verification reports, experiment entry points, result-aggregation scripts, tests, and figure-generation code.
+
+The work is original, has not been published previously, and is not under consideration for publication elsewhere. All authors have approved the manuscript and agree with its submission to Evolutionary Intelligence. We declare that there are no competing interests related to this work.
+
+If the manuscript is considered suitable for peer review, we would be grateful for your consideration.
+
+Sincerely,
+
+On behalf of the authors

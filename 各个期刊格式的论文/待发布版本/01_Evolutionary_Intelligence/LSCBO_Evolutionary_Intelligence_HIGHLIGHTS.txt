@@ -1,0 +1,6 @@
+- Pareto-safe pair reassignment refines a strong Greedy-LPT cloud schedule without component regressions.
+- All population methods use the same direct decoder, Greedy-LPT warm start, and 6,000-evaluation budget.
+- Cloud results show 150/150 reference-normalized objective wins over Greedy-LPT, averaging 1.65%.
+- The main effect is a 5.65%-6.81% relative reduction in load-balance ratio across five task scales.
+- Ablation attributes the cloud-domain gain to pair reassignment, not to the LSCBO host or Levy trial.
+- On 29 official CEC2017 functions, LSCBO ranks first on average but is not distinguished from SA after Holm correction.

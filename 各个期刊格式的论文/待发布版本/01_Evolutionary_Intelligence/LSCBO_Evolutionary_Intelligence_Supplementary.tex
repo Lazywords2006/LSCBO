@@ -1,0 +1,120 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage{hyperref}
+
+\begin{document}
+
+\begin{center}
+{\Large Supplementary Material S1}\\[4pt]
+{\large for ``Pareto-Safe Pair Reassignment for LSCBO-Based Multi-Cost Cloud Task Scheduling''}
+\end{center}
+
+\section*{S1. Purpose of This Supplement}
+This supplementary note accompanies the CEC2017 benchmark section in the main manuscript. Its purpose is to report the full benchmark coverage and the aggregate statistical protocol used in the paper.
+
+\section*{S2. Full Benchmark Coverage Used in Section 5.1}
+The auxiliary benchmark section in the main manuscript evaluates 29 functions from the CEC2017 single-objective suite. Function F2 is deprecated in the official problem definition; all remaining functions used in the manuscript are listed below.
+
+\begin{table}[htbp]
+\centering
+\caption{Full function coverage for the CEC2017 section in the manuscript}\label{tab:s1_coverage}
+\begin{tabular}{>{\RaggedRight\arraybackslash}p{0.14\textwidth} >{\RaggedRight\arraybackslash}p{0.28\textwidth} >{\RaggedRight\arraybackslash}p{0.40\textwidth}}
+\toprule
+\textbf{Function ID} & \textbf{Landscape Family} & \textbf{Role in the manuscript} \\
+\midrule
+F1 & Unimodal & Included in the full 29-function statistical analysis. \\
+F3 & Unimodal & Included in the full 29-function statistical analysis. \\
+F4 & Simple multimodal & Included in the full 29-function statistical analysis. \\
+F5 & Simple multimodal & Included in the full 29-function statistical analysis. \\
+F6 & Simple multimodal & Included in the full 29-function statistical analysis. \\
+F7 & Simple multimodal & Included in the full 29-function statistical analysis. \\
+F8 & Simple multimodal & Included in the full 29-function statistical analysis. \\
+F9 & Simple multimodal & Included in the full 29-function statistical analysis. \\
+F10 & Simple multimodal & Included in the full 29-function statistical analysis. \\
+F11 & Hybrid & Included in the full 29-function statistical analysis. \\
+F12 & Hybrid & Included in the full 29-function statistical analysis. \\
+F13 & Hybrid & Included in the full 29-function statistical analysis. \\
+F14 & Hybrid & Included in the full 29-function statistical analysis. \\
+F15 & Hybrid & Included in the full 29-function statistical analysis. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Full function coverage for the CEC2017 section in the manuscript (continued)}
+\begin{tabular}{>{\RaggedRight\arraybackslash}p{0.14\textwidth} >{\RaggedRight\arraybackslash}p{0.28\textwidth} >{\RaggedRight\arraybackslash}p{0.40\textwidth}}
+\toprule
+\textbf{Function ID} & \textbf{Landscape Family} & \textbf{Role in the manuscript} \\
+\midrule
+F16 & Hybrid & Included in the full 29-function statistical analysis. \\
+F17 & Hybrid & Included in the full 29-function statistical analysis. \\
+F18 & Hybrid & Included in the full 29-function statistical analysis. \\
+F19 & Hybrid & Included in the full 29-function statistical analysis. \\
+F20 & Hybrid & Included in the full 29-function statistical analysis. \\
+F21 & Composition & Included in the full 29-function statistical analysis. \\
+F22 & Composition & Included in the full 29-function statistical analysis. \\
+F23 & Composition & Included in the full 29-function statistical analysis. \\
+F24 & Composition & Included in the full 29-function statistical analysis. \\
+F25 & Composition & Included in the full 29-function statistical analysis. \\
+F26 & Composition & Included in the full 29-function statistical analysis. \\
+F27 & Composition & Included in the full 29-function statistical analysis. \\
+F28 & Composition & Included in the full 29-function statistical analysis. \\
+F29 & Composition & Included in the full 29-function statistical analysis. \\
+F30 & Composition & Included in the full 29-function statistical analysis. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section*{S3. Aggregate Statistical Outputs Used in the Main Manuscript}
+Section 5.1 of the main manuscript reports rank-based statistics computed from 30 paired runs on the full 29-function set. The comparison contains nine algorithms and 7,830 completed runs. Pairwise post-hoc tests are performed on the 29 per-function mean errors rather than by pooling all 870 function--run observations, so the supplementary summary follows the same cross-function protocol as the main text.
+
+\begin{table}[htbp]
+\centering
+\caption{Friedman ranking over the full 29-function benchmark set}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Algorithm} & \textbf{Average Rank} & \textbf{Relative Position} \\
+\midrule
+LSCBO & 1.690 & 1st \\
+SA & 2.655 & 2nd \\
+PSO & 3.345 & 3rd \\
+HLBO & 4.621 & 4th \\
+GWCA & 4.793 & 5th \\
+CBO & 5.034 & 6th \\
+GWO & 6.862 & 7th \\
+AOA & 7.448 & 8th \\
+WOA & 8.552 & 9th \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Holm-corrected cross-function Wilcoxon summary for LSCBO against the other eight algorithms over 29 per-function mean errors}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Comparison} & \textbf{Wins--losses} & \textbf{Holm-adjusted p-value} & \textbf{Interpretation} \\
+\midrule
+LSCBO vs CBO & 29--0 & $2.16\times10^{-5}$ & LSCBO lower \\
+LSCBO vs PSO & 22--7 & $0.00108$ & LSCBO lower \\
+LSCBO vs GWO & 29--0 & $2.16\times10^{-5}$ & LSCBO lower \\
+LSCBO vs WOA & 29--0 & $2.16\times10^{-5}$ & LSCBO lower \\
+LSCBO vs SA & 19--10 & $0.0661$ & Not distinguished \\
+LSCBO vs AOA & 29--0 & $2.16\times10^{-5}$ & LSCBO lower \\
+LSCBO vs HLBO & 28--1 & $8.19\times10^{-5}$ & LSCBO lower \\
+LSCBO vs GWCA & 27--2 & $6.74\times10^{-5}$ & LSCBO lower \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The Nemenyi critical difference is approximately 2.23. The rank gaps from LSCBO to SA (0.97) and PSO (1.66) are below this threshold. The pairwise Wilcoxon--Holm and all-pairs Nemenyi procedures answer different post-hoc questions; the main manuscript therefore reports the exact pairwise outcomes and avoids the claim that LSCBO is significantly superior to every comparator.
+
+\section*{S4. Availability Note for the Benchmark Materials}
+The reproducibility package contains all 7,830 per-run rows, per-function descriptive statistics, convergence checkpoints, the complete rank table, paired statistical outputs, the locked parameter record, and the official-function provenance information. This supplement is limited to benchmark coverage and statistical protocol; the analytical scheduling study and its 12-row CloudSim Plus smoke replay are reported separately in Section 5.2 of the main manuscript.
+
+\end{document}

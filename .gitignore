@@ -1,0 +1,34 @@
+# OS
+.DS_Store
+._*
+# Python / Node / Java build artifacts
+.venv/
+venv/
+__pycache__/
+*.pyc
+node_modules/
+dist/
+target/
+*.class
+.omc/
+tmp/
+.tools/
+# LaTeX intermediates (regenerate on build)
+*.aux
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.toc
+# Embedded third-party tool repos (not project content)
+其他/本地工具/工具仓库/
+# Embedded historical git clones (avoid embedded-repo gitlinks)
+其他/历史与归档/原论文目录外壳/
+其他/历史与归档/91_历史资料/test_scripts_clone_20260601_233428/
+其他/历史与归档/全面清理_20260610/临时实验运行/revision_experiment_run.dRIrkL/LSCBO_work/
+*.log
+*.out
+
+# Local generated delivery package; kept on disk, not versioned as source
+LSCBO_CEC2017_WINDOWS_16C32G/
