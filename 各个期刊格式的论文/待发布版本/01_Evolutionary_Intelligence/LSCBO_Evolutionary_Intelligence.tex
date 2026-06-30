@@ -1,6 +1,6 @@
 \documentclass[pdflatex,onecolumn,sn-mathphys-num]{sn-jnl}
 % Evolutionary Intelligence submission package.
-% Authoritative anonymous manuscript for the current submission package.
+% Authoritative manuscript for the current submission package.
 
 \usepackage{graphicx}
 \usepackage{multirow}
@@ -30,9 +30,10 @@
 
 \title[LSCBO Scheduler]{Pareto-Safe Pair Reassignment for LSCBO-Based Multi-Cost Cloud Task Scheduling}
 
-\author*[1]{\fnm{Anonymous} \sur{Author(s)}}
+\author*[1]{\fnm{Yarui} \sur{Yuan}}\email{yaruiyuan@163.com}
+\author*[1]{\fnm{Yubo} \sur{Wang}}\email{lazy.mercury2006@gmail.com}
 
-\affil*[1]{\orgname{Affiliation withheld for review}}
+\affil[1]{\orgdiv{Chengyi College}, \orgname{Jimei University}, \orgaddress{\city{Xiamen}, \state{Fujian}, \postcode{361021}, \country{China}}}
 
 \abstract{This paper studies whether a population-based cloud scheduler can improve on a strong deterministic schedule without trading one scheduling criterion for another. We combine L\'{e}vy-assisted Coyote-Badger Optimization (LSCBO) with a budgeted pair-reassignment search. The cloud search uses a direct assignment decoder that can represent every task-to-VM mapping, includes a longest-processing-time earliest-finish schedule (Greedy-LPT) as both a public baseline and a common warm start, and accepts a task-pair exchange only when makespan, energy, execution cost, and load-balance ratio are all non-worsening. All four criteria are normalized by their Greedy-LPT values, and every population method receives 6,000 objective evaluations. On 150 paired cloud instances (five task scales and 30 seeds), the Pareto-safe LSCBO schedule improves the scalar objective in all 150 blocks and never worsens any component relative to Greedy-LPT. The mean objective reduction ranges from 1.48\% to 1.74\% across task scales and averages 1.65\%; it is driven mainly by a 5.65\%--6.81\% relative reduction in load-balance ratio, while makespan, energy, and cost changes remain small. Ablation shows that the cloud improvement is attributable to pair reassignment: LSCBO, CBO plus the same search, and the search alone return identical schedules, whereas single-task relocation does not improve the greedy reference. Separately, on 29 official CEC2017 functions with 30 runs, the continuous LSCBO optimizer attains the best average rank (1.690) among nine methods, but cross-function tests do not distinguish it from simulated annealing after Holm correction ($p=0.066$). These results support a narrow claim: Pareto-safe pair reassignment can make consistent no-regression refinements to a strong deterministic cloud schedule, while the LSCBO host is not the source of the cloud-domain gain.}
 
@@ -472,12 +473,15 @@ This study presents a Pareto-safe task-pair reassignment mechanism within an LSC
 
 Across 150 main cloud blocks, pair reassignment lowers the reference-normalized scalar objective in every block without worsening makespan, energy, cost, or LBR. The 1.65\% mean objective reduction is mainly a load-balance refinement; the other physical components change only slightly. Ablation shows that the cloud result belongs to the pair-reassignment operator, not to CBO or L\'{e}vy exploration. On CEC2017, LSCBO has the best average rank among nine methods, but is not significantly different from SA after correction. Future work should test precedence-constrained workflows and real traces, compare against exact small-instance optima, evaluate latency-aware stopping rules, and replace synthetic energy and price functions with calibrated datacenter measurements.
 
+\section*{Acknowledgments}
+This work was supported by the Natural Science Foundation of Xiamen, China (3502Z202374058).
+
 \section*{Statements and Declarations}
-\textbf{Funding} No external funding was received for this work.
+\textbf{Funding} This work was supported by the Natural Science Foundation of Xiamen, China (3502Z202374058).
 
 \textbf{Competing Interests} The authors declare no competing interests.
 
-\textbf{Author Contributions} All authors contributed to the study conception, algorithm design, implementation, experiments, and analysis. The first draft of the manuscript was written by the corresponding author and all authors read and approved the final manuscript.
+\textbf{Author Contributions} Yarui Yuan and Yubo Wang contributed to the study conception, algorithm design, implementation, experiments, analysis, and manuscript preparation, and approved the final manuscript.
 
 \textbf{Data Availability} The anonymized reproducibility archive supplied with the submission contains the 5,310-row canonical cloud dataset, the 12-row CloudSim Plus smoke replay, all 7,830 per-run CEC2017 results, aggregate statistical outputs, and verification reports. The public repository for the current submission package is available at \url{https://github.com/Lazywords2006/LSCBO}. Full CloudSim replay of all formal rows is not used for the numerical claims in this version.
 
