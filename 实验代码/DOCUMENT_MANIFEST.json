@@ -1,5 +1,4 @@
 {
-  "README.md": "118495c6c22be7f9c0cfff46eccd260f692b84b962542d952d64a8b7b1346dc8",
   "参考论文/AbdelBasset2023.pdf": "11684fd79d829b38765d1b8b8ff0b3029423cb12d1310648a73a3461dd8713c9",
   "参考论文/Abualigah2021.pdf": "8866d281f1e50c2aaaa89885b7c4d51092e06da1190907ad42134f09bf2f872d",
   "参考论文/Armbrust2010.pdf": "4c3e8d77dfc25cfd41b9ceca68d337a352a66219e46267439d6c234428b1fb64",
@@ -152,6 +151,7 @@
   "实验代码/CloudSim程序/scripts/run_lscbo_full_program.py": "73488f06a57aee5111b7f90bc2c4e83b1dedc15e3a0e2c5b5c4ba2cd6aa27fdf",
   "实验代码/CloudSim程序/scripts/test_figure_workflows.py": "fbb4ddce22e28b4cac00892f94c2eaf90a1cc515aa32494f96333d0bd1be5cb3",
   "实验代码/CloudSim程序/src/main/java/com/edcbo/research/claim/ClaimPreservingCloudSimExperiment.java": "8a6b548c1753e7cfbc969c688aa1ee59fcdab86691477303a3d64ac0ae02f315",
+  "实验代码/README.md": "bf513209cc75378120cfd2c26d10718efb68a3d8d9720033610b3231f8b5f5b6",
   "实验代码/build_release.py": "0de18df5962d5420fa942c48d57d6bbc0de9d41b79ab835d21daec54d88bc3f9",
   "实验代码/cec2017_implementation_snapshot.zip": "1c6caac0060dbc16cec388d324873437c53504df5cb58eb4249ca62e0f035fa7",
   "实验代码/generate_ablation_figure.py": "c42ca7f466a7aa118b811f4ce1942df19c8fb518ca5399a5ffd99d177a081403",
@@ -201,5 +201,7 @@
   "论文/figures/publication/Fig6.pdf": "6b49f9452d391ab3fd0daf3bb04f9d0b5a33b138c797e9c2fb13f59e0f896e53",
   "论文/figures/publication/Fig7.pdf": "50452f782544c14b3b2c5efab65ab0e4f24bb8c507dac41f7d27f102e4e1d91e",
   "论文/figures/publication/Fig8.pdf": "4eec101688ba187be0c5942c8619b87345c6d9f2e3cd10665a3e650ad86488f1",
-  "论文/sn-jnl.cls": "36d0c3273a59d48dc6a9c7b080dfa1ec50dc10229d8751568d1f2e490ffa5ecc"
+  "论文/sn-jnl.cls": "36d0c3273a59d48dc6a9c7b080dfa1ec50dc10229d8751568d1f2e490ffa5ecc",
+  "论文/投稿单文件版/LSCBO_Evolutionary_Intelligence.pdf": "4099634d6ff5ea16cd89618055edb760131fcede088b202ad2a51a4a9ebff3c3",
+  "论文/投稿单文件版/LSCBO_Evolutionary_Intelligence.tex": "b81c9419faa74c49980ef1694e37a3d15ac261514bda793c02b021f770e94381"
 }
