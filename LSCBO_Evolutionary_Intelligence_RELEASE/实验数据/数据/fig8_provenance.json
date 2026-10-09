@@ -1,0 +1,14 @@
+{
+  "fig8_ablation_heatmap.csv": {
+    "sha256": "efb3eec9e5fd93edabd480304fe5dd5c44abce0c1bd3d447ce33f466815d217f",
+    "source": "各个期刊格式的论文/待发布版本/_历史归档/01_Evolutionary_Intelligence_2026-09-13_整理前/03_reading_notes/verification/residual_revision/statistics/fig8_ablation_heatmap.csv"
+  },
+  "fig8_seed_cluster_means.csv": {
+    "sha256": "fc047c63d9fe158cfb4e634e66152e96f7e51b4a8fb3fc1377ca9ea04f71e382",
+    "source": "各个期刊格式的论文/待发布版本/_历史归档/01_Evolutionary_Intelligence_2026-09-13_整理前/03_reading_notes/verification/residual_revision/statistics/fig8_seed_cluster_means.csv"
+  },
+  "fig8_profile_bootstrap.csv": {
+    "sha256": "a92123d66c540e71ad880703e0579e8846b8810203009996223380019bbd81a5",
+    "source": "各个期刊格式的论文/待发布版本/_历史归档/01_Evolutionary_Intelligence_2026-09-13_整理前/03_reading_notes/verification/residual_revision/statistics/fig8_profile_bootstrap.csv"
+  }
+}

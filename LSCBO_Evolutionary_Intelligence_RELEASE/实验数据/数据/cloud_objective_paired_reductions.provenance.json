@@ -1,0 +1,18 @@
+{
+  "source": "cloud_main_E4_20260619.csv",
+  "source_sha256": "872978d5f5cae4352358d6e72e9efdae13d83ceb97ab0e1e0d82215e47244a2a",
+  "derived_file": "cloud_objective_paired_reductions.csv",
+  "derived_sha256": "d228c5f9025199c8738238e0eabf2e0fe65b9a61c13ad786004c0aae49c1a39e",
+  "pair_keys": [
+    "taskCount",
+    "seed"
+  ],
+  "comparison": [
+    "GREEDY_LPT",
+    "LSCBO"
+  ],
+  "formula": "reduction_pp = 100 * (recorded reference_F - recorded lscbo_F)",
+  "n": 150,
+  "baseline_objective": 1,
+  "visual_offsets": "Fixed seed-order horizontal offsets within categorical task-scale groups only; no vertical displacement or value changes."
+}
