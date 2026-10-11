@@ -1,3 +1,0 @@
-﻿Method,\shortstack{Actual\\calls},Mean $F$,\shortstack{Mean accepted\\exchanges},\shortstack{Time\\(ms)}
-"Greedy + pair search, 9400 trials",9402,0.974373,16.62,32.31
-"Greedy + pair search, 10000 trials",10002,0.973684,17.34,34.40

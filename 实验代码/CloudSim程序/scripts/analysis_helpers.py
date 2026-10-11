@@ -3,7 +3,7 @@
 
 Uncertainty resamples complete scenario-seed clusters (fixed task scales), with
 50,000 PCG64 draws and linear percentile quantiles. Writes CSV/JSON evidence,
-replacement TeX tables, and vector/PDF/PNG Fig8. Runtime files remain on D:.
+and vector/PDF/PNG sensitivity plots. Runtime files remain on D:.
 """
 from __future__ import annotations
 import argparse
@@ -13,7 +13,7 @@ import os
 from pathlib import Path
 import sys
 
-RUNTIME = Path(os.environ["LSCBO_RUNTIME"])
+RUNTIME = Path(os.environ.get("LSCBO_RUNTIME", "D:/CodexRuntime/runs/lscbo-analysis" if os.name == "nt" else "/tmp/lscbo-analysis"))
 RUNTIME.mkdir(parents=True, exist_ok=True)
 os.environ["MPLCONFIGDIR"] = str(RUNTIME / "matplotlib")
 os.environ["TMP"] = os.environ["TEMP"] = str(RUNTIME)
@@ -320,77 +320,6 @@ def runtime_results(main: pd.DataFrame) -> tuple[list[dict],pd.DataFrame]:
     return records,pd.json_normalize(records)
 
 
-def write_table(out:Path,label:str,caption:str,header:list[str],rows:list[list[str]],
-                footer:str="",wide:bool=True) -> None:
-    env = "table*" if wide else "table"
-    lines = [f"\\begin{{{env}}}[!htbp]","\\centering\\small",
-             f"\\caption{{{caption}}}\\label{{tab:{label}}}"]
-    if wide:
-        lines.append(r"\resizebox{\textwidth}{!}{%")
-    lines += [f"\\begin{{tabular}}{{{'l'+' c'*(len(header)-1)}}}",r"\toprule",
-              " & ".join(header)+r" \\",r"\midrule"]
-    lines += [" & ".join(row)+r" \\" for row in rows]
-    lines.append(r"\bottomrule")
-    if footer:
-        lines.append(f"\\multicolumn{{{len(header)}}}{{p{{.97\\textwidth}}}}{{\\footnotesize {footer}}}\\\\")
-    lines.append(r"\end{tabular}")
-    if wide:
-        lines.append("}")
-    lines.append(f"\\end{{{env}}}")
-    out.write_text("\n".join(lines)+"\n",encoding="utf-8")
-
-
-def write_tables(summary:dict,out:Path,objective:pd.DataFrame) -> None:
-    out.mkdir(parents=True,exist_ok=True)
-    main = pd.DataFrame(summary["main_by_scale"]).set_index("taskCount")
-    rows = [[str(n)]+[f"{objective.loc[n,a]:.4f}" for a in ALGS] for n in PRIMARY_SCALES]
-    write_table(out/"cloud_main_objective.tex","cloud_main_objective",
-                "Cold-start mean reference-normalized objective $F$ over 30 paired seeds at each primary task scale (lower is better). Greedy-LPT supplies $F=1$ and is not seeded into the populations.",
-                ["Tasks","LSCBO","CBO","PSO","GWO","WOA","Adapted AOA","Greedy-LPT"],rows)
-    rows = [[str(n)]+[f"{r[f'reduction_pct_{m}']:.4f}\\% ({int(r[f'wins_{m}'])}/{int(r[f'ties_{m}'])}/{int(r[f'losses_{m}'])})" for m in METRICS] for n,r in main.iterrows()]
-    write_table(out/"main_improvement.tex","main_improvement",
-                "Cold-start LSCBO relative reductions over Greedy-LPT. Negative reductions indicate worse outcomes. Component reductions are ratios of scale-wise means; $F$ reductions are means of paired instance reductions. Parentheses report paired W/T/L counts (30 seeds).",
-                ["Tasks","Makespan","Energy","Cost",r"$\mathcal{I}$","$F$"],rows)
-    rows=[]
-    for n in PRIMARY_SCALES:
-        r=main.loc[n]
-        for key,method in [("greedy","Greedy-LPT"),("lscbo","LSCBO")]:
-            row=[str(n),method]
-            for m in METRICS:
-                digits=5 if m=="imbalance" else 3
-                row.append(r"\shortstack{" + f"{r[f'{key}_mean_{m}']:.{digits}f}" + r"\\(" + f"{r[f'{key}_sd_{m}']:.{digits}f}" + ")}")
-            rows.append(row)
-    write_table(out/"main_scale_dispersion.tex","main_scale_dispersion",
-                "Cold-start absolute analytical outcomes at all ten primary task scales. Each cell gives the mean on the first line and sample standard deviation in parentheses below, over 30 paired seeds (divisor 29). Completion-time cost uses synthetic proxy units and includes waiting time; $\\mathcal{I}$ and $F$ are dimensionless.",
-                ["Tasks","Method",r"$H_{\max}$ (s)","$E$ (Wh)","$C$ (units)",r"$\mathcal{I}$","$F$"],rows,wide=False)
-    table_path=out/"main_scale_dispersion.tex"
-    table_path.write_text(table_path.read_text(encoding="utf-8").replace(
-        r"\centering\small",r"\centering\scriptsize"+"\n"+r"\setlength{\tabcolsep}{2pt}"),
-        encoding="utf-8")
-    if "ablation" in summary:
-        rows=[[VARIANT_LABELS[r["variant"]]]+[f"{r[m]:.6f}" if m in ["imbalance","objective"] else f"{r[m]:.4f}" for m in METRICS] for r in summary["ablation"]]
-        write_table(out/"phase_ablation.tex","phase_ablation",
-                    "Cold-start mechanism ablation averaged over 300 paired blocks (100--1000 tasks, 30 seeds per scale). Completion-time cost uses synthetic proxy units and includes waiting time; $\\mathcal{I}$ and $F$ are dimensionless.",
-                    ["Variant",r"$H_{\mathrm{max}}$ (s)","$E$ (Wh)","$C$ (units)",r"$\mathcal{I}$","$F$"],rows)
-    for exp,label,first in [("weight_sensitivity","weight_scale_details","Priority"),
-                            ("vm_heterogeneity","heterogeneity_scale_details","Capacity ratio")]:
-        rows=[]
-        for r in summary["profile_scale_details"]:
-            if r["experiment"]!=exp:
-                continue
-            rows.append([r["label"],str(r["taskCount"]),f"{r['mean_F']:.6f} $\\pm$ {r['sample_sd_F']:.6f}",
-                         f"{r['paired_reduction_F_percent']:.4f}",f"{r['paired_reduction_imbalance_percent']:.4f}",
-                         f"{r['wins']}/{r['ties']}/{r['losses']}"])
-        footer="Each row uses 30 paired seeds and 50 VMs. Reductions are means of instance-wise percentages; negative values indicate regressions. Greedy-LPT has $F=1.000000\\pm0.000000$. W/T/L uses an absolute $10^{-8}$ tie threshold on $F$."
-        footer+=(" Equal weights are (0.25,0.25,0.25,0.25); a priority uses weight 0.55 and 0.15 for the other criteria." if exp=="weight_sensitivity" else " Capacity profiles change both speeds and their capacity-dependent price mapping.")
-        write_table(out/f"{label}.tex",label,"Cold-start sensitivity by task scale: LSCBO objective dispersion and paired reductions over Greedy-LPT.",
-                    [first,"Tasks",r"Mean $F$ $\pm$ SD",r"$F$ reduction (\%)",r"$\mathcal{I}$ reduction (\%)","W/T/L"],rows,footer)
-    rows=[[str(r["taskCount"])]+[f"{r[a]['median']:.1f} [{r[a]['q1']:.2f}, {r[a]['q3']:.2f}]" for a in ["GREEDY_LPT","LSCBO"]] for r in summary["runtime"]]
-    write_table(out/"runtime_descriptive.tex","runtime_descriptive",
-                "Cold-start main-comparison runtime (ms), median [first quartile, third quartile] over 30 seeds. Concurrent logs are descriptive, not controlled timing benchmarks.",
-                ["Tasks","Greedy-LPT","LSCBO with pair search"],rows,wide=False)
-
-
 def draw_fig8(profiles:list[dict],output:Path,legend_location:str="upper left") -> None:
     configure()
     plt.rcParams.update({"font.size":10.5,"axes.labelsize":10.5,
@@ -468,6 +397,8 @@ def draw_fig8(profiles:list[dict],output:Path,legend_location:str="upper left") 
 
 
 def run(args:argparse.Namespace) -> None:
+    require(not args.out.resolve().is_relative_to(ROOT), "Analysis outputs must be outside the repository")
+    require(not args.figures.resolve().is_relative_to(ROOT), "Figure outputs must be outside the repository")
     sources=[args.data/"冷启动_3990行.csv",args.data/"冷启动_敏感性_3060行.csv"]
     data=pd.concat([pd.read_csv(p) for p in sources],ignore_index=True)
     checks=verify(data)
@@ -480,13 +411,13 @@ def run(args:argparse.Namespace) -> None:
     summary.update(profile)
     summary["runtime"]=runtime
     current = data[~data.experiment.eq("E2_ablation")].copy()
-    checks["current_chapter_rows"] = len(current)
-    checks["current_chapter_experiment_counts"] = current.groupby("experiment").size().to_dict()
-    checks["archived_ablation_rows_excluded_from_current_chapter"] = 0
+    checks["current_experiment_rows"] = len(current)
+    checks["current_experiment_counts"] = current.groupby("experiment").size().to_dict()
+    checks["archived_ablation_rows_excluded_from_current_experiments"] = 0
     summary["verification"]=checks
     summary["protocol"]={"initialization":"All population vectors random; Greedy-LPT only normalization reference",
-                         "cost_model":"completion_time_fcfs_v1",
-                         "cost_description":"Per-task FCFS completion time times synthetic VM price; includes waiting time; not a VM rental invoice",
+                         "cost_model":"batch_reserved_seconds",
+                         "cost_description":"Fixed fleet reserved at time zero and released together; makespan times total synthetic VM rate, continuous seconds",
                          "populationSize":100,"nominal_maxIterations":100,"recorded_total_budget":10000,
                          "full_lscbo_initial":100,"full_lscbo_core_iteration_evaluations":500,
                          "full_lscbo_local_trials":9400,"primary_scales":PRIMARY_SCALES,"external_scales":ALL_SCALES[10:],
@@ -500,7 +431,6 @@ def run(args:argparse.Namespace) -> None:
     main.to_csv(args.out/"cloud_main_E4_20261011.csv",index=False,float_format="%.8f")
     for name,frame in {**frames,**abframes,**profileframes,"runtime_summary":runtimeframe}.items():
         frame.to_csv(args.out/f"{name}.csv",index=False,float_format="%.12g")
-    write_tables(summary,args.out/"tables",main.groupby(["taskCount","algorithm"]).objective.mean().unstack()[ALGS])
     draw_fig8(summary["profiles"],args.figures)
     (args.out/"cold_analysis.json").write_text(json.dumps(summary,ensure_ascii=False,indent=2,allow_nan=False)+"\n",encoding="utf-8")
     manifest={name:{"sha256":hashlib.sha256((args.out/name).read_bytes()).hexdigest(),
@@ -514,9 +444,9 @@ def run(args:argparse.Namespace) -> None:
 
 if __name__=="__main__":
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--data",type=Path,default=ROOT/"冷启动协议/数据")
-    parser.add_argument("--out",type=Path,default=ROOT/"冷启动协议/整合结果")
-    parser.add_argument("--figures",type=Path,default=ROOT/"冷启动协议/图")
+    parser.add_argument("--data",type=Path,default=ROOT/"实验数据/CloudSim/data")
+    parser.add_argument("--out",type=Path,default=RUNTIME/"analysis")
+    parser.add_argument("--figures",type=Path,default=RUNTIME/"figures")
     parser.add_argument("--include-archived-ablation",action="store_true",
-                        help="Reproduce archival E2 summaries; excluded from the current chapter by default")
+                        help="Reproduce archival E2 summaries; excluded from current experiments by default")
     run(parser.parse_args())

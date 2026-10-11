@@ -1,4 +1,4 @@
-"""Read back values, vector paths, manuscript text, and the delivery archive."""
+"""Verify raw values, vector paths, and legends in experimental result plots."""
 from pathlib import Path
 import hashlib
 import json
@@ -13,16 +13,16 @@ from matplotlib.path import Path as MplPath
 from matplotlib.transforms import Bbox
 
 ROOT=Path(__file__).resolve().parents[3]
-OUT=ROOT/"论文/Cost与云调度两个板块"
+OUT=ROOT/"实验数据/CloudSim"
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 
 def verify_figures():
-    raw=pd.read_csv(OUT/'数据/冷启动_3990行.csv',dtype=str)
+    raw=pd.read_csv(OUT/'data/冷启动_3990行.csv',dtype=str)
     report=[];styles={};errors=[];positions=[]
     for name in ['Fig6','Fig7']:
-        folder=OUT/'图';layout=json.loads((folder/(name+'_layout.json')).read_text(encoding='utf-8'))
-        assert layout['data_sha256']==sha(OUT/'数据/冷启动_3990行.csv') and layout['absolute_cost_zoom'] is None
+        folder=OUT/'figures';layout=json.loads((folder/(name+'_layout.json')).read_text(encoding='utf-8'))
+        assert layout['data_sha256']==sha(OUT/'data/冷启动_3990行.csv') and layout['absolute_cost_zoom'] is None
         xml=ET.parse(folder/(name+'.svg')).getroot();ns={'s':'http://www.w3.org/2000/svg'}
         doc=fitz.open(folder/(name+'.pdf'));assert len(doc)==1 and not doc[0].get_images()
         drawings=doc[0].get_drawings()
@@ -120,7 +120,7 @@ def verify_figures():
                        'legend_rows':2,'legend_columns':3,
                        'legend_position':positions[-1],'legend_matches_curves':True,'legend_data_overlaps':0,
                        'sha256':sha(folder/(name+'.pdf'))})
-    folder=OUT/'图';fig8=fitz.open(folder/'Fig8.pdf');assert len(fig8)==1 and not fig8[0].get_images()
+    folder=OUT/'figures';fig8=fitz.open(folder/'Fig8.pdf');assert len(fig8)==1 and not fig8[0].get_images()
     layout=json.loads((folder/'Fig8_layout.json').read_text(encoding='utf-8'))
     positions.append(layout['legend_position'])
     assert layout['each_panel_has_legend'] and layout['legend_boxed'] and layout['covered_data_artists']==0
@@ -130,7 +130,7 @@ def verify_figures():
     assert layout['legend_anchor']==[.08,1.] and layout['legend_position']=='upper left'
     assert layout['legend_rows']==1 and layout['legend_columns']==2
     assert abs(legend_box[0]-axes_box[0]-.08*(axes_box[2]-axes_box[0])-2.975)<1e-4
-    expected_profiles=json.loads((OUT/'数据/图表与统计汇总/analysis.json').read_text(encoding='utf-8'))['profiles']
+    expected_profiles=json.loads((OUT/'data/图表与统计汇总/analysis.json').read_text(encoding='utf-8'))['profiles']
     assert layout['profiles']==expected_profiles and len(layout['bars'])==8
     xml=ET.parse(folder/'Fig8.svg').getroot();drawings=fig8[0].get_drawings()
     pixmap=fig8[0].get_pixmap(matrix=fitz.Matrix(4,4),alpha=False)

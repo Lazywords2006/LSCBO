@@ -1,37 +1,36 @@
-# LSCBO — current Cost and cloud-scheduling revision
+# LSCBO experiments
 
-Latest release: **2026-10-11**. This repository is the GitHub repository identified in the paper.
+Current experiment release: **2026-10-11**. This repository contains experiment code, raw records, numerical summaries, result plots, and reproduction instructions.
 
-The current manuscript deliverable contains only the requested **Cost subsection and Section 4.2 cloud-scheduling experiments**, with the updated Fig. 6–8 and every Section 4.2 table. Start with [the current delivery](论文/Cost与云调度两个板块/README.md).
-
-| Current item | Location |
+| Experiment material | Location |
 | --- | --- |
-| Cost subsection, PDF and standalone editable TeX | [Cost_Block.pdf](论文/Cost与云调度两个板块/Cost_Block.pdf), [Cost_Block.tex](论文/Cost与云调度两个板块/Cost_Block.tex) |
-| Complete Section 4.2, PDF and standalone editable TeX | [Cloud_Scheduling_Block.pdf](论文/Cost与云调度两个板块/Cloud_Scheduling_Block.pdf), [Cloud_Scheduling_Block.tex](论文/Cost与云调度两个板块/Cloud_Scheduling_Block.tex) |
-| Insertable subsection/chapter fragments | [current delivery](论文/Cost与云调度两个板块/) |
-| Fig. 6–8: PDF, SVG, PNG, curve coordinates and provenance | [figures](论文/Cost与云调度两个板块/图/) |
-| All new cloud raw rows, instance parameters and derived statistics | [data](论文/Cost与云调度两个板块/数据/) |
-| Matching frozen Java source and portable rerun/audit commands | [CloudSim program](实验代码/CloudSim程序/README.md) |
-| Unchanged CEC2017 experiment source/results | [CEC2017 source](实验代码/CEC2017程序/), [CEC2017 data](实验数据/数据/) |
+| Cloud-scheduling program and commands | [CloudSim program](实验代码/CloudSim程序/README.md) |
+| Cloud raw data, parameters and numerical summaries | [CloudSim data](实验数据/CloudSim/data/) |
+| Current objective, component and sensitivity plots | [CloudSim figures](实验数据/CloudSim/figures/) |
+| CEC2017 experiment program | [CEC2017 program](实验代码/CEC2017程序/README_中文.md) |
+| CEC2017 results and plots | [data index](实验数据/README.md) |
+| Current file hashes | [RELEASE_MANIFEST.json](RELEASE_MANIFEST.json) |
 
-## Current protocol and results
+## Cloud protocol
 
-All population members are random at initialization. Population 100; recorded iterations 100; candidate budget 10,000. The primary range is 100–1000 tasks with 50 VMs and 30 seeds (43–72). The extended main run covers 19 scales through 10,000 tasks: **3990 rows**. Weight sensitivity adds **2250 rows**, and VM-capacity sensitivity **810 rows**. Direct-refinement diagnostics contain 4500 timing records and 900 unique quality records. Additional model-confirmation runs use fresh seeds 103–132 and contain 4200 optimized rows across the selected and control models.
+Population 100; all initial population vectors are random; recorded iterations 100; candidate budget 10,000; 50 VMs; seeds 43–72. The primary task counts are 100–1000, with extended scales through 10,000. The main experiment contains 3990 records, weight sensitivity 2250 records, and VM-capacity sensitivity 810 records. Direct-refinement diagnostics contain 4500 timing records and 900 unique quality records. Fresh-seed cost-model checks use seeds 103–132 and contain 4200 records across two models.
 
-The adopted synthetic cost model is `batch_reserved_seconds`: `cost = makespan × sum(all available VM rates)`, for a fixed fleet reserved at time zero and released together. Continuous seconds are used; no minimum billing period or commercial tariff is asserted. Instance-wise normalized cost equals normalized makespan, so cost is not an independent optimization dimension in this fixed-fleet model. The Cost block explicitly explains this dependency and the adjusted effective objective weights.
+The selected model is `batch_reserved_seconds`: `cost = makespan * sum(all VM rates)`. All VMs are reserved at time zero and released together. Rates are synthetic cost units per second. Normalized cost equals normalized makespan within an instance; equal nominal weights therefore imply effective weights 0.50/0.25/0.25 on makespan/energy/load imbalance. Greedy-LPT raw records provide the shared normalization reference. Direct pair-search controls are Greedy-initialized.
 
-LSCBO has the lowest mean normalized objective among the six compared metaheuristics at each of the ten primary scales; its pooled mean is **19.953855**. Greedy-LPT remains the normalization reference (`F = 1`), and all four LSCBO components exceed that reference in the 300 primary blocks. The mean paired cost reduction against PSO is **25.1840%** on the main seeds and **25.6809%** on the separate confirmation seeds. WOA has a lower mean objective at the extended scales 4000–10,000. See Section 4.2 for the full evidence and uncertainty.
+LSCBO has the lowest mean objective among the six metaheuristics at all ten primary scales, with pooled mean F = 19.953855. The normalization reference has F = 1. The mean paired cost reduction against PSO is 25.1840% on the main seeds and 25.6809% on the separate confirmation seeds. WOA has a lower mean objective at task counts 4000–10,000. All underlying records and numerical summaries are available in the data directory.
 
-Scheduling ablation is removed. Fig. 6 has one objective panel. Fig. 7 panel labels are centered below the panels; its six method identities, colors, solid-line widths and legend strokes agree with Fig. 6. There is no absolute-cost zoom or self-relative zero line. Greedy-LPT is described as the shared normalization reference in the methods and retained in the raw records; it has no standalone row or column in manuscript tables and is not plotted. The direct pair-search controls remain explicitly Greedy-initialized. Each configuration-table algorithm is displayed in its own row; methods are never combined into a single method cell.
+## Reproduce and verify
 
-## Verification and version policy
+Use JDK 21 and Python 3.12. Detailed build, run, analysis, and plotting commands are in the [CloudSim README](实验代码/CloudSim程序/README.md). On Windows, keep runtime outputs and dependency caches under `D:/CodexRuntime`.
 
-Run the [published audit](实验代码/CloudSim程序/README.md#verify-the-published-delivery) to check hashes, all eight Section 4.2 tables, numerical prose, seed-cluster intervals, and vector curves against the raw data. [RELEASE_MANIFEST.json](RELEASE_MANIFEST.json) records every current file hash. The frozen experiment source hash is `a52444877768a42129eb9dcd637f9a3d18f25eb94a8441e21b541ff773854b15`.
+```powershell
+python -m pip install --cache-dir D:/CodexRuntime/cache/pip -r 实验代码/CloudSim程序/requirements.txt
+python 实验代码/CloudSim程序/scripts/verify_latest.py --runtime D:/CodexRuntime/runs/lscbo-release-audit
+python 实验代码/CloudSim程序/scripts/render_current_figures.py --out D:/CodexRuntime/runs/lscbo-rendered-figures
+```
 
-The three citations used by the current Cost and Section 4.2 blocks have been checked against publisher/author sources and Crossref metadata. See the [current reference audit](参考论文/参考文献核对表.md), which distinguishes the adopted cost adaptation from the original BaTS and ERTH formulas.
+The audit checks release hashes, raw objective values and evaluation budgets, numerical summaries, seed-cluster intervals, direct diagnostics, confirmation statistics, and vector plots. It writes its report outside the repository. It does not rerun the full simulations.
 
-Only one current cloud deliverable is kept in this tree. Superseded warm-start data, duplicate submission packages and stale full-manuscript PDFs were retired from the current tree; they remain recoverable in Git history. This revision does not present a newly integrated full manuscript or a replacement Section 4.3 CloudSim validation. The CEC2017 source and results are retained unchanged.
+The frozen cloud Java source has SHA-256 `a52444877768a42129eb9dcd637f9a3d18f25eb94a8441e21b541ff773854b15`. CEC2017 source and numerical results are retained unchanged. Cloud plots retain the current colors and line widths; each plot has its own boxed legend. Fig6 and every Fig7 panel use two rows and three columns; the cost axis is labeled Cost (units), and load imbalance is dimensionless.
 
-Use GitHub **Code → Download ZIP** to download the current set. Runtime builds, dependency caches and new test outputs belong outside the repository; Windows examples use `D:/CodexRuntime`.
-
-All Fig. 6–8 plots have individual boxed legends at the upper-left position; Fig. 6 keeps a small left margin and the remaining plots use a slight rightward offset. Fig. 6 uses three columns and two rows; each Fig. 7 panel uses three columns and two rows, with CBO/AOA short names. Panel 7(c) is titled Cost; its vertical axis is labeled Cost (units). Fig. 6 has no extra bottom title. Figure widths and spacing were increased; raw values, method colors and strokes remain unchanged.
+Download the current experiment set through GitHub **Code → Download ZIP**.

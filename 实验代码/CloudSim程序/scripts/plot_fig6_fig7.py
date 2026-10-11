@@ -25,8 +25,8 @@ RELEASE = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from publication_style import WIDTH_INCHES, grid  # noqa: E402
 
-OUT = RELEASE / "论文/Cost与云调度两个板块/图"
-DATA = RELEASE / "论文/Cost与云调度两个板块/数据/冷启动_3990行.csv"
+OUT = RELEASE / "实验数据/CloudSim/figures"
+DATA = RELEASE / "实验数据/CloudSim/data/冷启动_3990行.csv"
 
 SCALES = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
 METRICS = ["makespan", "energy", "cost", "imbalance"]

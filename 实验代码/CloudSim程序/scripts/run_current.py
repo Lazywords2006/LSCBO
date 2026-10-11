@@ -98,7 +98,7 @@ def main():
             futures=[pool.submit(job,name,params) for name,params in jobs]
             for future in futures:future.result()
     elif args.phase=='direct':
-        baseline=ROOT/'论文/Cost与云调度两个板块/数据/冷启动_3990行.csv'
+        baseline=ROOT/'实验数据/CloudSim/data/冷启动_3990行.csv'
         job('direct',['com.edcbo.research.claim.ColdDirectPairStudy',str(baseline),str(run/'direct'),'5'],True)
     (run/'run_manifest.json').write_text(json.dumps({'source_sha256':EXPECTED,'cost_model':'batch_reserved_seconds',
         'phase':args.phase,'seed_range':args.seed_range,'runtime':str(runtime),'published_data_untouched':True},indent=2),encoding='utf-8')

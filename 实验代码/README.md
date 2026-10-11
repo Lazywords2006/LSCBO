@@ -1,6 +1,7 @@
-# 当前实验代码
+# 实验代码
 
-- [CloudSim程序](CloudSim程序/README.md)：与最新 Cost、§4.2、图 6–8 和数据匹配的冻结源码、运行及核验入口。
-- `CEC2017程序/`、`cec2017_implementation_snapshot.zip`、`generate_cec_figures.py`：从上一公开版本原样保留；CEC2017 结果未在本次修改。
+- [CloudSim程序](CloudSim程序/README.md)：冻结的云调度源码、运行入口、统计分析、绘图与核验脚本。
+- [CEC2017程序](CEC2017程序/README_中文.md)：CEC2017 实验源码与协议。
+- `cec2017_implementation_snapshot.zip`、`generate_cec_figures.py`：保留的 CEC2017 实现快照与绘图脚本。
 
-当前云调度数据仅保存在 `论文/Cost与云调度两个板块/数据/`，避免维护多个“最新”副本。
+云调度数据及结果图统一存放在 `实验数据/CloudSim/`。

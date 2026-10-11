@@ -1,23 +1,17 @@
-# Current cloud-scheduling reproduction
+# Cloud-scheduling experiments
 
-This program matches the 2026-10-11 Cost and Section 4.2 delivery in `论文/Cost与云调度两个板块/`. The frozen main Java source defaults to `batch_reserved_seconds` and has SHA-256 `a52444877768a42129eb9dcd637f9a3d18f25eb94a8441e21b541ff773854b15`.
+The frozen main Java source uses `batch_reserved_seconds` and has SHA-256 `a52444877768a42129eb9dcd637f9a3d18f25eb94a8441e21b541ff773854b15`. Published experiment records are in `实验数据/CloudSim/data/`; result plots are in `实验数据/CloudSim/figures/`.
 
-Use **JDK 21**, **Python 3.12**, and the versions in `requirements.txt`. The Maven POM specifies CloudSim Plus 8.0.0 and Commons Math 3.6.1. `run_current.py` uses Maven to construct a dependency classpath if no `--classpath-file` is provided. A classpath file may instead point to already-installed JARs, separated by `;` on Windows or `:` on Unix. Installed tools need not be relocated.
+Use **JDK 21**, **Python 3.12**, and the versions in `requirements.txt`. The Maven POM specifies CloudSim Plus 8.0.0 and Commons Math 3.6.1. Run commands from the repository root. On Windows, runtime outputs belong under `D:/CodexRuntime`; Maven dependencies fetched by the wrapper use `D:/CodexRuntime/cache/maven`.
 
-Run the commands below from the repository root. On Windows, runtime outputs and new caches go to `D:/CodexRuntime`; Maven dependencies fetched by the wrapper use `D:/CodexRuntime/cache/maven`. On other systems, supply an absolute `--runtime` path. No command below overwrites the published data or PDFs.
-
-## Verify the published delivery
-
-Install the Python dependencies using a runtime cache, then run the audit:
+## Verify the published experiments
 
 ```powershell
 python -m pip install --cache-dir D:/CodexRuntime/cache/pip -r 实验代码/CloudSim程序/requirements.txt
 python 实验代码/CloudSim程序/scripts/verify_latest.py --runtime D:/CodexRuntime/runs/lscbo-release-audit
 ```
 
-The audit first checks every release-manifest hash. It then recomputes all eight Section 4.2 tables and numerical claims, objective normalization, sensitivity seed-cluster intervals, and confirmation statistics from the raw records. It checks the PDF/SVG curves against the exact plotted means, line identities and legend strokes; Fig. 7 captions must be below and centered. The PDF text is read back. The new audit result is written to the external runtime directory.
-
-The delivery includes the earlier passing assignment-level recomputation evidence; the current hash check establishes that its raw records and parameters have not changed. This does not mean a fresh full simulation replay is performed by the audit command.
+The audit checks every manifest hash, recomputes main and sensitivity summaries and seed-cluster intervals, validates runtime and direct-refinement records, checks fresh-seed confirmation statistics, and reads back PDF/SVG curves and legends. The report is written outside the repository. A full simulation replay is a separate run.
 
 ## Build or run
 
@@ -30,33 +24,33 @@ python 实验代码/CloudSim程序/scripts/run_current.py --phase direct
 ```
 
 - `build`: compile the frozen main source.
-- `smoke`: a small, serialized CloudSim-backed check. This is not a replacement of the unmodified manuscript Section 4.3 or its old full replay.
-- `primary`: 100–1000 tasks, seven methods, 30 seeds: 2100 rows.
-- `analytic`: the 19-scale main run (3990 rows) and both sensitivity experiments (3060 rows), using respectively eight and six workers as in the published run. Scheduling ablation is not selected.
-- `direct`: the frozen diagnostic controls, with two warm-up cycles and five timing repetitions, compared against the published main-run outcomes. `full_cold` is an internal audit baseline in the raw records; it is not a displayed manuscript row.
+- `smoke`: a small serialized CloudSim-backed check.
+- `primary`: 100–1000 tasks, seven methods and 30 seeds, yielding 2100 records.
+- `analytic`: the 19-scale main run and the two sensitivity experiments, yielding 3990 and 3060 records.
+- `direct`: diagnostic controls with two warm-up cycles and five timing repetitions. `full_cold` is an internal raw-record baseline.
 
-All simulations use the new cost by default. The primary population is fully random; the candidate budget is 10,000 with population 100 and recorded iterations 100. A new run has its own output directory under the runtime path. Use `--run-name` for a chosen identifier; an existing output directory is rejected.
+Population 100; all initial population vectors random; recorded iterations 100; candidate budget 10,000. Each new run gets a separate runtime directory; use `--run-name` to choose its identifier. Existing run directories are rejected.
 
-When using existing tools and dependencies:
+`run_current.py` builds a Maven dependency classpath unless `--classpath-file` is provided. Existing JAR paths can be supplied using `;` on Windows or `:` on Unix:
 
 ```powershell
 python 实验代码/CloudSim程序/scripts/run_current.py --phase smoke --java-home 'C:/path/to/jdk-21' --classpath-file D:/CodexRuntime/runs/dependency-classpath.txt
 ```
 
-For direct diagnostics, the wrapper creates an instrumented copy in the runtime directory and checks its frozen hash. It does not edit the main source.
+Direct diagnostics create and verify an instrumented source copy outside the repository.
 
-## Render the same figure designs
+## Analyze and render
 
 ```powershell
+$env:LSCBO_RUNTIME='D:/CodexRuntime/runs/lscbo-analysis'
+python 实验代码/CloudSim程序/scripts/analysis_helpers.py --out D:/CodexRuntime/runs/lscbo-analysis/statistics --figures D:/CodexRuntime/runs/lscbo-analysis/figures
 python 实验代码/CloudSim程序/scripts/render_current_figures.py --out D:/CodexRuntime/runs/lscbo-rendered-figures
 ```
 
-This reads the published data and statistics and renders Fig. 6–8 into the specified external directory. PDF timestamps and provenance paths may differ between renders; the already-audited publication PDFs are frozen in the delivery directory. The render preserves the current curve definitions, style and panel layout.
+Analysis produces CSV/JSON statistics and sensitivity plots. Rendering reads the frozen raw records and produces the current Fig6–8 designs in an external directory. PDF timestamps may differ; vector values, colors, strokes and legend layout are checked against the data.
 
-## Cost interpretation
+## Cost and reference
 
-The adopted formula is `C(s) = H_max(s) * sum(r_j)` for all 50 available VMs, reserved together from time zero to the common release time. These are continuous-time synthetic rental units. Since the rate sum is fixed within each instance, `C/C_Greedy = H_max/H_max_Greedy`. The Cost block discloses this dependence: equal nominal weights imply effective weights 0.50/0.25/0.25 on makespan/energy/imbalance. The formula is a fixed-fleet common-release adaptation of reservation-cost reasoning; it is not presented as ERTH's exact formula or a commercial tariff.
+`C(s) = H_max(s) * sum(r_j)` for all 50 VMs, reserved from time zero until common release. Rates are synthetic cost units per second. No billing-time rounding is applied. Instance-wise normalized cost equals normalized makespan, so equal nominal weights imply effective weights 0.50/0.25/0.25 on makespan/energy/imbalance.
 
-Nine candidate formulas were screened on the original seeds; the selected model was checked on fresh seeds 103–132. Those records and the completion-cost control are retained under `数据/成本模型追加验证/`. The main figures continue to use the original main seeds. The source retains the screened formulas for traceability, but the current runner fixes `batch_reserved_seconds`. The frozen Java metadata names the adopted batch model; overriding `cost.model` manually for a historical candidate requires separately recording the actual model and must not be confused with the current batch-model release.
-
-The manuscript tables omit standalone Greedy-LPT rows/columns. The raw reference records remain unchanged for normalization and reproducibility; `数据/论文展示表/` contains the eight actual display tables. Greedy-initialized pair-search controls retain their true initialization labels.
+Greedy-LPT raw records supply the shared normalization reference. Direct pair-search controls are Greedy-initialized. Nine candidate cost formulas were screened on the original seeds; the frozen model and a completion-cost control were checked on fresh seeds 103–132. Their records remain in `实验数据/CloudSim/data/成本模型追加验证/`. The current runner fixes `batch_reserved_seconds`.
