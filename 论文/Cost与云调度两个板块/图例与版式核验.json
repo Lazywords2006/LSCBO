@@ -23,7 +23,7 @@
   "max_vector_coordinate_error_pt": 2.2961629269957484e-05,
   "figure_width_mm": 159.576,
   "visual_review_passed": true,
-  "cloud_pdf_sha256": "7f23e754f14eb79e6b93146b8d1b193e5cc450f49e0db9f941460a1478298cca",
+  "cloud_pdf_sha256": "ee50031435236b7f9d6da3b889f8a6712e4b642cde233b947a4db9169049b97a",
   "legend_anchor_by_figure": {
     "Fig6": [
       0.01,
@@ -54,6 +54,6 @@
     }
   },
   "Fig7_panel_c_title": "(c) Cost",
-  "Fig7_cost_axis_label": "Cost",
+  "Fig7_cost_axis_label": "Cost (units)",
   "Fig6_extra_panel_title": null
 }

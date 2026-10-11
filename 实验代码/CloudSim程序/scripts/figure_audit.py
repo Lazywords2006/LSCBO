@@ -33,8 +33,8 @@ def verify_figures():
             assert layout['panel_title_position']=='none'
         else:
             assert '(c) Cost' in text and 'Cost excess' not in text
-            assert layout['panels'][2]['ylabel']=='Cost' and 'Batch reservation cost' not in text
-            assert re.search(r'^Cost$',text,re.M)
+            assert layout['panels'][2]['ylabel']=='Cost (units)' and 'Batch reservation cost' not in text
+            assert re.search(r'^Cost \(units\)$',text,re.M)
         assert layout['each_panel_has_legend']
         for panel in layout['panels']:
             assert panel['legend_boxed'] and panel['covered_data_artists']==0

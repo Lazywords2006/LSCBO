@@ -32,7 +32,7 @@ SCALES = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
 METRICS = ["makespan", "energy", "cost", "imbalance"]
 TITLES = ["(a) Makespan", "(b) Energy", "(c) Cost", "(d) Load imbalance"]
 UNITS = {"makespan": "Makespan (s)", "energy": "Energy (Wh)",
-         "cost": "Cost", "imbalance": "Load imbalance"}
+         "cost": "Cost (units)", "imbalance": "Load imbalance"}
 STYLES = {
     "LSCBO": ("#E8302F", "LSCBO", 1.7),
     "CBO": ("#5B4373", "CBO", 1.0),

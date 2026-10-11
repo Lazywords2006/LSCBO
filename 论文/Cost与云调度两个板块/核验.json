@@ -15,7 +15,7 @@
     {
       "name": "Cloud_Scheduling_Block",
       "pages": 11,
-      "sha256": "7f23e754f14eb79e6b93146b8d1b193e5cc450f49e0db9f941460a1478298cca",
+      "sha256": "ee50031435236b7f9d6da3b889f8a6712e4b642cde233b947a4db9169049b97a",
       "raster_images": 0
     }
   ],
@@ -36,7 +36,7 @@
       "legend_position": "upper left",
       "legend_rows": 2,
       "legend_columns": 3,
-      "sha256": "df14ba91cfc28abf7c035bcf103eed54ba67b698e6afc69f4462a580cd18e8f6"
+      "sha256": "11690eda0137489656652f181ab0fea96273975c37204b1ff9bc6f389d3d531f"
     },
     {
       "name": "Fig8",
@@ -50,5 +50,5 @@
   ],
   "formal_manuscript_unchanged": true,
   "all_section_4_2_data_audited": true,
-  "data_audit_sha256": "eda396b36aae3b928e7b229a37dba30b6855a4ba7f6c7af18662b58f2f6118ee"
+  "data_audit_sha256": "6334cf577ec0d906afa85f5570fe0f882534cf14d5488f3d44e00cad50a961c5"
 }
