@@ -5,7 +5,7 @@
     {
       "title": null,
       "caption_fontsize_pt": null,
-      "ylabel": "Mean objective $F$ (log scale)",
+      "ylabel": "Mean objective $F$",
       "axis_label_fontsize_pt": 9.5,
       "tick_label_fontsize_pt": 8.5,
       "y_ticks": [

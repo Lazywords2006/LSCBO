@@ -30,6 +30,7 @@ def verify_figures():
         assert len(layout['panels'])==(1 if name=='Fig6' else 4)
         if name=='Fig6':
             assert '(b)' not in text and 'Final scalar objective' not in text
+            assert 'log scale' not in text and layout['panels'][0]['ylabel']=='Mean objective $F$'
             assert layout['panel_title_position']=='none'
             assert layout['panels'][0]['y_ticks']==[3,5,10,20,30,50]
             tick_groups=[node for node in xml.findall('.//s:g',ns) if re.fullmatch(r'ytick_\d+',node.attrib.get('id',''))]
