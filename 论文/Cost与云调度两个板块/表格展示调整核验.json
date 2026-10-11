@@ -37,7 +37,7 @@
   },
   "standalone_reference_algorithm_rows_columns_removed": true,
   "all_retained_values_exact": true,
-  "protected_unchanged_scientific_files": 55,
+  "protected_unchanged_scientific_files": 54,
   "figure_resources_in_standalone_TeX_unchanged": true,
   "normalization_reference_disclosed_in_methods_and_raw_data": true,
   "direct_Greedy_initialization_truthfully_labelled": true,
