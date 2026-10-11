@@ -32,9 +32,13 @@ def verify_figures():
             assert '(b)' not in text and 'Final scalar objective' not in text
             assert 'log scale' not in text and layout['panels'][0]['ylabel']=='Mean objective $F$'
             assert layout['panel_title_position']=='none'
-            assert layout['panels'][0]['y_ticks']==[3,5,10,20,30,50]
+            assert layout['panels'][0]['y_scale']=='linear'
+            assert layout['panels'][0]['y_ticks']==list(range(0,61,10))
+            assert layout['panels'][0]['display_y_limits']==[0,60]
             tick_groups=[node for node in xml.findall('.//s:g',ns) if re.fullmatch(r'ytick_\d+',node.attrib.get('id',''))]
-            assert [float(''.join(node.find('.//s:text',ns).itertext())) for node in tick_groups]==[3,5,10,20,30,50]
+            assert [float(''.join(node.find('.//s:text',ns).itertext())) for node in tick_groups]==list(range(0,61,10))
+            tick_positions=[float(node.find('.//s:use',ns).attrib['y']) for node in tick_groups]
+            assert np.allclose(np.diff(tick_positions),np.diff(tick_positions)[0],rtol=0,atol=1e-5)
         else:
             assert '(c) Cost' in text and 'Cost excess' not in text
             assert [p['ylabel'] for p in layout['panels']]==['Makespan','Energy','Cost','Load imbalance']

@@ -183,6 +183,7 @@ def save_figure(fig, name, panels):
                         "ylabel": ax.get_ylabel(),
                         "axis_label_fontsize_pt": ax.yaxis.label.get_fontsize(),
                         "tick_label_fontsize_pt": ax.get_xticklabels()[0].get_fontsize(),
+                        "y_scale": ax.get_yscale(),
                         "y_ticks": np.asarray(ax.get_yticks()).tolist(),
                         "y_tick_labels": [text.get_text() for text in ax.get_yticklabels()],
                         "panel_center_x_pt": (box.x0 + box.x1) / 2 * fig.get_figwidth() * 72,
@@ -263,7 +264,10 @@ def main():
     if args.figure in ["6", "all"]:
         fig, ax = plt.subplots(figsize=(FIGURE_WIDTH_INCHES, 3.35))
         fig.subplots_adjust(left=.125, right=.985, bottom=.23, top=.96)
-        line_panel(ax, means, "objective", "Mean objective $F$", logy=True)
+        line_panel(ax, means, "objective", "Mean objective $F$")
+        ax.set_ylim(0, 60)
+        ax.yaxis.set_major_locator(FixedLocator(range(0, 61, 10)))
+        ax.yaxis.set_minor_locator(NullLocator())
         legend(ax, shared_position, columns=3)
         panels = [(ax, None)]
         save_figure(fig, "Fig6", panels)

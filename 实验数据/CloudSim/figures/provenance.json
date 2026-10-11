@@ -102,12 +102,18 @@
     "GWO": "#2CA02C"
   },
   "Fig6_y_ticks": [
-    3,
-    5,
+    0,
     10,
     20,
     30,
-    50
+    40,
+    50,
+    60
   ],
-  "Fig6_y_axis_label": "Mean objective F"
+  "Fig6_y_axis_label": "Mean objective F",
+  "Fig6_y_axis_scale": "linear",
+  "Fig6_y_limits": [
+    0,
+    60
+  ]
 }
