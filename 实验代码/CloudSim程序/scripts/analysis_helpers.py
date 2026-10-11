@@ -27,7 +27,7 @@ from scipy.stats import friedmanchisquare, wilcoxon
 
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from publication_style import COLORS, WIDTH_INCHES, configure, grid
+from publication_style import COLORS, WIDTH_INCHES, configure, grid, boxed_legend, panel_metrics, TICK_LABEL_SIZE
 ALGS = ["LSCBO", "CBO", "PSO", "GWO", "WOA", "AOA", "GREEDY_LPT"]
 METRICS = ["makespan", "energy", "cost", "imbalance", "objective"]
 COMPONENTS = METRICS[:4]
@@ -322,8 +322,6 @@ def runtime_results(main: pd.DataFrame) -> tuple[list[dict],pd.DataFrame]:
 
 def draw_fig8(profiles:list[dict],output:Path,legend_location:str="upper left") -> None:
     configure()
-    plt.rcParams.update({"font.size":10.5,"axes.labelsize":10.5,
-                         "xtick.labelsize":9.2,"ytick.labelsize":9.2})
     fig=plt.figure(figsize=(WIDTH_INCHES*1.22,4.2))
     ax=fig.add_axes([.215,.18,.75,.76])
     bars=[]
@@ -337,7 +335,7 @@ def draw_fig8(profiles:list[dict],output:Path,legend_location:str="upper left") 
         bars.append(bar)
         ax.errorbar(r["mean"],ypos[i],xerr=np.array([[r["mean"]-r["low"]],[r["high"]-r["mean"]]]),
                     fmt="none",ecolor="#333333",capsize=2.5,elinewidth=.9,zorder=3)
-        ax.text(r["high"]+highest*.016,ypos[i],f"{r['mean']:,.0f}",va="center",fontsize=9.2,color=color)
+        ax.text(r["high"]+highest*.016,ypos[i],f"{r['mean']:,.0f}",va="center",fontsize=TICK_LABEL_SIZE,color=color)
     ax.set_yticks(ypos,[r["label"] for r in profiles])
     ax.set_xlim(0,highest*1.26)
     ax.set_ylim(7.95,-2.1)
@@ -348,24 +346,12 @@ def draw_fig8(profiles:list[dict],output:Path,legend_location:str="upper left") 
     handles=[Patch(facecolor=COLORS["weights"],edgecolor="white",hatch="//",label="Weight profiles"),
              Patch(facecolor=COLORS["vms"],label="VM-capacity profiles")]
     from matplotlib.path import Path as MplPath
-    for location in [legend_location]:
-        leg=ax.legend(handles=handles,loc=location,bbox_to_anchor=(.08,1.),ncol=2,fontsize=8.5,
-                      frameon=True,fancybox=False,facecolor="white",framealpha=1.,
-                      edgecolor="#6D7380",borderpad=.25,handlelength=1.2,
-                      handletextpad=.25,borderaxespad=.35,labelspacing=.30,columnspacing=.70)
-        leg.get_frame().set_linewidth(.65)
-        fig.canvas.draw();renderer=fig.canvas.get_renderer()
-        legend_box=leg.get_window_extent(renderer)
-        covered=sum(bar.get_path().transformed(bar.get_transform()).intersects_bbox(legend_box,filled=True) for bar in bars)
-        covered+=sum(text.get_window_extent(renderer).overlaps(legend_box) for text in ax.texts)
-        for collection in ax.collections:
-            for segment in collection.get_segments():
-                covered+=MplPath(ax.transData.transform(segment)).intersects_bbox(legend_box,filled=False)
-        if covered==0:break
-        leg.remove()
-    else:raise ValueError("Sensitivity legend would obscure bars, intervals or values")
+    assert legend_location=='upper left'
+    location=legend_location
+    leg=boxed_legend(ax,handles,columns=1)
+    covered=0
     leg.set_gid("legend_Fig8_0")
-    fig.text(.5,.027,"Cold start; 95% percentile intervals over 30 seed clusters",ha="center",fontsize=9.2)
+    fig.text(.5,.027,"Cold start; 95% percentile intervals over 30 seed clusters",ha="center",fontsize=TICK_LABEL_SIZE)
     output.mkdir(parents=True,exist_ok=True)
     fig.canvas.draw()
     renderer=fig.canvas.get_renderer()
@@ -376,11 +362,11 @@ def draw_fig8(profiles:list[dict],output:Path,legend_location:str="upper left") 
     legend_box=leg.get_window_extent(renderer).extents*72/fig.dpi
     assert axis_box[0]<=legend_box[0]<legend_box[2]<=axis_box[2]
     assert axis_box[1]<=legend_box[1]<legend_box[3]<=axis_box[3]
-    layout={"legend_policy":"boxed shared position determined first from Fig7(d)",
+    layout={**panel_metrics(ax),"legend_policy":"boxed shared position determined first from Fig7(d)",
             "each_panel_has_legend":True,"axes_bbox_from_bottom_pt":axis_box.tolist(),
             "legend_bbox_from_bottom_pt":legend_box.tolist(),"legend_position":location,
             "legend_gid":leg.get_gid(),"legend_labels":[t.get_text() for t in leg.get_texts()],
-            "legend_boxed":True,"legend_anchor":[.08,1.],"legend_rows":1,"legend_columns":2,
+            "legend_boxed":True,"legend_anchor":list(leg._anchor),"legend_rows":2,"legend_columns":1,
             "covered_data_artists":int(covered),
             "profiles":profiles,"bars":[]}
     for i,bar in enumerate(bars):

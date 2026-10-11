@@ -1,6 +1,6 @@
 # LSCBO experiments
 
-Current experiment release: **2026-10-11**. This repository contains experiment code, raw records, numerical summaries, result plots, and reproduction instructions.
+Current experiment release: **2026-10-12**. This repository contains experiment code, raw records, numerical summaries, result plots, and reproduction instructions.
 
 | Experiment material | Location |
 | --- | --- |
@@ -8,7 +8,8 @@ Current experiment release: **2026-10-11**. This repository contains experiment 
 | Cloud raw data, parameters and numerical summaries | [CloudSim data](实验数据/CloudSim/data/) |
 | Current objective, component and sensitivity plots | [CloudSim figures](实验数据/CloudSim/figures/) |
 | CEC2017 experiment program | [CEC2017 program](实验代码/CEC2017程序/README_中文.md) |
-| CEC2017 results and plots | [data index](实验数据/README.md) |
+| CEC2017 results and plots | [CEC2017 figures](实验数据/CEC2017/figures/) and [data index](实验数据/README.md) |
+| Shared plot typography and legend standard | [figure standard](实验代码/FIGURE_STYLE.md) |
 | Current file hashes | [RELEASE_MANIFEST.json](RELEASE_MANIFEST.json) |
 
 ## Cloud protocol
@@ -27,11 +28,13 @@ Use JDK 21 and Python 3.12. Detailed build, run, analysis, and plotting commands
 python -m pip install --cache-dir D:/CodexRuntime/cache/pip -r 实验代码/CloudSim程序/requirements.txt
 python 实验代码/CloudSim程序/scripts/verify_latest.py --runtime D:/CodexRuntime/runs/lscbo-release-audit
 python 实验代码/CloudSim程序/scripts/render_current_figures.py --out D:/CodexRuntime/runs/lscbo-rendered-figures
+python 实验代码/generate_cec_figures.py --output-dir D:/CodexRuntime/runs/lscbo-cec-figures
+python 实验代码/verify_figure_style.py --report D:/CodexRuntime/runs/lscbo-figure-style-audit.json
 ```
 
 The audit checks release hashes, raw objective values and evaluation budgets, numerical summaries, seed-cluster intervals, direct diagnostics, confirmation statistics, and vector plots. It writes its report outside the repository. It does not rerun the full simulations.
 
-The frozen cloud Java source has SHA-256 `a52444877768a42129eb9dcd637f9a3d18f25eb94a8441e21b541ff773854b15`. CEC2017 source and numerical results are retained unchanged. Cloud plots retain the current colors and line widths; each plot has its own boxed legend. Fig6 and every Fig7 panel use two rows and three columns; the metric axes omit unit labels, and Fig6/Fig7 legend boxes use the same 12 pt left margin. Axis labels use 9.5 pt and tick labels 8.5 pt.
+The frozen cloud Java source has SHA-256 `a52444877768a42129eb9dcd637f9a3d18f25eb94a8441e21b541ff773854b15`. CEC2017 algorithm source and all numerical results are retained unchanged. All data plots use the Fig7 template: axis labels 9.5 pt, ticks 8.5 pt, panel titles 12 pt, and legend labels 7.5 pt. Every plot and panel has a square, opaque, two-row legend at the upper left, 12 pt from the left axes frame and 2.625 pt below the top. Six methods use three columns, nine use five columns, and two sensitivity categories use one column. Shared method colors and line widths match their legends. CEC2017 preserves its redundant dash patterns and exports each selected function separately to retain readable type sizes.
 
 Download the current experiment set through GitHub **Code → Download ZIP**.
 

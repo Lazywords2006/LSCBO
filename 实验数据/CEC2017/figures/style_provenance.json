@@ -1,0 +1,22 @@
+{
+  "template": "Fig7",
+  "all_mean_cells_unchanged": 26100,
+  "source_sha256": "7ba4eb827d0fbd3d7484bc88c033ce3ff578d22fde53f7b51cbdf1de92a61f69",
+  "axis_label_fontsize_pt": 9.5,
+  "tick_label_fontsize_pt": 8.5,
+  "panel_title_fontsize_pt": 12,
+  "legend_fontsize_pt": 7.5,
+  "legend_rows": 2,
+  "legend_columns": 5,
+  "legend_position": "upper left",
+  "legend_left_margin_pt": 12,
+  "legend_top_margin_pt": 2.625,
+  "independent_function_plots": [
+    "Fig3_F1",
+    "Fig3_F3",
+    "Fig3_F5",
+    "Fig3_F10",
+    "Fig3_F15",
+    "Fig3_F20"
+  ]
+}

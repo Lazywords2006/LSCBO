@@ -61,7 +61,7 @@
       1.0
     ],
     "Fig8": [
-      0.08,
+      0.02763399397291712,
       1.0
     ]
   },
@@ -71,7 +71,7 @@
   "legend_layout": {
     "Fig6": "3 columns x 2 rows",
     "Fig7": "3 columns x 2 rows",
-    "Fig8": "2 columns x 1 row"
+    "Fig8": "1 column x 2 rows"
   },
   "Fig7_panel_titles": [
     "(a) Makespan",
@@ -116,5 +116,9 @@
     0,
     65
   ],
-  "Fig6_headroom_above_top_tick": 5
+  "Fig6_headroom_above_top_tick": 5,
+  "legend_fontsize_pt": 7.5,
+  "panel_title_fontsize_pt": 12,
+  "all_data_plots_follow_Fig7_standard": true,
+  "legend_top_margin_pt": 2.625
 }

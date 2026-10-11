@@ -1,6 +1,10 @@
 {
-  "legend_policy": "boxed shared position determined first from Fig7(d)",
-  "each_panel_has_legend": true,
+  "xlabel": "Mean paired increase in $F$ over Greedy-LPT (%)",
+  "ylabel": "",
+  "axis_label_fontsize_pt": 9.5,
+  "x_axis_label_fontsize_pt": 9.5,
+  "tick_label_fontsize_pt": 8.5,
+  "legend_fontsize_pt": 7.5,
   "axes_bbox_from_bottom_pt": [
     97.25340472440945,
     54.432,
@@ -8,25 +12,37 @@
     284.25600000000003
   ],
   "legend_bbox_from_bottom_pt": [
-    127.36888976377955,
-    267.67099999999994,
-    312.2488897637795,
-    281.281
+    109.25340472440946,
+    260.481,
+    204.6084047244095,
+    281.631
   ],
+  "legend_anchor": [
+    0.02763399397291712,
+    1.0
+  ],
+  "legend_left_margin_pt": 12.000000000000014,
+  "legend_top_margin_pt": 2.625000000000057,
   "legend_position": "upper left",
-  "legend_gid": "legend_Fig8_0",
+  "legend_boxed": true,
+  "legend_rows": 2,
+  "legend_columns": 1,
   "legend_labels": [
     "Weight profiles",
     "VM-capacity profiles"
   ],
-  "legend_boxed": true,
-  "legend_anchor": [
-    0.08,
-    1.0
-  ],
-  "legend_rows": 1,
-  "legend_columns": 2,
   "covered_data_artists": 0,
+  "title": null,
+  "caption_fontsize_pt": null,
+  "caption_bbox_from_bottom_pt": null,
+  "y_scale": "linear",
+  "display_y_limits": [
+    7.95,
+    -2.1
+  ],
+  "legend_policy": "boxed shared position determined first from Fig7(d)",
+  "each_panel_has_legend": true,
+  "legend_gid": "legend_Fig8_0",
   "profiles": [
     {
       "experiment": "weight_sensitivity",

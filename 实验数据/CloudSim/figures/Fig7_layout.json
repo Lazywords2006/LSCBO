@@ -8,6 +8,7 @@
       "ylabel": "Makespan",
       "axis_label_fontsize_pt": 9.5,
       "tick_label_fontsize_pt": 8.5,
+      "y_scale": "linear",
       "y_ticks": [
         -100.0,
         0.0,
@@ -81,6 +82,7 @@
       "ylabel": "Energy",
       "axis_label_fontsize_pt": 9.5,
       "tick_label_fontsize_pt": 8.5,
+      "y_scale": "linear",
       "y_ticks": [
         0.0,
         200.0,
@@ -152,6 +154,7 @@
       "ylabel": "Cost",
       "axis_label_fontsize_pt": 9.5,
       "tick_label_fontsize_pt": 8.5,
+      "y_scale": "linear",
       "y_ticks": [
         -800.0,
         0.0,
@@ -223,6 +226,7 @@
       "ylabel": "Load imbalance",
       "axis_label_fontsize_pt": 9.5,
       "tick_label_fontsize_pt": 8.5,
+      "y_scale": "linear",
       "y_ticks": [
         0.15000000000000002,
         0.30000000000000004,

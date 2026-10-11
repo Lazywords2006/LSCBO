@@ -139,9 +139,11 @@ def verify_figures():
     axes_box=np.array(layout['axes_bbox_from_bottom_pt']);legend_box=np.array(layout['legend_bbox_from_bottom_pt'])
     assert axes_box[0]<=legend_box[0]<legend_box[2]<=axes_box[2]
     assert axes_box[1]<=legend_box[1]<legend_box[3]<=axes_box[3]
-    assert layout['legend_anchor']==[.08,1.] and layout['legend_position']=='upper left'
-    assert layout['legend_rows']==1 and layout['legend_columns']==2
-    assert abs(legend_box[0]-axes_box[0]-.08*(axes_box[2]-axes_box[0])-2.975)<1e-4
+    assert np.allclose(layout['legend_anchor'],[(12.-2.625)/(axes_box[2]-axes_box[0]),1.],rtol=0,atol=1e-12)
+    assert layout['legend_position']=='upper left' and layout['legend_rows']==2 and layout['legend_columns']==1
+    assert abs(legend_box[0]-axes_box[0]-12.)<1e-4 and abs(axes_box[3]-legend_box[3]-2.625)<1e-4
+    assert layout['axis_label_fontsize_pt']==9.5 and layout['x_axis_label_fontsize_pt']==9.5
+    assert layout['tick_label_fontsize_pt']==8.5 and layout['legend_fontsize_pt']==7.5
     expected_profiles=json.loads((OUT/'data/图表与统计汇总/analysis.json').read_text(encoding='utf-8'))['profiles']
     assert layout['profiles']==expected_profiles and len(layout['bars'])==8
     xml=ET.parse(folder/'Fig8.svg').getroot();drawings=fig8[0].get_drawings()
@@ -180,6 +182,6 @@ def verify_figures():
     assert len(set(positions))==1 and positions[0]==json.loads((folder/'Fig7_layout.json').read_text(encoding='utf-8'))['panels'][3]['legend_position']
     report.append({'name':'Fig8','raster_images':0,'data_bars_verified':8,'independent_legends':1,
                    'legend_position':positions[-1],'all_legends_boxed':True,'legend_data_overlaps':0,
-                   'legend_rows':1,'legend_columns':2,
+                   'legend_rows':2,'legend_columns':1,
                    'sha256':sha(folder/'Fig8.pdf')})
     return report,max(errors)

@@ -23,7 +23,7 @@ import numpy as np
 
 RELEASE = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from publication_style import WIDTH_INCHES, grid  # noqa: E402
+from publication_style import WIDTH_INCHES, grid, AXIS_LABEL_SIZE, TICK_LABEL_SIZE, PANEL_TITLE_SIZE, LEGEND_LEFT_MARGIN_PT  # noqa: E402
 
 OUT = RELEASE / "实验数据/CloudSim/figures"
 DATA = RELEASE / "实验数据/CloudSim/data/冷启动_3990行.csv"
@@ -44,9 +44,6 @@ STYLES = {
 }
 ORDER = ["LSCBO", "WOA", "PSO", "CBO", "AOA", "GWO"]
 FIGURE_WIDTH_INCHES = WIDTH_INCHES * 1.22
-LEGEND_LEFT_MARGIN_PT = 12.0
-AXIS_LABEL_SIZE = 9.5
-TICK_LABEL_SIZE = 8.5
 
 
 
@@ -156,7 +153,7 @@ def subcaptions(fig, axes, titles, columns):
             box = ax.get_position()
             caption = fig.text((box.x0 + box.x1) / 2, y,
                                titles[first + offset], ha="center", va="top",
-                               fontsize=12.0)
+                               fontsize=PANEL_TITLE_SIZE)
             panels.append((ax, caption))
     return panels
 

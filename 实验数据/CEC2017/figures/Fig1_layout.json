@@ -1,0 +1,218 @@
+{
+  "data_sha256": "7ba4eb827d0fbd3d7484bc88c033ce3ff578d22fde53f7b51cbdf1de92a61f69",
+  "standard": "Fig7 physical typography and boxed upper-left legends",
+  "panels": [
+    {
+      "xlabel": "Friedman average rank (lower is better)",
+      "ylabel": "",
+      "axis_label_fontsize_pt": 9.5,
+      "x_axis_label_fontsize_pt": 9.5,
+      "tick_label_fontsize_pt": 8.5,
+      "legend_fontsize_pt": 7.5,
+      "axes_bbox_from_bottom_pt": [
+        106.30023307086614,
+        48.384000000000015,
+        441.0328818897638,
+        290.30400000000003
+      ],
+      "legend_bbox_from_bottom_pt": [
+        118.30023307086614,
+        266.52900000000005,
+        343.1952330708661,
+        287.67900000000003
+      ],
+      "legend_anchor": [
+        0.028007426323902487,
+        1.0
+      ],
+      "legend_left_margin_pt": 12.0,
+      "legend_top_margin_pt": 2.625,
+      "legend_position": "upper left",
+      "legend_boxed": true,
+      "legend_rows": 2,
+      "legend_columns": 5,
+      "legend_labels": [
+        "LSCBO-core",
+        "SA",
+        "PSO",
+        "HLBO",
+        "GWCA",
+        "CBO",
+        "GWO",
+        "AOA",
+        "WOA"
+      ],
+      "covered_data_artists": 0,
+      "title": null,
+      "caption_fontsize_pt": null,
+      "caption_bbox_from_bottom_pt": null,
+      "y_scale": "linear",
+      "display_y_limits": [
+        8.6,
+        -2.6
+      ],
+      "legend_gid": "legend_Fig1_0",
+      "function": null
+    }
+  ],
+  "curves": [],
+  "points": [
+    {
+      "gid": "marker_Fig1_0_LSCBO",
+      "algorithm": "LSCBO",
+      "x": [
+        1.6896551724137931
+      ],
+      "y": [
+        0.0
+      ],
+      "color": "#E8302F",
+      "expected_vector_points_pt": [
+        [
+          139.17274768566816,
+          68.25600000000003
+        ]
+      ]
+    },
+    {
+      "gid": "marker_Fig1_0_SA",
+      "algorithm": "SA",
+      "x": [
+        2.6551724137931036
+      ],
+      "y": [
+        1.0
+      ],
+      "color": "#56B4E9",
+      "expected_vector_points_pt": [
+        [
+          176.97276449119,
+          89.85600000000002
+        ]
+      ]
+    },
+    {
+      "gid": "marker_Fig1_0_PSO",
+      "algorithm": "PSO",
+      "x": [
+        3.3448275862068964
+      ],
+      "y": [
+        2.0
+      ],
+      "color": "#0072B2",
+      "expected_vector_points_pt": [
+        [
+          203.97277649513413,
+          111.45600000000002
+        ]
+      ]
+    },
+    {
+      "gid": "marker_Fig1_0_HLBO",
+      "algorithm": "HLBO",
+      "x": [
+        4.620689655172414
+      ],
+      "y": [
+        3.0
+      ],
+      "color": "#E69F00",
+      "expected_vector_points_pt": [
+        [
+          253.9227987024308,
+          133.056
+        ]
+      ]
+    },
+    {
+      "gid": "marker_Fig1_0_GWCA",
+      "algorithm": "GWCA",
+      "x": [
+        4.793103448275862
+      ],
+      "y": [
+        4.0
+      ],
+      "color": "#CC79A7",
+      "expected_vector_points_pt": [
+        [
+          260.67280170341684,
+          154.656
+        ]
+      ]
+    },
+    {
+      "gid": "marker_Fig1_0_CBO",
+      "algorithm": "CBO",
+      "x": [
+        5.0344827586206895
+      ],
+      "y": [
+        5.0
+      ],
+      "color": "#5B4373",
+      "expected_vector_points_pt": [
+        [
+          270.1228059047973,
+          176.256
+        ]
+      ]
+    },
+    {
+      "gid": "marker_Fig1_0_GWO",
+      "algorithm": "GWO",
+      "x": [
+        6.862068965517241
+      ],
+      "y": [
+        6.0
+      ],
+      "color": "#2CA02C",
+      "expected_vector_points_pt": [
+        [
+          341.67283771524933,
+          197.856
+        ]
+      ]
+    },
+    {
+      "gid": "marker_Fig1_0_AOA",
+      "algorithm": "AOA",
+      "x": [
+        7.448275862068965
+      ],
+      "y": [
+        7.0
+      ],
+      "color": "#A05A78",
+      "expected_vector_points_pt": [
+        [
+          364.62284791860185,
+          219.45600000000002
+        ]
+      ]
+    },
+    {
+      "gid": "marker_Fig1_0_WOA",
+      "algorithm": "WOA",
+      "x": [
+        8.551724137931034
+      ],
+      "y": [
+        8.0
+      ],
+      "color": "#8A6420",
+      "expected_vector_points_pt": [
+        [
+          407.8228671249124,
+          241.056
+        ]
+      ]
+    }
+  ],
+  "every_panel_has_legend": true,
+  "mean_cells_retained": 26100,
+  "checkpoints_per_curve": 100,
+  "figure_width_mm": 159.57600000000002
+}
