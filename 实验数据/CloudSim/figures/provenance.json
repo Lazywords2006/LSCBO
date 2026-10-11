@@ -23,12 +23,12 @@
       1.0
     ],
     "PSO": [
-      "#35506E",
+      "#0072B2",
       "PSO",
       1.0
     ],
     "GWO": [
-      "#2E6B5E",
+      "#2CA02C",
       "GWO",
       1.0
     ],
@@ -53,11 +53,11 @@
   "legend_position": "upper left",
   "legend_anchor": {
     "Fig6": [
-      0.018958205167466394,
+      0.02409941334847423,
       1.0
     ],
     "Fig7": [
-      0.043983035988522025,
+      0.055910638968460206,
       1.0
     ],
     "Fig8": [
@@ -68,7 +68,6 @@
   "legend_box": "square opaque white frame",
   "every_panel_has_legend": true,
   "figure_width_mm": 159.576,
-  "figure_data_and_method_styles_unchanged": true,
   "legend_layout": {
     "Fig6": "3 columns x 2 rows",
     "Fig7": "3 columns x 2 rows",
@@ -83,8 +82,8 @@
   "Fig7_cost_axis_label": "Cost",
   "Fig6_extra_panel_title": null,
   "legend_left_margin_pt": {
-    "Fig6": 10.0,
-    "Fig7": 10.0
+    "Fig6": 12.0,
+    "Fig7": 12.0
   },
   "Fig7_axis_labels": [
     "Makespan",
@@ -95,5 +94,19 @@
   "Fig6_Fig7_display_units": false,
   "axis_label_fontsize_pt": 9.5,
   "tick_label_fontsize_pt": 8.5,
-  "Fig7_panel_title_fontsize_pt": 12.0
+  "Fig7_panel_title_fontsize_pt": 12.0,
+  "figure_data_unchanged": true,
+  "line_widths_and_patterns_unchanged": true,
+  "PSO_GWO_colors_revised": {
+    "PSO": "#0072B2",
+    "GWO": "#2CA02C"
+  },
+  "Fig6_y_ticks": [
+    3,
+    5,
+    10,
+    20,
+    30,
+    50
+  ]
 }

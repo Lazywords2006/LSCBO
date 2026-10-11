@@ -8,6 +8,24 @@
       "ylabel": "Makespan",
       "axis_label_fontsize_pt": 9.5,
       "tick_label_fontsize_pt": 8.5,
+      "y_ticks": [
+        -100.0,
+        0.0,
+        100.0,
+        200.0,
+        300.0,
+        400.0,
+        500.0
+      ],
+      "y_tick_labels": [
+        "\u2212100",
+        "0",
+        "100",
+        "200",
+        "300",
+        "400",
+        "500"
+      ],
       "panel_center_x_pt": 138.12011208254143,
       "panel_bottom_from_top_pt": 175.78653061224492,
       "caption_bbox_from_bottom_pt": [
@@ -23,12 +41,12 @@
         446.94
       ],
       "legend_bbox_from_bottom_pt": [
-        64.28097007874015,
+        66.28097007874015,
         423.165,
-        183.81597007874015,
+        185.81597007874015,
         444.315
       ],
-      "legend_left_margin_pt": 9.999999999999993,
+      "legend_left_margin_pt": 11.999999999999993,
       "legend_gid": "legend_Fig7_0",
       "legend_labels": [
         "LSCBO",
@@ -41,7 +59,7 @@
       "legend_position": "upper left",
       "legend_boxed": true,
       "legend_anchor": [
-        0.043983035988522025,
+        0.055910638968460206,
         1.0
       ],
       "legend_rows": 2,
@@ -63,6 +81,22 @@
       "ylabel": "Energy",
       "axis_label_fontsize_pt": 9.5,
       "tick_label_fontsize_pt": 8.5,
+      "y_ticks": [
+        0.0,
+        200.0,
+        400.0,
+        600.0,
+        800.0,
+        1000.0
+      ],
+      "y_tick_labels": [
+        "0",
+        "200",
+        "400",
+        "600",
+        "800",
+        "1000"
+      ],
       "panel_center_x_pt": 359.45544697257674,
       "panel_bottom_from_top_pt": 175.78653061224492,
       "caption_bbox_from_bottom_pt": [
@@ -78,12 +112,12 @@
         446.94
       ],
       "legend_bbox_from_bottom_pt": [
-        285.6163049687755,
+        287.6163049687755,
         423.165,
-        405.1513049687755,
+        407.1513049687755,
         444.315
       ],
-      "legend_left_margin_pt": 10.0,
+      "legend_left_margin_pt": 12.0,
       "legend_gid": "legend_Fig7_1",
       "legend_labels": [
         "LSCBO",
@@ -96,7 +130,7 @@
       "legend_position": "upper left",
       "legend_boxed": true,
       "legend_anchor": [
-        0.043983035988522025,
+        0.055910638968460206,
         1.0
       ],
       "legend_rows": 2,
@@ -118,6 +152,22 @@
       "ylabel": "Cost",
       "axis_label_fontsize_pt": 9.5,
       "tick_label_fontsize_pt": 8.5,
+      "y_ticks": [
+        -800.0,
+        0.0,
+        800.0,
+        1600.0,
+        2400.0,
+        3200.0
+      ],
+      "y_tick_labels": [
+        "\u2212800",
+        "0",
+        "800",
+        "1600",
+        "2400",
+        "3200"
+      ],
       "panel_center_x_pt": 138.12011208254143,
       "panel_bottom_from_top_pt": 400.14,
       "caption_bbox_from_bottom_pt": [
@@ -133,12 +183,12 @@
         222.5865306122449
       ],
       "legend_bbox_from_bottom_pt": [
-        64.28097007874015,
+        66.28097007874015,
         198.8115306122449,
-        183.81597007874015,
+        185.81597007874015,
         219.9615306122449
       ],
-      "legend_left_margin_pt": 9.999999999999993,
+      "legend_left_margin_pt": 11.999999999999993,
       "legend_gid": "legend_Fig7_2",
       "legend_labels": [
         "LSCBO",
@@ -151,7 +201,7 @@
       "legend_position": "upper left",
       "legend_boxed": true,
       "legend_anchor": [
-        0.043983035988522025,
+        0.055910638968460206,
         1.0
       ],
       "legend_rows": 2,
@@ -173,6 +223,20 @@
       "ylabel": "Load imbalance",
       "axis_label_fontsize_pt": 9.5,
       "tick_label_fontsize_pt": 8.5,
+      "y_ticks": [
+        0.15000000000000002,
+        0.30000000000000004,
+        0.45000000000000007,
+        0.6000000000000001,
+        0.7500000000000001
+      ],
+      "y_tick_labels": [
+        "0.15",
+        "0.30",
+        "0.45",
+        "0.60",
+        "0.75"
+      ],
       "panel_center_x_pt": 359.45544697257674,
       "panel_bottom_from_top_pt": 400.14,
       "caption_bbox_from_bottom_pt": [
@@ -188,12 +252,12 @@
         222.5865306122449
       ],
       "legend_bbox_from_bottom_pt": [
-        285.6163049687755,
+        287.6163049687755,
         198.8115306122449,
-        405.1513049687755,
+        407.1513049687755,
         219.9615306122449
       ],
-      "legend_left_margin_pt": 10.0,
+      "legend_left_margin_pt": 12.0,
       "legend_gid": "legend_Fig7_3",
       "legend_labels": [
         "LSCBO",
@@ -206,7 +270,7 @@
       "legend_position": "upper left",
       "legend_boxed": true,
       "legend_anchor": [
-        0.043983035988522025,
+        0.055910638968460206,
         1.0
       ],
       "legend_rows": 2,
@@ -402,7 +466,7 @@
         304.31994268433334,
         333.20200259533334
       ],
-      "color": "#35506E",
+      "color": "#0072B2",
       "linewidth": 1.0,
       "linestyle": "-",
       "marker": "None",
@@ -627,7 +691,7 @@
         352.8084729073334,
         390.6072060893334
       ],
-      "color": "#2E6B5E",
+      "color": "#2CA02C",
       "linewidth": 1.0,
       "linestyle": "-",
       "marker": "None",
@@ -852,7 +916,7 @@
         720.0563645936667,
         793.3196077349999
       ],
-      "color": "#35506E",
+      "color": "#0072B2",
       "linewidth": 1.0,
       "linestyle": "-",
       "marker": "None",
@@ -1077,7 +1141,7 @@
         816.0665526996667,
         904.3401775506667
       ],
-      "color": "#2E6B5E",
+      "color": "#2CA02C",
       "linewidth": 1.0,
       "linestyle": "-",
       "marker": "None",
@@ -1302,7 +1366,7 @@
         2291.4691329639995,
         2510.5285795879995
       ],
-      "color": "#35506E",
+      "color": "#0072B2",
       "linewidth": 1.0,
       "linestyle": "-",
       "marker": "None",
@@ -1527,7 +1591,7 @@
         2655.809956434333,
         2940.7580092330004
       ],
-      "color": "#2E6B5E",
+      "color": "#2CA02C",
       "linewidth": 1.0,
       "linestyle": "-",
       "marker": "None",
@@ -1752,7 +1816,7 @@
         0.3249926996666666,
         0.3174099026666666
       ],
-      "color": "#35506E",
+      "color": "#0072B2",
       "linewidth": 1.0,
       "linestyle": "-",
       "marker": "None",
@@ -1977,7 +2041,7 @@
         0.39018430033333334,
         0.3852249153333333
       ],
-      "color": "#2E6B5E",
+      "color": "#2CA02C",
       "linewidth": 1.0,
       "linestyle": "-",
       "marker": "None",

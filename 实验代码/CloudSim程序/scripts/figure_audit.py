@@ -31,6 +31,9 @@ def verify_figures():
         if name=='Fig6':
             assert '(b)' not in text and 'Final scalar objective' not in text
             assert layout['panel_title_position']=='none'
+            assert layout['panels'][0]['y_ticks']==[3,5,10,20,30,50]
+            tick_groups=[node for node in xml.findall('.//s:g',ns) if re.fullmatch(r'ytick_\d+',node.attrib.get('id',''))]
+            assert [float(''.join(node.find('.//s:text',ns).itertext())) for node in tick_groups]==[3,5,10,20,30,50]
         else:
             assert '(c) Cost' in text and 'Cost excess' not in text
             assert [p['ylabel'] for p in layout['panels']]==['Makespan','Energy','Cost','Load imbalance']
@@ -44,11 +47,11 @@ def verify_figures():
             legend_box=np.array(panel['legend_bbox_from_bottom_pt'])
             assert axes_box[0]<=legend_box[0]<legend_box[2]<=axes_box[2]
             assert axes_box[1]<=legend_box[1]<legend_box[3]<=axes_box[3]
-            anchor_x=(10.-2.625)/(axes_box[2]-axes_box[0])
+            anchor_x=(12.-2.625)/(axes_box[2]-axes_box[0])
             assert np.allclose(panel['legend_anchor'],[anchor_x,1.],rtol=0,atol=1e-12)
             assert panel['legend_position']=='upper left'
             assert panel['legend_rows']==2 and panel['legend_columns']==3
-            assert abs(legend_box[0]-axes_box[0]-10.)<1e-4
+            assert abs(legend_box[0]-axes_box[0]-12.)<1e-4
             assert panel['axis_label_fontsize_pt']==9.5 and panel['tick_label_fontsize_pt']==8.5
             box=panel['caption_bbox_from_bottom_pt']
             if name=='Fig6':

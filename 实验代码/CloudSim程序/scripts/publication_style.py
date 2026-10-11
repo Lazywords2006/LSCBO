@@ -7,7 +7,7 @@ WIDTH_INCHES = 130.8 / 25.4
 COLORS = {
     "LSCBO": "#D62728", "CBO": "#9467BD", "PSO": "#0072B2",
     "SA": "#56B4E9", "HLBO": "#E69F00", "GWCA": "#CC79A7",
-    "GWO": "#009E73", "AOA": "#7F7F7F", "WOA": "#8C564B",
+    "GWO": "#2CA02C", "AOA": "#7F7F7F", "WOA": "#8C564B",
     "GREEDY_LPT": "#454545", "direct5400": "#56B4E9",
     "direct6000": "#009E73", "weights": "#D62728", "vms": "#0072B2",
 }

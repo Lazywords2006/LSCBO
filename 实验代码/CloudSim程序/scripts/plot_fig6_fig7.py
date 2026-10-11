@@ -18,7 +18,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
-from matplotlib.ticker import MaxNLocator, NullLocator, ScalarFormatter
+from matplotlib.ticker import FixedLocator, MaxNLocator, NullLocator, ScalarFormatter
 import numpy as np
 
 RELEASE = Path(__file__).resolve().parents[3]
@@ -36,15 +36,15 @@ UNITS = {"makespan": "Makespan", "energy": "Energy",
 STYLES = {
     "LSCBO": ("#E8302F", "LSCBO", 1.7),
     "CBO": ("#5B4373", "CBO", 1.0),
-    "PSO": ("#35506E", "PSO", 1.0),
-    "GWO": ("#2E6B5E", "GWO", 1.0),
+    "PSO": ("#0072B2", "PSO", 1.0),
+    "GWO": ("#2CA02C", "GWO", 1.0),
     "WOA": ("#8A6420", "WOA", 1.0),
     "AOA": ("#A05A78", "AOA", 1.0),
     "GREEDY_LPT": ("#2B2F33", "Greedy-LPT", 1.4),
 }
 ORDER = ["LSCBO", "WOA", "PSO", "CBO", "AOA", "GWO"]
 FIGURE_WIDTH_INCHES = WIDTH_INCHES * 1.22
-LEGEND_LEFT_MARGIN_PT = 10.0
+LEGEND_LEFT_MARGIN_PT = 12.0
 AXIS_LABEL_SIZE = 9.5
 TICK_LABEL_SIZE = 8.5
 
@@ -73,6 +73,7 @@ def line_panel(ax, means, metric, ylabel, logy=False):
     ax.xaxis.set_major_locator(MaxNLocator(nbins=6))
     if logy:
         ax.set_yscale("log")
+        ax.yaxis.set_major_locator(FixedLocator([3, 5, 10, 20, 30, 50]))
         ax.yaxis.set_major_formatter(ScalarFormatter())
         ax.yaxis.set_minor_locator(NullLocator())
     else:
@@ -182,6 +183,8 @@ def save_figure(fig, name, panels):
                         "ylabel": ax.get_ylabel(),
                         "axis_label_fontsize_pt": ax.yaxis.label.get_fontsize(),
                         "tick_label_fontsize_pt": ax.get_xticklabels()[0].get_fontsize(),
+                        "y_ticks": np.asarray(ax.get_yticks()).tolist(),
+                        "y_tick_labels": [text.get_text() for text in ax.get_yticklabels()],
                         "panel_center_x_pt": (box.x0 + box.x1) / 2 * fig.get_figwidth() * 72,
                         "panel_bottom_from_top_pt": (1 - box.y0) * fig.get_figheight() * 72,
                         "caption_bbox_from_bottom_pt": [v * 72 / fig.dpi for v in caption.get_window_extent(renderer).extents] if caption is not None else None,
