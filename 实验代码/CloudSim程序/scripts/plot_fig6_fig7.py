@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fig.6 and Fig.7 for the 100-1000 task range, ERTH-mode setting.
+"""Fig.6 and Fig.7 for the 100-1000 task range, cold-start setting inspired by ERTH population/scales.
 
 Data: random initialisation, population 100, 100 iterations, 50 VMs fixed,
 30 seeds per scale (the source run also covers 2000-10000; only the small-scale

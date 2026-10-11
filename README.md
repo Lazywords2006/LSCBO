@@ -28,6 +28,8 @@ Scheduling ablation is removed. Fig. 6 has one objective panel. Fig. 7 panel lab
 
 Run the [published audit](实验代码/CloudSim程序/README.md#verify-the-published-delivery) to check hashes, all eight Section 4.2 tables, numerical prose, seed-cluster intervals, and vector curves against the raw data. [RELEASE_MANIFEST.json](RELEASE_MANIFEST.json) records every current file hash. The frozen experiment source hash is `a52444877768a42129eb9dcd637f9a3d18f25eb94a8441e21b541ff773854b15`.
 
+The three citations used by the current Cost and Section 4.2 blocks have been checked against publisher/author sources and Crossref metadata. See the [current reference audit](参考论文/参考文献核对表.md), which distinguishes the adopted cost adaptation from the original BaTS and ERTH formulas.
+
 Only one current cloud deliverable is kept in this tree. Superseded warm-start data, duplicate submission packages and stale full-manuscript PDFs were retired from the current tree; they remain recoverable in Git history. This revision does not present a newly integrated full manuscript or a replacement Section 4.3 CloudSim validation. The CEC2017 source and results are retained unchanged.
 
 Use GitHub **Code → Download ZIP** to download the current set. Runtime builds, dependency caches and new test outputs belong outside the repository; Windows examples use `D:/CodexRuntime`.

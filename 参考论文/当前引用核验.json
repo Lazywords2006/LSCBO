@@ -1,0 +1,161 @@
+{
+  "checked_date": "2026-10-11",
+  "scope": "Current Cost and Section 4.2 only; three unique citations",
+  "metadata_verified": [
+    {
+      "key": "Oprescu2010",
+      "doi": "10.1109/cloudcom.2010.32",
+      "title": [
+        "Bag-of-Tasks Scheduling under Budget Constraints"
+      ],
+      "authors": [
+        "Ana-Maria Oprescu",
+        "Thilo Kielmann"
+      ],
+      "publisher": "IEEE",
+      "venue": [
+        "2010 IEEE Second International Conference on Cloud Computing Technology and Science"
+      ],
+      "volume": null,
+      "issue": null,
+      "page": "351-359",
+      "article_number": null,
+      "published": {
+        "date-parts": [
+          [
+            2010,
+            11
+          ]
+        ]
+      },
+      "published_online": null,
+      "published_print": {
+        "date-parts": [
+          [
+            2010,
+            11
+          ]
+        ]
+      }
+    },
+    {
+      "key": "Qin2024",
+      "doi": "10.1007/s10462-024-10945-6",
+      "title": [
+        "ERTH scheduler: enhanced red-tailed hawk algorithm for multi-cost optimization in cloud task scheduling"
+      ],
+      "authors": [
+        "Xinqi Qin",
+        "Shaobo Li",
+        "Jian Tong",
+        "Cankun Xie",
+        "Xingxing Zhang",
+        "Fengbin Wu",
+        "Qun Xie",
+        "Yihong Ling",
+        "Guangzheng Lin"
+      ],
+      "publisher": "Springer Science and Business Media LLC",
+      "venue": [
+        "Artificial Intelligence Review"
+      ],
+      "volume": "57",
+      "issue": "12",
+      "page": null,
+      "article_number": "328",
+      "published": {
+        "date-parts": [
+          [
+            2024,
+            10,
+            12
+          ]
+        ]
+      },
+      "published_online": {
+        "date-parts": [
+          [
+            2024,
+            10,
+            12
+          ]
+        ]
+      },
+      "published_print": null
+    },
+    {
+      "key": "MarlerArora2010",
+      "doi": "10.1007/s00158-009-0460-7",
+      "title": [
+        "The weighted sum method for multi-objective optimization: new insights"
+      ],
+      "authors": [
+        "R. Timothy Marler",
+        "Jasbir S. Arora"
+      ],
+      "publisher": "Springer Science and Business Media LLC",
+      "venue": [
+        "Structural and Multidisciplinary Optimization"
+      ],
+      "volume": "41",
+      "issue": "6",
+      "page": "853-862",
+      "article_number": null,
+      "published": {
+        "date-parts": [
+          [
+            2009,
+            12,
+            12
+          ]
+        ]
+      },
+      "published_online": {
+        "date-parts": [
+          [
+            2009,
+            12,
+            12
+          ]
+        ]
+      },
+      "published_print": {
+        "date-parts": [
+          [
+            2010,
+            6
+          ]
+        ]
+      }
+    }
+  ],
+  "metadata_matches_current_manuscript": true,
+  "claim_checks": {
+    "Oprescu2010": {
+      "evidence_level": "Author-hosted full text, institution, Crossref",
+      "section": "2",
+      "supports": "Reserved-time charging concept",
+      "does_not_supply": "Current continuous-time fixed-fleet common-release formula",
+      "pdf_pages": 9,
+      "author_pdf_sha256": "da198bec949d5189bf34d56ca30955ad4e79fa44fdc7623a66286719ac7f425d"
+    },
+    "Qin2024": {
+      "evidence_level": "Publisher full text, existing source PDF, Crossref",
+      "cost_equation": "3.1.2 equation (4)",
+      "cloud_setting_section": "4.2.1",
+      "cost_definition": "CPU demand/capacity ratio times bandwidth demand/capacity ratio times unit price",
+      "iteration_discrepancy": "Text:100; PDF page40 Table7 Iters:50",
+      "initialisation_difference": "ERTH Bernoulli mapping; current uniform random"
+    },
+    "MarlerArora2010": {
+      "evidence_level": "Publisher abstract and bibliographic record, Crossref; subscription full text not checked",
+      "correct_citation_year": 2010,
+      "online_year": 2009,
+      "supports": "Weights as preferences; limitations of weighted sums",
+      "effective_weight_reduction": "Derived algebraically for current model, not attributed to reference"
+    }
+  },
+  "current_cost_model_is_authors_adaptation": true,
+  "numerical_or_figure_changes_required": false,
+  "all_current_citation_keys_verified": true
+}
