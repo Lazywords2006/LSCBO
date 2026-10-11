@@ -54,6 +54,7 @@ def verify_figures():
             if name=='Fig6':
                 assert box is None and panel['title'] is None
             else:
+                assert panel['caption_fontsize_pt']==12.
                 assert abs((box[0]+box[2])/2-panel['panel_center_x_pt'])<1e-4
                 # The caption is below the axes in bottom-origin coordinates.
                 assert box[3] < float(doc[0].rect.height)-panel['panel_bottom_from_top_pt']

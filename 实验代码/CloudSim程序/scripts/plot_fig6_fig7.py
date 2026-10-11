@@ -155,7 +155,7 @@ def subcaptions(fig, axes, titles, columns):
             box = ax.get_position()
             caption = fig.text((box.x0 + box.x1) / 2, y,
                                titles[first + offset], ha="center", va="top",
-                               fontsize=11.0)
+                               fontsize=12.0)
             panels.append((ax, caption))
     return panels
 
@@ -178,6 +178,7 @@ def save_figure(fig, name, panels):
         assert axis_box[0] <= legend_box[0] < legend_box[2] <= axis_box[2]
         assert axis_box[1] <= legend_box[1] < legend_box[3] <= axis_box[3]
         records.append({"title": caption.get_text() if caption is not None else None,
+                        "caption_fontsize_pt": caption.get_fontsize() if caption is not None else None,
                         "ylabel": ax.get_ylabel(),
                         "axis_label_fontsize_pt": ax.yaxis.label.get_fontsize(),
                         "tick_label_fontsize_pt": ax.get_xticklabels()[0].get_fontsize(),

@@ -4,15 +4,16 @@
   "panels": [
     {
       "title": "(a) Makespan",
+      "caption_fontsize_pt": 12.0,
       "ylabel": "Makespan",
       "axis_label_fontsize_pt": 9.5,
       "tick_label_fontsize_pt": 8.5,
       "panel_center_x_pt": 138.12011208254143,
       "panel_bottom_from_top_pt": 175.78653061224492,
       "caption_bbox_from_bottom_pt": [
-        100.99511208254144,
-        249.5934693877551,
-        175.24511208254143,
+        97.80011208254143,
+        247.4334693877551,
+        178.44011208254142,
         260.3934693877551
       ],
       "axes_bbox_from_bottom_pt": [
@@ -58,15 +59,16 @@
     },
     {
       "title": "(b) Energy",
+      "caption_fontsize_pt": 12.0,
       "ylabel": "Energy",
       "axis_label_fontsize_pt": 9.5,
       "tick_label_fontsize_pt": 8.5,
       "panel_center_x_pt": 359.45544697257674,
       "panel_bottom_from_top_pt": 175.78653061224492,
       "caption_bbox_from_bottom_pt": [
-        330.6554469725768,
-        249.5934693877551,
-        388.25544697257675,
+        328.2254469725768,
+        247.4334693877551,
+        390.68544697257676,
         260.3934693877551
       ],
       "axes_bbox_from_bottom_pt": [
@@ -112,15 +114,16 @@
     },
     {
       "title": "(c) Cost",
+      "caption_fontsize_pt": 12.0,
       "ylabel": "Cost",
       "axis_label_fontsize_pt": 9.5,
       "tick_label_fontsize_pt": 8.5,
       "panel_center_x_pt": 138.12011208254143,
       "panel_bottom_from_top_pt": 400.14,
       "caption_bbox_from_bottom_pt": [
-        116.83511208254144,
-        25.240000000000006,
-        159.40511208254145,
+        115.03511208254143,
+        23.080000000000005,
+        161.20511208254143,
         36.040000000000006
       ],
       "axes_bbox_from_bottom_pt": [
@@ -166,15 +169,16 @@
     },
     {
       "title": "(d) Load imbalance",
+      "caption_fontsize_pt": 12.0,
       "ylabel": "Load imbalance",
       "axis_label_fontsize_pt": 9.5,
       "tick_label_fontsize_pt": 8.5,
       "panel_center_x_pt": 359.45544697257674,
       "panel_bottom_from_top_pt": 400.14,
       "caption_bbox_from_bottom_pt": [
-        306.3554469725768,
-        25.240000000000006,
-        412.55544697257676,
+        301.94544697257675,
+        23.080000000000005,
+        416.96544697257673,
         36.040000000000006
       ],
       "axes_bbox_from_bottom_pt": [

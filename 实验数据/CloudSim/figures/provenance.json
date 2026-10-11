@@ -94,5 +94,6 @@
   ],
   "Fig6_Fig7_display_units": false,
   "axis_label_fontsize_pt": 9.5,
-  "tick_label_fontsize_pt": 8.5
+  "tick_label_fontsize_pt": 8.5,
+  "Fig7_panel_title_fontsize_pt": 12.0
 }
