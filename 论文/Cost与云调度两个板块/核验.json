@@ -15,7 +15,7 @@
     {
       "name": "Cloud_Scheduling_Block",
       "pages": 11,
-      "sha256": "3bf79d2a8ce60ce238d40e784d756ce0e9ddfd72680627fd1459bb376846e278",
+      "sha256": "7f23e754f14eb79e6b93146b8d1b193e5cc450f49e0db9f941460a1478298cca",
       "raster_images": 0
     }
   ],
@@ -27,7 +27,7 @@
       "legend_position": "upper left",
       "legend_rows": 3,
       "legend_columns": 2,
-      "sha256": "ba4adbba9604392872d6691efd810a7c2c5685cf636dc2bde98899b832071225"
+      "sha256": "fd84529dd599530fbf4f92c015bd343f2ed1d68a9102d3e526ee3a75366ea4cd"
     },
     {
       "name": "Fig7",
@@ -36,7 +36,7 @@
       "legend_position": "upper left",
       "legend_rows": 2,
       "legend_columns": 3,
-      "sha256": "62bb874942f0f001d9e5c93fbd255901d3319472720ef1e3391b7e0ecfc35c0a"
+      "sha256": "df14ba91cfc28abf7c035bcf103eed54ba67b698e6afc69f4462a580cd18e8f6"
     },
     {
       "name": "Fig8",
@@ -50,5 +50,5 @@
   ],
   "formal_manuscript_unchanged": true,
   "all_section_4_2_data_audited": true,
-  "data_audit_sha256": "f4f0990aa6002c31804ef2b1c8e12779996b442ad98f8525415792546df2a142"
+  "data_audit_sha256": "eda396b36aae3b928e7b229a37dba30b6855a4ba7f6c7af18662b58f2f6118ee"
 }

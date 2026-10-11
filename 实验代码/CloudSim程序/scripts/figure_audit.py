@@ -28,8 +28,13 @@ def verify_figures():
         drawings=doc[0].get_drawings()
         text=doc[0].get_text();assert 'Greedy' not in text and 'Zoom' not in text
         assert len(layout['panels'])==(1 if name=='Fig6' else 4)
-        if name=='Fig6':assert '(b)' not in text
-        else:assert '(c) Cost' in text and 'Cost excess' not in text
+        if name=='Fig6':
+            assert '(b)' not in text and 'Final scalar objective' not in text
+            assert layout['panel_title_position']=='none'
+        else:
+            assert '(c) Cost' in text and 'Cost excess' not in text
+            assert layout['panels'][2]['ylabel']=='Cost' and 'Batch reservation cost' not in text
+            assert re.search(r'^Cost$',text,re.M)
         assert layout['each_panel_has_legend']
         for panel in layout['panels']:
             assert panel['legend_boxed'] and panel['covered_data_artists']==0
@@ -43,9 +48,12 @@ def verify_figures():
             assert panel['legend_rows']==(3 if name=='Fig6' else 2) and panel['legend_columns']==(2 if name=='Fig6' else 3)
             assert abs(legend_box[0]-axes_box[0]-anchor_x*(axes_box[2]-axes_box[0])-2.625)<1e-4
             box=panel['caption_bbox_from_bottom_pt']
-            assert abs((box[0]+box[2])/2-panel['panel_center_x_pt'])<1e-4
-            # The caption is below the axes in bottom-origin coordinates.
-            assert box[3] < float(doc[0].rect.height)-panel['panel_bottom_from_top_pt']
+            if name=='Fig6':
+                assert box is None and panel['title'] is None
+            else:
+                assert abs((box[0]+box[2])/2-panel['panel_center_x_pt'])<1e-4
+                # The caption is below the axes in bottom-origin coordinates.
+                assert box[3] < float(doc[0].rect.height)-panel['panel_bottom_from_top_pt']
         with localcontext() as ctx:
             ctx.prec=40
             for curve in layout['curves']:

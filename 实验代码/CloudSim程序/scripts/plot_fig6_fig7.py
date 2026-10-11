@@ -32,7 +32,7 @@ SCALES = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
 METRICS = ["makespan", "energy", "cost", "imbalance"]
 TITLES = ["(a) Makespan", "(b) Energy", "(c) Cost", "(d) Load imbalance"]
 UNITS = {"makespan": "Makespan (s)", "energy": "Energy (Wh)",
-         "cost": "Batch reservation cost (units)", "imbalance": "Load imbalance"}
+         "cost": "Cost", "imbalance": "Load imbalance"}
 STYLES = {
     "LSCBO": ("#E8302F", "LSCBO", 1.7),
     "CBO": ("#5B4373", "CBO", 1.0),
@@ -171,10 +171,11 @@ def save_figure(fig, name, panels):
             fig.get_figwidth()*72, fig.get_figheight()*72])
         assert axis_box[0] <= legend_box[0] < legend_box[2] <= axis_box[2]
         assert axis_box[1] <= legend_box[1] < legend_box[3] <= axis_box[3]
-        records.append({"title": caption.get_text(),
+        records.append({"title": caption.get_text() if caption is not None else None,
+                        "ylabel": ax.get_ylabel(),
                         "panel_center_x_pt": (box.x0 + box.x1) / 2 * fig.get_figwidth() * 72,
                         "panel_bottom_from_top_pt": (1 - box.y0) * fig.get_figheight() * 72,
-                        "caption_bbox_from_bottom_pt": [v * 72 / fig.dpi for v in caption.get_window_extent(renderer).extents],
+                        "caption_bbox_from_bottom_pt": [v * 72 / fig.dpi for v in caption.get_window_extent(renderer).extents] if caption is not None else None,
                         "axes_bbox_from_bottom_pt": axis_box.tolist(),
                         "legend_bbox_from_bottom_pt": legend_box.tolist(),
                         "legend_gid": leg.get_gid(),
@@ -204,7 +205,7 @@ def save_figure(fig, name, panels):
     fig.savefig(OUT / f"{name}.svg", facecolor="white")
     (OUT / f"{name}_layout.json").write_text(json.dumps({
         "data_sha256": hashlib.sha256(DATA.read_bytes()).hexdigest(),
-        "panel_title_position": "below x labels; centered on each panel",
+        "panel_title_position": "below x labels; centered on each panel" if any(caption is not None for _, caption in panels) else "none",
         "panels": records, "curves": curves, "absolute_cost_zoom": None,
         "legend_policy": "boxed shared position determined first from Fig7(d)",
         "each_panel_has_legend": True}, indent=2), encoding="utf-8")
@@ -251,7 +252,7 @@ def main():
         fig.subplots_adjust(left=.125, right=.985, bottom=.23, top=.96)
         line_panel(ax, means, "objective", "Mean objective $F$ (log scale)", logy=True)
         legend(ax, shared_position, anchor=(.01,1.))
-        panels = subcaptions(fig, [ax], ["Final scalar objective"], 1)
+        panels = [(ax, None)]
         save_figure(fig, "Fig6", panels)
         plt.close(fig)
 

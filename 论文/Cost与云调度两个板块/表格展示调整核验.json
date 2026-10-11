@@ -40,7 +40,7 @@
   "protected_unchanged_scientific_files": 46,
   "normalization_reference_disclosed_in_methods_and_raw_data": true,
   "direct_Greedy_initialization_truthfully_labelled": true,
-  "cloud_pdf_sha256": "3bf79d2a8ce60ce238d40e784d756ce0e9ddfd72680627fd1459bb376846e278",
+  "cloud_pdf_sha256": "7f23e754f14eb79e6b93146b8d1b193e5cc450f49e0db9f941460a1478298cca",
   "configuration_methods_displayed_individually": [
     "LSCBO",
     "Adapted CBO",

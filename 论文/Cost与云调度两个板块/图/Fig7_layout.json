@@ -4,6 +4,7 @@
   "panels": [
     {
       "title": "(a) Makespan",
+      "ylabel": "Makespan (s)",
       "panel_center_x_pt": 138.12011208254143,
       "panel_bottom_from_top_pt": 175.78653061224492,
       "caption_bbox_from_bottom_pt": [
@@ -54,6 +55,7 @@
     },
     {
       "title": "(b) Energy",
+      "ylabel": "Energy (Wh)",
       "panel_center_x_pt": 359.45544697257674,
       "panel_bottom_from_top_pt": 175.78653061224492,
       "caption_bbox_from_bottom_pt": [
@@ -104,6 +106,7 @@
     },
     {
       "title": "(c) Cost",
+      "ylabel": "Cost",
       "panel_center_x_pt": 138.12011208254143,
       "panel_bottom_from_top_pt": 400.14,
       "caption_bbox_from_bottom_pt": [
@@ -154,6 +157,7 @@
     },
     {
       "title": "(d) Load imbalance",
+      "ylabel": "Load imbalance",
       "panel_center_x_pt": 359.45544697257674,
       "panel_bottom_from_top_pt": 400.14,
       "caption_bbox_from_bottom_pt": [

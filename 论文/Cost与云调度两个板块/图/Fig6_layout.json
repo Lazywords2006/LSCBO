@@ -1,17 +1,13 @@
 {
   "data_sha256": "0ad513279ae21452734f8f7910577e695904d0aa6b008a9a043c55620208a4b3",
-  "panel_title_position": "below x labels; centered on each panel",
+  "panel_title_position": "none",
   "panels": [
     {
-      "title": "Final scalar objective",
+      "title": null,
+      "ylabel": "Mean objective $F$ (log scale)",
       "panel_center_x_pt": 251.04948661417325,
       "panel_bottom_from_top_pt": 185.72400000000002,
-      "caption_bbox_from_bottom_pt": [
-        193.13448661417323,
-        11.416000000000002,
-        308.9644866141732,
-        22.216000000000005
-      ],
+      "caption_bbox_from_bottom_pt": null,
       "axes_bbox_from_bottom_pt": [
         56.542677165354334,
         55.476,

@@ -79,5 +79,7 @@
     "(b) Energy",
     "(c) Cost",
     "(d) Load imbalance"
-  ]
+  ],
+  "Fig7_cost_axis_label": "Cost",
+  "Fig6_extra_panel_title": null
 }
