@@ -55,12 +55,12 @@
       "data_points": 60,
       "independent_legends": 1,
       "all_legends_boxed": true,
-      "legend_rows": 3,
-      "legend_columns": 2,
+      "legend_rows": 2,
+      "legend_columns": 3,
       "legend_position": "upper left",
       "legend_matches_curves": true,
       "legend_data_overlaps": 0,
-      "sha256": "fd84529dd599530fbf4f92c015bd343f2ed1d68a9102d3e526ee3a75366ea4cd"
+      "sha256": "949d43dbb423f708abde014a2adab35dc1525c9dd7e48a04a29a0ad9f82734d1"
     },
     {
       "name": "Fig7",

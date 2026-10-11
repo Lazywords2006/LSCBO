@@ -45,7 +45,7 @@ def verify_figures():
             assert axes_box[1]<=legend_box[1]<legend_box[3]<=axes_box[3]
             anchor_x=.01 if name=='Fig6' else .08
             assert panel['legend_anchor']==[anchor_x,1.] and panel['legend_position']=='upper left'
-            assert panel['legend_rows']==(3 if name=='Fig6' else 2) and panel['legend_columns']==(2 if name=='Fig6' else 3)
+            assert panel['legend_rows']==2 and panel['legend_columns']==3
             assert abs(legend_box[0]-axes_box[0]-anchor_x*(axes_box[2]-axes_box[0])-2.625)<1e-4
             box=panel['caption_bbox_from_bottom_pt']
             if name=='Fig6':
@@ -117,7 +117,7 @@ def verify_figures():
                     assert not MplPath(actual_points).intersects_bbox(Bbox.from_extents(*top_box),filled=False)
         report.append({'name':name,'vector_curves':len(layout['curves']),'data_points':10*len(layout['curves']),
                        'independent_legends':len(layout['panels']),'all_legends_boxed':True,
-                       'legend_rows':3 if name=='Fig6' else 2,'legend_columns':2 if name=='Fig6' else 3,
+                       'legend_rows':2,'legend_columns':3,
                        'legend_position':positions[-1],'legend_matches_curves':True,'legend_data_overlaps':0,
                        'sha256':sha(folder/(name+'.pdf'))})
     folder=OUT/'图';fig8=fitz.open(folder/'Fig8.pdf');assert len(fig8)==1 and not fig8[0].get_images()

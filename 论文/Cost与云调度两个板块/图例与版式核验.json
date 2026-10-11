@@ -23,7 +23,7 @@
   "max_vector_coordinate_error_pt": 2.2961629269957484e-05,
   "figure_width_mm": 159.576,
   "visual_review_passed": true,
-  "cloud_pdf_sha256": "ee50031435236b7f9d6da3b889f8a6712e4b642cde233b947a4db9169049b97a",
+  "cloud_pdf_sha256": "a00565466ed27a8c1c188b752b2740bbe6c4b377c908cee0a6e20a060667dedf",
   "legend_anchor_by_figure": {
     "Fig6": [
       0.01,
@@ -41,8 +41,8 @@
   "Fig6_legend_left_margin_pt": 6.515136188976378,
   "legend_layout_by_figure": {
     "Fig6": {
-      "rows": 3,
-      "columns": 2
+      "rows": 2,
+      "columns": 3
     },
     "Fig7": {
       "rows": 2,

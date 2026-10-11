@@ -251,7 +251,7 @@ def main():
         fig, ax = plt.subplots(figsize=(FIGURE_WIDTH_INCHES, 3.35))
         fig.subplots_adjust(left=.125, right=.985, bottom=.23, top=.96)
         line_panel(ax, means, "objective", "Mean objective $F$ (log scale)", logy=True)
-        legend(ax, shared_position, anchor=(.01,1.))
+        legend(ax, shared_position, anchor=(.01,1.), columns=3)
         panels = [(ax, None)]
         save_figure(fig, "Fig6", panels)
         plt.close(fig)

@@ -16,8 +16,8 @@
       ],
       "legend_bbox_from_bottom_pt": [
         63.05781335433071,
-        198.32699999999997,
-        146.42781335433068,
+        207.77699999999996,
+        182.59281335433067,
         228.92699999999996
       ],
       "legend_gid": "legend_Fig6_0",
@@ -35,8 +35,8 @@
         0.01,
         1.0
       ],
-      "legend_rows": 3,
-      "legend_columns": 2,
+      "legend_rows": 2,
+      "legend_columns": 3,
       "covered_data_artists": 0,
       "legend_headroom_steps": 0,
       "original_y_limits": [
