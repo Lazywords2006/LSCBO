@@ -5,6 +5,7 @@ import json
 import re
 import zipfile
 import xml.etree.ElementTree as ET
+import sys
 from decimal import Decimal,localcontext
 import fitz
 import numpy as np
@@ -14,6 +15,8 @@ from matplotlib.transforms import Bbox
 
 ROOT=Path(__file__).resolve().parents[3]
 OUT=ROOT/"实验数据/CloudSim"
+sys.path.insert(0,str(ROOT/'实验代码'))
+from verify_line_identity import identity,check_curve_and_legend,check_pdf_stroke
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -70,10 +73,10 @@ def verify_figures():
             ctx.prec=40
             for curve in layout['curves']:
                 metric='objective' if name=='Fig6' else ['makespan','energy','cost','imbalance'][curve['panel']]
-                style={k:curve[k] for k in ['color','linewidth','linestyle','marker']}
+                style=identity(curve)
                 if curve['algorithm'] in styles:assert styles[curve['algorithm']]==style
                 styles[curve['algorithm']]=style
-                assert style['linestyle']=='-' and style['marker']=='None'
+                check_curve_and_legend(xml,curve,name,drawings)
                 for n,value in zip(curve['x'],curve['y']):
                     block=raw[raw.taskCount.eq(str(n))&raw.algorithm.eq(curve['algorithm'])]
                     assert len(block)==30 and set(block.seed)=={str(i) for i in range(43,73)}
@@ -84,7 +87,7 @@ def verify_figures():
                 expected=np.asarray(curve['expected_vector_points_pt'])
                 assert vertices.shape==(10,2) and np.max(abs(vertices-expected))<1e-5
                 props={a.strip():b.strip() for a,b in (x.strip().split(':',1) for x in path.attrib['style'].split(';') if ':' in x)}
-                assert props['stroke']==curve['color'].lower() and 'stroke-dasharray' not in props
+                assert props['stroke']==curve['color'].lower()
                 assert abs(float(props.get('stroke-width',1))-curve['linewidth'])<1e-9
                 color=tuple(int(curve['color'][i:i+2],16)/255 for i in [1,3,5]);matches=[]
                 for drawing in drawings:
@@ -93,7 +96,7 @@ def verify_figures():
                     points=np.array([list(items[0][1])]+[list(i[2]) for i in items])
                     if np.allclose(drawing['color'],color,rtol=0,atol=1e-6) and np.max(abs(points-expected))<1e-4:
                         assert abs(drawing['width']-curve['linewidth'])<1e-6
-                        assert drawing['dashes'].replace(' ','')=='[]0';matches.append(float(np.max(abs(points-expected))))
+                        check_pdf_stroke(drawing,curve);matches.append(float(np.max(abs(points-expected))))
                 assert len(matches)==1;errors.extend(matches)
         # Read back every independent legend, including all four Fig7 panels.
         methods=['LSCBO','WOA','PSO','CBO','AOA','GWO']
@@ -109,19 +112,6 @@ def verify_figures():
             assert 'fill: #ffffff' in frame.attrib['style'] and 'stroke: #6d7380' in frame.attrib['style']
             bottom_box=panel['legend_bbox_from_bottom_pt']
             top_box=[bottom_box[0],doc[0].rect.height-bottom_box[3],bottom_box[2],doc[0].rect.height-bottom_box[1]]
-            for method in methods:
-                line_group=xml.find(f".//s:g[@id='legend_line_{name}_{index}_{method}']",ns)
-                path=line_group.find('s:path',ns)
-                props={a.strip():b.strip() for a,b in (v.strip().split(':',1) for v in path.attrib['style'].split(';') if ':' in v)}
-                assert props['stroke']==styles[method]['color'].lower() and 'stroke-dasharray' not in props
-                assert abs(float(props.get('stroke-width',1))-styles[method]['linewidth'])<1e-9
-                color=tuple(int(styles[method]['color'][i:i+2],16)/255 for i in [1,3,5])
-                actual=[d for d in drawings if d.get('color') and np.allclose(d['color'],color,rtol=0,atol=1e-6)
-                        and len(d['items'])<=3 and all(item[0]=='l' for item in d['items'])
-                        and d['rect'].x0>=top_box[0] and d['rect'].x1<=top_box[2]
-                        and d['rect'].y0>=top_box[1] and d['rect'].y1<=top_box[3]]
-                assert len(actual)==1 and abs(actual[0]['width']-styles[method]['linewidth'])<1e-6
-                assert actual[0]['dashes'].replace(' ','')=='[]0'
             for curve in layout['curves']:
                 if curve['panel']==index:
                     actual_points=np.array(re.findall(r'[ML]\s+([-+0-9.e]+)\s+([-+0-9.e]+)',

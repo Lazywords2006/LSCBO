@@ -6,6 +6,7 @@ import numpy as np
 from matplotlib.path import Path as MplPath
 from matplotlib.transforms import Bbox
 from generate_cec_figures import load_means,METHODS,STYLES
+from verify_line_identity import identity,check_curve_and_legend,check_pdf_stroke
 
 ROOT=Path(__file__).resolve().parents[1]
 NS={'s':'http://www.w3.org/2000/svg'}
@@ -66,7 +67,7 @@ def check_panel(panel,xml,doc,index):
             assert set(font_sizes(axis))<={8.5,9.5}
     return bounds,pdf_box
 
-def verify_cec(folder):
+def verify_cec(folder,identities):
     means=load_means(ROOT/'实验数据/数据');summary=means.groupby(['evaluations','algorithm'])['rank'].mean()
     final=means[means.evaluations.eq(300000)].groupby('algorithm')['rank'].mean()
     names=['Fig1','Fig2','Fig3',*[f'Fig3_F{n}' for n in [1,3,5,10,15,20]]]
@@ -81,6 +82,9 @@ def verify_cec(folder):
             boxes.append(check_panel(panel,xml,doc,index));assert panel['legend_columns']==5
         for curve in layout['curves']:
             alg=curve['algorithm'];function=curve['function']
+            if alg in identities:assert identities[alg]==identity(curve)
+            identities[alg]=identity(curve)
+            check_curve_and_legend(xml,curve,name,drawings)
             values=summary.xs(alg,level='algorithm').sort_index().to_numpy() if function is None else means[means.function.eq(function)&means.algorithm.eq(alg)].sort_values('evaluations').mean_error.to_numpy()
             assert np.allclose(curve['y'],values,rtol=0,atol=1e-10) and curve['x']==list(range(3,301,3))
             group=xml.find(f".//s:g[@id='{curve['gid']}']",NS);path=group.find('s:path',NS)
@@ -99,7 +103,8 @@ def verify_cec(folder):
                 if not drawing.get('color') or not np.allclose(drawing['color'],color,rtol=0,atol=1e-6):continue
                 segments=[item for item in drawing['items'] if item[0]=='l']
                 points=np.array([[*segments[0][1]],*[[*item[2]] for item in segments]]) if segments else np.empty((0,2))
-                if points.shape==expected.shape and np.max(abs(points-expected))<1e-4:matches.append(drawing);max_error=max(max_error,float(np.max(abs(points-expected))))
+                if points.shape==expected.shape and np.max(abs(points-expected))<1e-4:
+                    check_pdf_stroke(drawing,curve);matches.append(drawing);max_error=max(max_error,float(np.max(abs(points-expected))))
             assert len(matches)==1,curve['gid']
             legend_line=xml.find(f".//s:g[@id='legend_line_{name}_{curve['panel']}_{alg}']/s:path",NS)
             assert props(legend_line)['stroke'].strip()==style['stroke'].strip()
@@ -109,6 +114,8 @@ def verify_cec(folder):
             use=xml.find(f".//s:g[@id='{point['gid']}']//s:use",NS)
             actual=np.array([[float(use.attrib['x']),float(use.attrib['y'])]])
             assert np.max(abs(actual-np.array(point['expected_vector_points_pt'])))<1e-5
+            assert props(use)['stroke'].strip()==STYLES[point['algorithm']][0].lower()
+            assert props(use)['fill'].strip()==STYLES[point['algorithm']][0].lower()
         results.append({'name':name,'panels':len(layout['panels']),'curve_points':len(layout['curves'])*100,
                         'actual_PDF_and_SVG_verified':True,'sha256':sha(folder/f'{name}.pdf')})
     return results,max_error
@@ -118,15 +125,19 @@ def main():
     parser.add_argument('--cec',type=Path,default=ROOT/'实验数据/CEC2017/figures')
     parser.add_argument('--cloud',type=Path,default=ROOT/'实验数据/CloudSim/figures')
     parser.add_argument('--report',type=Path,required=True)
-    args=parser.parse_args();cec,error=verify_cec(args.cec)
+    args=parser.parse_args();identities={};cec,error=verify_cec(args.cec,identities)
     for name in ['Fig6','Fig7','Fig8']:
         layout=json.loads((args.cloud/f'{name}_layout.json').read_text(encoding='utf-8'))
         xml=ET.parse(args.cloud/f'{name}.svg').getroot();doc=fitz.open(args.cloud/f'{name}.pdf');check_text(doc)
         panels=layout['panels'] if name!='Fig8' else [layout]
         for index,panel in enumerate(panels):check_panel(panel,xml,doc,index)
+        for curve in layout.get('curves',[]):
+            assert identities[curve['algorithm']]==identity(curve)
+            check_curve_and_legend(xml,curve,name,doc[0].get_drawings())
     report={'all_checks_passed':True,'CEC2017':cec,'axis_label_fontsize_pt':9.5,'tick_label_fontsize_pt':8.5,
             'panel_title_fontsize_pt':12,'legend_fontsize_pt':7.5,'legend_rows':2,
-            'legend_left_margin_pt':12,'legend_top_margin_pt':2.625,'max_CEC_vector_error_pt':error}
+            'legend_left_margin_pt':12,'legend_top_margin_pt':2.625,'max_CEC_vector_error_pt':error,
+            'same_algorithm_color_dash_width_and_marker_across_CEC_and_cloud':True,'algorithm_styles':identities}
     args.report.parent.mkdir(parents=True,exist_ok=True);args.report.write_text(json.dumps(report,indent=2),encoding='utf-8')
     print(json.dumps({'all_checks_passed':True,'cec_plots':len(cec),'cec_curve_points':sum(r['curve_points'] for r in cec),'max_vector_error_pt':error},indent=2))
 if __name__=='__main__':main()

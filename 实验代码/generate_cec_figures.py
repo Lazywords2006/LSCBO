@@ -22,7 +22,7 @@ from matplotlib.lines import Line2D
 from matplotlib.ticker import LogLocator, NullFormatter
 import numpy as np
 import pandas as pd
-from figure_style import configure,grid,boxed_legend,place_captions,panel_metrics,COLORS,FIGURE_WIDTH_INCHES,TICK_LABEL_SIZE
+from figure_style import configure,grid,boxed_legend,place_captions,panel_metrics,COLORS,FIGURE_WIDTH_INCHES,TICK_LABEL_SIZE,LINE_STYLES,algorithm_line,line_metadata
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -31,21 +31,9 @@ FUNCTIONS = [1, *range(3, 31)]
 CHECKPOINTS = list(range(3000, 300001, 3000))
 SELECTED = [1, 3, 5, 10, 15, 20]
 EXPECTED_RANKS = np.array([49, 77, 97, 134, 139, 146, 199, 216, 248]) / 29
-# Okabe--Ito colors plus neutral lines; redundant dashes remain legible in gray.
-STYLES = {
-    "LSCBO": ("#D55E00", "-", 1.8),
-    "SA": ("#0072B2", "-", 1.4),
-    "PSO": ("#009E73", "--", 1.25),
-    "HLBO": ("#E69F00", "-.", 1.2),
-    "GWCA": ("#CC79A7", (0, (5, 1, 1, 1)), 1.2),
-    "CBO": ("#333333", "--", 1.3),
-    "GWO": ("#8A6D00", (0, (6, 2)), 1.15),
-    "AOA": ("#666666", ":", 1.3),
-    "WOA": ("#777777", (0, (1, 2, 1, 2, 4, 2)), 1.15),
-}
 INPUT_NAME = "cec2017_checkpoint_means.csv"
 PROVENANCE_NAME = "cec2017_figures.provenance.json"
-STYLES = {method:(COLORS[method],STYLES[method][1],1.7 if method=="LSCBO" else 1.) for method in METHODS}
+STYLES = {method:(COLORS[method],*LINE_STYLES[method]) for method in METHODS}
 DISPLAY_LABELS = {method:method for method in METHODS}
 DISPLAY_LABELS["LSCBO"] = "LSCBO-core"
 
@@ -162,7 +150,7 @@ def configure_style():
 def handles(rank=False):
     if rank:
         return [Line2D([],[],color=STYLES[a][0],marker='D' if a=='LSCBO' else 'o',linestyle='None',markersize=4,label=DISPLAY_LABELS[a]) for a in METHODS]
-    return [Line2D([],[],color=STYLES[a][0],linestyle=STYLES[a][1],linewidth=STYLES[a][2],label=DISPLAY_LABELS[a]) for a in METHODS]
+    return [Line2D([],[],**algorithm_line(a),label=DISPLAY_LABELS[a]) for a in METHODS]
 
 def save(fig,name,output,editable,captions=None):
     output.mkdir(parents=True,exist_ok=True);editable.mkdir(parents=True,exist_ok=True)
@@ -181,8 +169,7 @@ def save(fig,name,output,editable,captions=None):
             display=ax.transData.transform(coordinates)*72/fig.dpi;display[:,1]=fig.get_figheight()*72-display[:,1]
             curves.append({'gid':gid,'panel':index,'algorithm':method,'function':record['function'],
                 'x':coordinates[:,0].tolist(),'y':coordinates[:,1].tolist(),'color':line.get_color(),
-                'linewidth':line.get_linewidth(),'linestyle':line.get_linestyle(),
-                'dash_pattern':line._dash_pattern,'expected_vector_points_pt':display.tolist()})
+                **line_metadata(line),'expected_vector_points_pt':display.tolist()})
         for collection in ax.collections:
             method=collection.get_label()
             if method not in METHODS:continue
@@ -225,7 +212,7 @@ def draw_aggregate(means,output,editable):
         if method in {'LSCBO','CBO'}:
             half_width=1.96*data['std'].to_numpy()/np.sqrt(29)
             ax.fill_between(x,y-half_width,y+half_width,color=color,alpha=.09,linewidth=0)
-        ax.plot(x,y,color=color,linestyle=linestyle,linewidth=width,label=method)
+        ax.plot(x,y,**algorithm_line(method),markevery=(METHODS.index(method)%5,12),label=method)
     ax.set_xlim(0,300);ax.set_xticks([0,50,100,150,200,250,300]);ax.set_ylim(9.15,.65);ax.set_yticks(range(1,10))
     ax.set_xlabel('Objective evaluations (thousands)',labelpad=3);ax.set_ylabel('Mean function rank (lower is better)',labelpad=3)
     grid(ax,'y');boxed_legend(ax,handles());save(fig,'Fig2',output,editable)
@@ -234,7 +221,7 @@ def function_panel(ax,means,function):
     ax._cec_function=function;subset=means[means.function.eq(function)]
     for method in reversed(METHODS):
         data=subset[subset.algorithm.eq(method)].sort_values('evaluations');color,linestyle,width=STYLES[method]
-        ax.plot(data.evaluations/1000,data.mean_error,color=color,linestyle=linestyle,linewidth=width,label=method)
+        ax.plot(data.evaluations/1000,data.mean_error,**algorithm_line(method),markevery=(METHODS.index(method)%5,12),label=method)
     ax.set_yscale('log');ax.set_xlim(0,300);ax.set_xticks([0,100,200,300])
     ax.set_xlabel('Objective evaluations (thousands)',labelpad=3);ax.set_ylabel('Mean benchmark error',labelpad=3)
     grid(ax,'y')

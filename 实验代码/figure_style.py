@@ -19,6 +19,44 @@ COLORS={'LSCBO':'#E8302F','CBO':'#5B4373','PSO':'#0072B2','GWO':'#2CA02C','AOA':
         'SA':'#56B4E9','HLBO':'#E69F00','GWCA':'#CC79A7','GREEDY_LPT':'#454545',
         'direct5400':'#56B4E9','direct6000':'#009E73','weights':'#D62728','vms':'#0072B2'}
 
+# Restore the archived Fig4 stroke/marker identities; retain the current colors.
+# Both CEC and cloud plots import this single mapping.
+LINE_STYLES={'LSCBO':('-',1.65),'SA':('-',1.05),'PSO':('-.',1.15),
+             'HLBO':('-.',1.05),'GWCA':((0,(5,1,1,1)),1.05),
+             'CBO':('--',1.3),'GWO':((0,(6,2)),1.05),'AOA':(':',1.15),
+             'WOA':((0,(1,2,1,2,4,2)),1.05)}
+MARKERS={'LSCBO':'o','SA':'s','PSO':'^','HLBO':'D','GWCA':'P',
+         'CBO':'v','GWO':'x','AOA':'+','WOA':'*'}
+MARKER_SIZE=3.2
+MARKER_EDGE_WIDTH=.8
+
+def algorithm_line(method):
+    """One algorithm has one color, stroke, width and hollow marker everywhere."""
+    linestyle,width=LINE_STYLES[method]
+    return dict(color=COLORS[method],linestyle=linestyle,linewidth=width,
+                marker=MARKERS[method],markersize=MARKER_SIZE,
+                markerfacecolor='white',markeredgecolor=COLORS[method],
+                markeredgewidth=MARKER_EDGE_WIDTH)
+
+def marker_indices(line):
+    count=len(line.get_xdata());every=line.get_markevery()
+    if every is None:return np.arange(count)
+    if isinstance(every,int):return np.arange(0,count,every)
+    if isinstance(every,tuple):return np.arange(every[0],count,every[1])
+    raise ValueError('Only explicit checkpoint-index marker sampling is used')
+
+def line_metadata(line):
+    fig=line.figure;points=np.column_stack((line.get_xdata(),line.get_ydata()))
+    display=line.get_transform().transform(points)*72/fig.dpi
+    display[:,1]=fig.get_figheight()*72-display[:,1]
+    indices=marker_indices(line)
+    return dict(color=line.get_color(),linewidth=line.get_linewidth(),
+                linestyle=line.get_linestyle(),dash_pattern=line._dash_pattern,
+                marker=line.get_marker(),markersize=line.get_markersize(),
+                markerfacecolor=line.get_markerfacecolor(),markeredgecolor=line.get_markeredgecolor(),
+                markeredgewidth=line.get_markeredgewidth(),markevery=line.get_markevery(),
+                marker_indices=indices.tolist(),expected_marker_points_pt=display[indices].tolist())
+
 def configure():
     plt.rcParams.update({'font.family':'DejaVu Sans','font.size':AXIS_LABEL_SIZE,
         'axes.labelsize':AXIS_LABEL_SIZE,'axes.titlesize':PANEL_TITLE_SIZE,
@@ -38,6 +76,12 @@ def legend_anchor(axis):
 
 def covered_artists(axis,box,renderer):
     count=sum(line.get_path().transformed(line.get_transform()).intersects_bbox(box,filled=False) for line in axis.lines)
+    for line in axis.lines:
+        if line.get_marker() in [None,'None','']:continue
+        points=line.get_transform().transform(np.column_stack((line.get_xdata(),line.get_ydata())))[marker_indices(line)]
+        radius=(line.get_markersize()+line.get_markeredgewidth())/2*axis.figure.dpi/72
+        expanded=Bbox.from_extents(box.x0-radius,box.y0-radius,box.x1+radius,box.y1+radius)
+        count+=sum(expanded.contains(*point) for point in points)
     count+=sum(patch.get_path().transformed(patch.get_transform()).intersects_bbox(box,filled=True) for patch in axis.patches)
     for collection in axis.collections:
         if isinstance(collection,PathCollection):

@@ -12,41 +12,82 @@
   "Fig6_panels": 1,
   "Fig7_panel_labels": "below and centered",
   "line_styles": {
-    "LSCBO": [
-      "#E8302F",
-      "LSCBO",
-      1.7
-    ],
-    "CBO": [
-      "#5B4373",
-      "CBO",
-      1.0
-    ],
-    "PSO": [
-      "#0072B2",
-      "PSO",
-      1.0
-    ],
-    "GWO": [
-      "#2CA02C",
-      "GWO",
-      1.0
-    ],
-    "WOA": [
-      "#8A6420",
-      "WOA",
-      1.0
-    ],
-    "AOA": [
-      "#A05A78",
-      "AOA",
-      1.0
-    ],
-    "GREEDY_LPT": [
-      "#2B2F33",
-      "Greedy-LPT",
-      1.4
-    ]
+    "LSCBO": {
+      "color": "#E8302F",
+      "linestyle": "-",
+      "linewidth": 1.65,
+      "marker": "o",
+      "markersize": 3.2,
+      "markerfacecolor": "white",
+      "markeredgecolor": "#E8302F",
+      "markeredgewidth": 0.8
+    },
+    "CBO": {
+      "color": "#5B4373",
+      "linestyle": "--",
+      "linewidth": 1.3,
+      "marker": "v",
+      "markersize": 3.2,
+      "markerfacecolor": "white",
+      "markeredgecolor": "#5B4373",
+      "markeredgewidth": 0.8
+    },
+    "PSO": {
+      "color": "#0072B2",
+      "linestyle": "-.",
+      "linewidth": 1.15,
+      "marker": "^",
+      "markersize": 3.2,
+      "markerfacecolor": "white",
+      "markeredgecolor": "#0072B2",
+      "markeredgewidth": 0.8
+    },
+    "GWO": {
+      "color": "#2CA02C",
+      "linestyle": [
+        0,
+        [
+          6,
+          2
+        ]
+      ],
+      "linewidth": 1.05,
+      "marker": "x",
+      "markersize": 3.2,
+      "markerfacecolor": "white",
+      "markeredgecolor": "#2CA02C",
+      "markeredgewidth": 0.8
+    },
+    "WOA": {
+      "color": "#8A6420",
+      "linestyle": [
+        0,
+        [
+          1,
+          2,
+          1,
+          2,
+          4,
+          2
+        ]
+      ],
+      "linewidth": 1.05,
+      "marker": "*",
+      "markersize": 3.2,
+      "markerfacecolor": "white",
+      "markeredgecolor": "#8A6420",
+      "markeredgewidth": 0.8
+    },
+    "AOA": {
+      "color": "#A05A78",
+      "linestyle": ":",
+      "linewidth": 1.15,
+      "marker": "+",
+      "markersize": 3.2,
+      "markerfacecolor": "white",
+      "markeredgecolor": "#A05A78",
+      "markeredgewidth": 0.8
+    }
   },
   "Fig8_source": "D:\\Code\\LSCBO\\论文\\整批租赁修订内容\\整合结果\\fig8_profile_bootstrap.csv",
   "legend_reference_panel": "Fig7(d)",
@@ -120,5 +161,7 @@
   "legend_fontsize_pt": 7.5,
   "panel_title_fontsize_pt": 12,
   "all_data_plots_follow_Fig7_standard": true,
-  "legend_top_margin_pt": 2.625
+  "legend_top_margin_pt": 2.625,
+  "same_algorithm_style_across_CEC_and_cloud": true,
+  "Fig4_archived_strokes_and_markers_restored": true
 }

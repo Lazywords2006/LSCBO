@@ -20,10 +20,11 @@ import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 from matplotlib.ticker import FixedLocator, MaxNLocator, NullLocator, ScalarFormatter
 import numpy as np
+from matplotlib.transforms import Bbox
 
 RELEASE = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from publication_style import WIDTH_INCHES, grid, AXIS_LABEL_SIZE, TICK_LABEL_SIZE, PANEL_TITLE_SIZE, LEGEND_LEFT_MARGIN_PT  # noqa: E402
+from publication_style import WIDTH_INCHES, grid, AXIS_LABEL_SIZE, TICK_LABEL_SIZE, PANEL_TITLE_SIZE, LEGEND_LEFT_MARGIN_PT, configure, algorithm_line, line_metadata, covered_artists  # noqa: E402
 
 OUT = RELEASE / "实验数据/CloudSim/figures"
 DATA = RELEASE / "实验数据/CloudSim/data/冷启动_3990行.csv"
@@ -33,15 +34,6 @@ METRICS = ["makespan", "energy", "cost", "imbalance"]
 TITLES = ["(a) Makespan", "(b) Energy", "(c) Cost", "(d) Load imbalance"]
 UNITS = {"makespan": "Makespan", "energy": "Energy",
          "cost": "Cost", "imbalance": "Load imbalance"}
-STYLES = {
-    "LSCBO": ("#E8302F", "LSCBO", 1.7),
-    "CBO": ("#5B4373", "CBO", 1.0),
-    "PSO": ("#0072B2", "PSO", 1.0),
-    "GWO": ("#2CA02C", "GWO", 1.0),
-    "WOA": ("#8A6420", "WOA", 1.0),
-    "AOA": ("#A05A78", "AOA", 1.0),
-    "GREEDY_LPT": ("#2B2F33", "Greedy-LPT", 1.4),
-}
 ORDER = ["LSCBO", "WOA", "PSO", "CBO", "AOA", "GWO"]
 FIGURE_WIDTH_INCHES = WIDTH_INCHES * 1.22
 
@@ -62,9 +54,8 @@ def load():
 
 def line_panel(ax, means, metric, ylabel, logy=False):
     for m in ORDER:
-        c, lb, lw = STYLES[m]
-        ax.plot(SCALES, [means[(s, m, metric)] for s in SCALES], color=c,
-                linewidth=lw, label=lb, zorder=7 if m == "LSCBO" else 4)
+        ax.plot(SCALES, [means[(s, m, metric)] for s in SCALES], **algorithm_line(m),
+                label=m, zorder=7 if m == "LSCBO" else 4)
     ax.set_xlabel("Number of tasks", labelpad=3, fontsize=AXIS_LABEL_SIZE)
     ax.set_ylabel(ylabel, labelpad=3, fontsize=AXIS_LABEL_SIZE)
     ax.xaxis.set_major_locator(MaxNLocator(nbins=6))
@@ -98,8 +89,9 @@ def legend(ax, location="upper left", anchor=None, columns=3):
         leg.get_frame().set_linewidth(.65)
         ax.figure.canvas.draw()
         box = leg.get_window_extent(ax.figure.canvas.get_renderer())
-        covered = sum(line.get_path().transformed(line.get_transform()).intersects_bbox(box, filled=False)
-                      for line in handles)
+        clearance=2*ax.figure.dpi/72
+        data_box=Bbox.from_extents(box.x0,box.y0-clearance,box.x1+clearance,box.y1)
+        covered = covered_artists(ax,data_box,ax.figure.canvas.get_renderer())
         if covered == 0:
             leg._chosen_location = location
             leg._covered_data_artists = 0
@@ -121,20 +113,18 @@ def legend(ax, location="upper left", anchor=None, columns=3):
 
 def relative_cost_panel(ax, means):
     for m in ORDER:
-        color, label, width = STYLES[m]
         values = [100 * (means[(s, m, "cost")] / means[(s, "LSCBO", "cost")] - 1)
                   for s in SCALES]
-        ax.plot(SCALES, values, color=color, linewidth=width, linestyle="-",
-                marker=None, label=label, zorder=7 if m == "LSCBO" else 4)
+        ax.plot(SCALES, values, **algorithm_line(m), label=m, zorder=7 if m == "LSCBO" else 4)
     ax.set_xlabel("Number of tasks", labelpad=3)
-    ax.set_ylabel("Cost excess over LSCBO (%)", labelpad=3, fontsize=9.4)
+    ax.set_ylabel("Cost excess over LSCBO (%)", labelpad=3, fontsize=AXIS_LABEL_SIZE)
     xpad = .03 * (SCALES[-1] - SCALES[0])
     ax.set_xlim(SCALES[0] - xpad, SCALES[-1] + xpad)
     ax.set_ylim(-.65, 18.4)
     ax.set_xticks([200, 400, 600, 800, 1000])
     ax.set_yticks([0, 4, 8, 12, 16])
     grid(ax, which="y")
-    ax.tick_params(labelsize=9.2, length=2.6, pad=2.5)
+    ax.tick_params(labelsize=TICK_LABEL_SIZE, length=2.6, pad=2.5)
 
 
 def subcaptions(fig, axes, titles, columns):
@@ -208,12 +198,11 @@ def save_figure(fig, name, panels):
             display[:, 1] = fig.get_figheight() * 72 - display[:, 1]
             curves.append({"gid": gid, "panel": panel_index, "algorithm": method,
                            "x": np.asarray(line.get_xdata()).tolist(), "y": np.asarray(line.get_ydata()).tolist(),
-                           "color": line.get_color(), "linewidth": line.get_linewidth(),
-                           "linestyle": line.get_linestyle(), "marker": line.get_marker(),
+                           **line_metadata(line),
                            "expected_vector_points_pt": display.tolist()})
     fig.savefig(OUT / f"{name}.png", dpi=300, facecolor="white")
-    fig.savefig(OUT / f"{name}.pdf", facecolor="white")
-    fig.savefig(OUT / f"{name}.svg", facecolor="white")
+    fig.savefig(OUT / f"{name}.pdf", facecolor="white",metadata={'CreationDate':None,'ModDate':None})
+    fig.savefig(OUT / f"{name}.svg", facecolor="white",metadata={'Date':None})
     (OUT / f"{name}_layout.json").write_text(json.dumps({
         "data_sha256": hashlib.sha256(DATA.read_bytes()).hexdigest(),
         "panel_title_position": "below x labels; centered on each panel" if any(caption is not None for _, caption in panels) else "none",
@@ -231,8 +220,7 @@ def main():
     parser.add_argument("--cost-display", choices=["relative", "absolute"], default="absolute")
     args = parser.parse_args()
     OUT, DATA = args.out, args.data
-    plt.rcParams.update({"pdf.fonttype": 42, "svg.fonttype": "none", "path.simplify": False,
-                         "font.family": "DejaVu Sans", "font.size": 10.5, "axes.labelsize": 10.5})
+    configure()
     means = load()
     OUT.mkdir(parents=True, exist_ok=True)
 
