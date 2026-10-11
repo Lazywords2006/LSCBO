@@ -2,8 +2,9 @@
   "scope": "Presentation only; no optimization or normalization change",
   "table_projection": {
     "configuration_map": {
-      "retained_rows": 2,
-      "retained_values_exactly_match_previous": true
+      "retained_rows": 6,
+      "method_labels_separate": true,
+      "original_per_method_parameters_unchanged": true
     },
     "cloud_main_objective": {
       "retained_rows": 10,
@@ -36,9 +37,19 @@
   },
   "standalone_reference_algorithm_rows_columns_removed": true,
   "all_retained_values_exact": true,
-  "protected_unchanged_scientific_files": 47,
+  "protected_unchanged_scientific_files": 55,
   "figure_resources_in_standalone_TeX_unchanged": true,
   "normalization_reference_disclosed_in_methods_and_raw_data": true,
   "direct_Greedy_initialization_truthfully_labelled": true,
-  "cloud_pdf_sha256": "bedbbfaabc731156d4ff6b3cd057da082faf2ec0713adac39aa4c4b56f48ead7"
+  "cloud_pdf_sha256": "53895f67bc2b52028377653b548c37034c48241e03bf5bf3201ffdb69dafa8eb",
+  "configuration_methods_displayed_individually": [
+    "LSCBO",
+    "Adapted CBO",
+    "PSO",
+    "GWO",
+    "WOA",
+    "Adapted AOA"
+  ],
+  "other_seven_table_values_exactly_unchanged": true,
+  "comparison_figure_layout_and_assets_unchanged": true
 }

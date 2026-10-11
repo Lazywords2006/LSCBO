@@ -115,8 +115,8 @@ def main():
         runtime.append(row)
     exact('runtime_descriptive',runtime)
     config=table('configuration_map')
-    assert config==[['LSCBO','600','9400','10001','100'],['Adapted CBO, PSO, GWO, WOA, AOA','10000','0','10000','100']]
-    tables['configuration_map']={'rows':2,'passed':True}
+    assert config==[['LSCBO', '600', '9400', '10001', '100'], ['Adapted CBO', '10000', '0', '10000', '100'], ['PSO', '10000', '0', '10000', '100'], ['GWO', '10000', '0', '10000', '100'], ['WOA', '10000', '0', '10000', '100'], ['Adapted AOA', '10000', '0', '10000', '100']]
+    tables['configuration_map']={'rows':6,'passed':True}
     # All displayed summary means, confidence intervals, counts and the large
     # extension are checked independently of the manuscript generation script.
     ls=primary[primary.algorithm=='LSCBO'].set_index(KEYS).sort_index()

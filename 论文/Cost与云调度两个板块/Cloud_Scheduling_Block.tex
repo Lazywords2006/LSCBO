@@ -2593,13 +2593,17 @@ Nine cost candidates were screened in two exploratory stages using seeds 43--72,
 
 On those same additional instances, the completion-time control is optimized separately. Scoring the new reservation-optimized LSCBO assignments with the old completion-time cost gives values 1.1079\% higher on average than that control, with a 95\% seed-cluster interval of 0.9969\%--1.2258\%. The larger reservation-cost separation therefore reflects the changed charging policy and scalar preference, not an improvement of the earlier cost metric.
 
-\begin{table}[htbp]\centering\scriptsize
+\begin{table}[htbp]\centering\small
 \caption{Cold-start configurations and internal scoring calls. The shared reference evaluation is additional.}\label{tab:configuration_map}
 \setlength{\tabcolsep}{3pt}
 \begin{tabular}{lrrrr}
 \toprule Method & Core & Pair trials & Internal calls & Population\\
 \midrule LSCBO & 600 & 9400 & 10001 & 100\\
-Adapted CBO, PSO, GWO, WOA, AOA & 10000 & 0 & 10000 & 100\\
+Adapted CBO & 10000 & 0 & 10000 & 100\\
+PSO & 10000 & 0 & 10000 & 100\\
+GWO & 10000 & 0 & 10000 & 100\\
+WOA & 10000 & 0 & 10000 & 100\\
+Adapted AOA & 10000 & 0 & 10000 & 100\\
 \bottomrule\end{tabular}
 \par\smallskip{\footnotesize Sensitivity uses the same complete scheduler and core/local split. Normalization adds one shared reference call per instance outside the population allowance.\par}
 \end{table}\FloatBarrier
