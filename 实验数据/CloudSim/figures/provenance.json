@@ -114,6 +114,7 @@
   "Fig6_y_axis_scale": "linear",
   "Fig6_y_limits": [
     0,
-    60
-  ]
+    65
+  ],
+  "Fig6_headroom_above_top_tick": 5
 }

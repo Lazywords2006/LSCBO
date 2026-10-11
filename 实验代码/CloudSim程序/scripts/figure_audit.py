@@ -34,7 +34,7 @@ def verify_figures():
             assert layout['panel_title_position']=='none'
             assert layout['panels'][0]['y_scale']=='linear'
             assert layout['panels'][0]['y_ticks']==list(range(0,61,10))
-            assert layout['panels'][0]['display_y_limits']==[0,60]
+            assert layout['panels'][0]['display_y_limits']==[0,65]
             tick_groups=[node for node in xml.findall('.//s:g',ns) if re.fullmatch(r'ytick_\d+',node.attrib.get('id',''))]
             assert [float(''.join(node.find('.//s:text',ns).itertext())) for node in tick_groups]==list(range(0,61,10))
             tick_positions=[float(node.find('.//s:use',ns).attrib['y']) for node in tick_groups]

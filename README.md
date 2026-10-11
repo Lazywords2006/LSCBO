@@ -35,4 +35,4 @@ The frozen cloud Java source has SHA-256 `a52444877768a42129eb9dcd637f9a3d18f25e
 
 Download the current experiment set through GitHub **Code → Download ZIP**.
 
-Fig6 uses a linear objective axis from 0 to 60, with equally spaced ticks every 10. PSO is blue (#0072B2) and GWO green (#2CA02C), with matching legend strokes in all cloud component panels.
+Fig6 uses a linear objective axis from 0 to 65, with equally spaced ticks from 0 to 60 every 10 and extra headroom above the top tick. PSO is blue (#0072B2) and GWO green (#2CA02C), with matching legend strokes in all cloud component panels.
