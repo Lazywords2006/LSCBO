@@ -16,7 +16,7 @@ OUT=ROOT/"论文/Cost与云调度两个板块"
 SCRIPTS=Path(__file__).resolve().parent
 KEYS=['taskCount','seed']
 METRICS=['makespan','energy','cost','imbalance','objective']
-ALGS=['LSCBO','CBO','PSO','GWO','WOA','AOA','GREEDY_LPT']
+ALGS=['LSCBO','CBO','PSO','GWO','WOA','AOA']
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -78,8 +78,8 @@ def main():
             wtl='/'.join(str(int(v)) for v in [(delta< -tol).sum(),(abs(delta)<=tol).sum(),(delta>tol).sum()])
             row.append(r'\shortstack{'+f'{percent:.4f}'+r'\%\\('+wtl+')}')
         improvements.append(row)
-        for frame,label in [(g,'Greedy-LPT'),(ls,'LSCBO')]:
-            row=[str(n),label]
+        for frame in [ls]:
+            row=[str(n)]
             for metric in METRICS:
                 digits=5 if metric=='imbalance' else 3
                 row.append(r'\shortstack{'+f'{frame[metric].mean():.{digits}f}'+r'\\('+f'{frame[metric].std(ddof=1):.{digits}f}'+')}')
@@ -109,14 +109,14 @@ def main():
     runtime=[]
     for n in range(100,1001,100):
         row=[str(n)]
-        for alg in ['GREEDY_LPT','LSCBO']:
+        for alg in ['LSCBO']:
             block=primary[(primary.taskCount==n)&(primary.algorithm==alg)].runtimeMs
             row.append(f'{block.median():.1f} [{block.quantile(.25):.2f}, {block.quantile(.75):.2f}]')
         runtime.append(row)
     exact('runtime_descriptive',runtime)
     config=table('configuration_map')
-    assert config==[['LSCBO','600','9400','10001','100'],['Adapted CBO, PSO, GWO, WOA, AOA','10000','0','10000','100'],['Greedy-LPT','--','--','1','--']]
-    tables['configuration_map']={'rows':3,'passed':True}
+    assert config==[['LSCBO','600','9400','10001','100'],['Adapted CBO, PSO, GWO, WOA, AOA','10000','0','10000','100']]
+    tables['configuration_map']={'rows':2,'passed':True}
     # All displayed summary means, confidence intervals, counts and the large
     # extension are checked independently of the manuscript generation script.
     ls=primary[primary.algorithm=='LSCBO'].set_index(KEYS).sort_index()
@@ -188,7 +188,7 @@ def main():
         'figures':figures,'Fig8_means_and_seed_cluster_intervals_recomputed':True,
         'max_vector_coordinate_error_pt':error,'all_checks_passed':True,
         'prior_assignment_level_recomputation_reused_with_unchanged_hashed_sources':True,
-        'standalone_PDF_text_verified':True,'checks':checked}
+        'standalone_PDF_text_verified':True,'presentation_greedy_reference_entries_removed':True,'checks':checked}
     (Path(args.runtime).resolve()/'audit.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
     print(json.dumps({'all_checks_passed':True,'tables':tables,'primary_F':float(ls.objective.mean()),'data':str(data)},ensure_ascii=False,indent=2))
 

@@ -1,0 +1,44 @@
+{
+  "scope": "Presentation only; no optimization or normalization change",
+  "table_projection": {
+    "configuration_map": {
+      "retained_rows": 2,
+      "retained_values_exactly_match_previous": true
+    },
+    "cloud_main_objective": {
+      "retained_rows": 10,
+      "retained_values_exactly_match_previous": true
+    },
+    "main_improvement": {
+      "retained_rows": 10,
+      "retained_values_exactly_match_previous": true
+    },
+    "main_scale_dispersion": {
+      "retained_rows": 10,
+      "retained_values_exactly_match_previous": true
+    },
+    "direct_pair": {
+      "retained_rows": 2,
+      "retained_values_exactly_match_previous": true
+    },
+    "weight_scale_details": {
+      "retained_rows": 25,
+      "retained_values_exactly_match_previous": true
+    },
+    "heterogeneity_scale_details": {
+      "retained_rows": 9,
+      "retained_values_exactly_match_previous": true
+    },
+    "runtime_descriptive": {
+      "retained_rows": 10,
+      "retained_values_exactly_match_previous": true
+    }
+  },
+  "standalone_reference_algorithm_rows_columns_removed": true,
+  "all_retained_values_exact": true,
+  "protected_unchanged_scientific_files": 47,
+  "figure_resources_in_standalone_TeX_unchanged": true,
+  "normalization_reference_disclosed_in_methods_and_raw_data": true,
+  "direct_Greedy_initialization_truthfully_labelled": true,
+  "cloud_pdf_sha256": "bedbbfaabc731156d4ff6b3cd057da082faf2ec0713adac39aa4c4b56f48ead7"
+}

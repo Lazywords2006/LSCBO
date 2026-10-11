@@ -9,7 +9,7 @@
   "table_audit": {
     "cloud_main_objective": {
       "rows": 10,
-      "checked_cells": 80,
+      "checked_cells": 70,
       "passed": true
     },
     "main_improvement": {
@@ -18,8 +18,8 @@
       "passed": true
     },
     "main_scale_dispersion": {
-      "rows": 20,
-      "checked_cells": 140,
+      "rows": 10,
+      "checked_cells": 60,
       "passed": true
     },
     "direct_pair": {
@@ -39,11 +39,11 @@
     },
     "runtime_descriptive": {
       "rows": 10,
-      "checked_cells": 30,
+      "checked_cells": 20,
       "passed": true
     },
     "configuration_map": {
-      "rows": 3,
+      "rows": 2,
       "passed": true
     }
   },
@@ -74,6 +74,7 @@
   "all_checks_passed": true,
   "prior_assignment_level_recomputation_reused_with_unchanged_hashed_sources": true,
   "standalone_PDF_text_verified": true,
+  "presentation_greedy_reference_entries_removed": true,
   "checks": {
     "rows": 7050,
     "experiment_counts": {
