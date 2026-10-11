@@ -391,31 +391,76 @@ def write_tables(summary:dict,out:Path,objective:pd.DataFrame) -> None:
                 ["Tasks","Greedy-LPT","LSCBO with pair search"],rows,wide=False)
 
 
-def draw_fig8(profiles:list[dict],output:Path) -> None:
+def draw_fig8(profiles:list[dict],output:Path,legend_location:str="upper left") -> None:
     configure()
-    fig=plt.figure(figsize=(WIDTH_INCHES,3.8))
-    ax=fig.add_axes([.235,.18,.72,.69])
+    plt.rcParams.update({"font.size":10.5,"axes.labelsize":10.5,
+                         "xtick.labelsize":9.2,"ytick.labelsize":9.2})
+    fig=plt.figure(figsize=(WIDTH_INCHES*1.22,4.2))
+    ax=fig.add_axes([.215,.18,.75,.76])
+    bars=[]
     ypos=np.array([0,1,2,3,4,5.35,6.35,7.35])
     highest=max(r["high"] for r in profiles)
     for i,r in enumerate(profiles):
         color=COLORS["weights"] if i<5 else COLORS["vms"]
-        ax.barh(ypos[i],r["mean"],height=.55,color=color,edgecolor="white",
-                hatch="//" if i<5 else None,linewidth=.5,zorder=2)
+        bar=ax.barh(ypos[i],r["mean"],height=.55,color=color,edgecolor="white",
+                    hatch="//" if i<5 else None,linewidth=.5,zorder=2)[0]
+        bar.set_gid(f"profile_bar_{i}")
+        bars.append(bar)
         ax.errorbar(r["mean"],ypos[i],xerr=np.array([[r["mean"]-r["low"]],[r["high"]-r["mean"]]]),
                     fmt="none",ecolor="#333333",capsize=2.5,elinewidth=.9,zorder=3)
-        ax.text(r["high"]+highest*.016,ypos[i],f"{r['mean']:,.0f}",va="center",fontsize=8,color=color)
+        ax.text(r["high"]+highest*.016,ypos[i],f"{r['mean']:,.0f}",va="center",fontsize=9.2,color=color)
     ax.set_yticks(ypos,[r["label"] for r in profiles])
     ax.set_xlim(0,highest*1.26)
-    ax.set_ylim(7.95,-.65)
+    ax.set_ylim(7.95,-2.1)
     ax.axhline(4.68,color="#AAAAAA",ls="--",linewidth=.7)
     grid(ax,which="x")
     ax.set_xlabel(r"Mean paired increase in $F$ over Greedy-LPT (%)",labelpad=5)
     ax.ticklabel_format(style="plain",axis="x")
-    fig.legend(handles=[Patch(facecolor=COLORS["weights"],edgecolor="white",hatch="//",label="Weight profiles"),
-                        Patch(facecolor=COLORS["vms"],label="VM-capacity profiles")],
-               loc="upper center",bbox_to_anchor=(.56,.985),ncol=2,frameon=False,handlelength=1.5,columnspacing=1.2)
-    fig.text(.5,.027,"Cold start; 95% percentile intervals over 30 seed clusters",ha="center",fontsize=8)
+    handles=[Patch(facecolor=COLORS["weights"],edgecolor="white",hatch="//",label="Weight profiles"),
+             Patch(facecolor=COLORS["vms"],label="VM-capacity profiles")]
+    from matplotlib.path import Path as MplPath
+    for location in [legend_location]:
+        leg=ax.legend(handles=handles,loc=location,bbox_to_anchor=(.08,1.),ncol=2,fontsize=8.5,
+                      frameon=True,fancybox=False,facecolor="white",framealpha=1.,
+                      edgecolor="#6D7380",borderpad=.25,handlelength=1.2,
+                      handletextpad=.25,borderaxespad=.35,labelspacing=.30,columnspacing=.70)
+        leg.get_frame().set_linewidth(.65)
+        fig.canvas.draw();renderer=fig.canvas.get_renderer()
+        legend_box=leg.get_window_extent(renderer)
+        covered=sum(bar.get_path().transformed(bar.get_transform()).intersects_bbox(legend_box,filled=True) for bar in bars)
+        covered+=sum(text.get_window_extent(renderer).overlaps(legend_box) for text in ax.texts)
+        for collection in ax.collections:
+            for segment in collection.get_segments():
+                covered+=MplPath(ax.transData.transform(segment)).intersects_bbox(legend_box,filled=False)
+        if covered==0:break
+        leg.remove()
+    else:raise ValueError("Sensitivity legend would obscure bars, intervals or values")
+    leg.set_gid("legend_Fig8_0")
+    fig.text(.5,.027,"Cold start; 95% percentile intervals over 30 seed clusters",ha="center",fontsize=9.2)
     output.mkdir(parents=True,exist_ok=True)
+    fig.canvas.draw()
+    renderer=fig.canvas.get_renderer()
+    box=ax.get_position()
+    axis_box=np.array([box.x0,box.y0,box.x1,box.y1])*np.array([
+        fig.get_figwidth()*72,fig.get_figheight()*72,
+        fig.get_figwidth()*72,fig.get_figheight()*72])
+    legend_box=leg.get_window_extent(renderer).extents*72/fig.dpi
+    assert axis_box[0]<=legend_box[0]<legend_box[2]<=axis_box[2]
+    assert axis_box[1]<=legend_box[1]<legend_box[3]<=axis_box[3]
+    layout={"legend_policy":"boxed shared position determined first from Fig7(d)",
+            "each_panel_has_legend":True,"axes_bbox_from_bottom_pt":axis_box.tolist(),
+            "legend_bbox_from_bottom_pt":legend_box.tolist(),"legend_position":location,
+            "legend_gid":leg.get_gid(),"legend_labels":[t.get_text() for t in leg.get_texts()],
+            "legend_boxed":True,"legend_anchor":[.08,1.],"legend_rows":1,"legend_columns":2,
+            "covered_data_artists":int(covered),
+            "profiles":profiles,"bars":[]}
+    for i,bar in enumerate(bars):
+        vertices=bar.get_transform().transform(bar.get_path().vertices)*72/fig.dpi
+        vertices[:,1]=fig.get_figheight()*72-vertices[:,1]
+        layout["bars"].append({"gid":bar.get_gid(),"profile_index":i,
+                               "mean":bar.get_width(),"color":COLORS["weights"] if i<5 else COLORS["vms"],
+                               "expected_vector_points_pt":vertices.tolist()})
+    (output/"Fig8_layout.json").write_text(json.dumps(layout,indent=2),encoding="utf-8")
     for ext in ["pdf","svg","png"]:
         fig.savefig(output/f"Fig8.{ext}",dpi=300,facecolor="white",
                     metadata={"Creator":"Cold-start analysis, supplied 2026-10-11 data"} if ext=="pdf" else None)

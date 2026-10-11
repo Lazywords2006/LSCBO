@@ -19,7 +19,7 @@
     ],
     "CBO": [
       "#5B4373",
-      "Adapted CBO",
+      "CBO",
       1.0
     ],
     "PSO": [
@@ -39,7 +39,7 @@
     ],
     "AOA": [
       "#A05A78",
-      "Adapted AOA",
+      "AOA",
       1.0
     ],
     "GREEDY_LPT": [
@@ -48,5 +48,36 @@
       1.4
     ]
   },
-  "Fig8_source": "D:\\Code\\LSCBO\\论文\\整批租赁修订内容\\整合结果\\fig8_profile_bootstrap.csv"
+  "Fig8_source": "D:\\Code\\LSCBO\\论文\\整批租赁修订内容\\整合结果\\fig8_profile_bootstrap.csv",
+  "legend_reference_panel": "Fig7(d)",
+  "legend_position": "upper left",
+  "legend_anchor": {
+    "Fig6": [
+      0.01,
+      1.0
+    ],
+    "Fig7": [
+      0.08,
+      1.0
+    ],
+    "Fig8": [
+      0.08,
+      1.0
+    ]
+  },
+  "legend_box": "square opaque white frame",
+  "every_panel_has_legend": true,
+  "figure_width_mm": 159.576,
+  "figure_data_and_method_styles_unchanged": true,
+  "legend_layout": {
+    "Fig6": "2 columns x 3 rows",
+    "Fig7": "3 columns x 2 rows",
+    "Fig8": "2 columns x 1 row"
+  },
+  "Fig7_panel_titles": [
+    "(a) Makespan",
+    "(b) Energy",
+    "(c) Cost",
+    "(d) Load imbalance"
+  ]
 }

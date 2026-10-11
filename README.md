@@ -33,3 +33,5 @@ The three citations used by the current Cost and Section 4.2 blocks have been ch
 Only one current cloud deliverable is kept in this tree. Superseded warm-start data, duplicate submission packages and stale full-manuscript PDFs were retired from the current tree; they remain recoverable in Git history. This revision does not present a newly integrated full manuscript or a replacement Section 4.3 CloudSim validation. The CEC2017 source and results are retained unchanged.
 
 Use GitHub **Code → Download ZIP** to download the current set. Runtime builds, dependency caches and new test outputs belong outside the repository; Windows examples use `D:/CodexRuntime`.
+
+All Fig. 6–8 plots have individual boxed legends at the upper-left position; Fig. 6 keeps a small left margin and the remaining plots use a slight rightward offset. Fig. 6 uses two columns and three rows; each Fig. 7 panel uses three columns and two rows, with CBO/AOA short names. Panel 7(c) is titled Cost. Figure widths and spacing were increased; raw values, method colors and strokes remain unchanged.

@@ -53,24 +53,43 @@
       "name": "Fig6",
       "vector_curves": 6,
       "data_points": 60,
+      "independent_legends": 1,
+      "all_legends_boxed": true,
+      "legend_rows": 3,
+      "legend_columns": 2,
+      "legend_position": "upper left",
       "legend_matches_curves": true,
-      "sha256": "e212fd0d0eb1ad99e9ec51a4667265bf295b52df46d9109eab4a07c1b0c72cef"
+      "legend_data_overlaps": 0,
+      "sha256": "ba4adbba9604392872d6691efd810a7c2c5685cf636dc2bde98899b832071225"
     },
     {
       "name": "Fig7",
       "vector_curves": 24,
       "data_points": 240,
+      "independent_legends": 4,
+      "all_legends_boxed": true,
+      "legend_rows": 2,
+      "legend_columns": 3,
+      "legend_position": "upper left",
       "legend_matches_curves": true,
-      "sha256": "389ab490f1f0dbc5586371e5cd574eb83196663dfbba289247fcc8280c19d45b"
+      "legend_data_overlaps": 0,
+      "sha256": "62bb874942f0f001d9e5c93fbd255901d3319472720ef1e3391b7e0ecfc35c0a"
     },
     {
       "name": "Fig8",
       "raster_images": 0,
-      "sha256": "9e5e753088d6e19d6f70ed21a91612847807c874df5534cb3333735eb1c8e3b6"
+      "data_bars_verified": 8,
+      "independent_legends": 1,
+      "legend_position": "upper left",
+      "all_legends_boxed": true,
+      "legend_data_overlaps": 0,
+      "legend_rows": 1,
+      "legend_columns": 2,
+      "sha256": "42695550612ea4772c189770f5612f433fbead57b15ee881c4098f66db37a554"
     }
   ],
   "Fig8_means_and_seed_cluster_intervals_recomputed": true,
-  "max_vector_coordinate_error_pt": 2.4739610637425358e-05,
+  "max_vector_coordinate_error_pt": 2.2961629269957484e-05,
   "all_checks_passed": true,
   "prior_assignment_level_recomputation_reused_with_unchanged_hashed_sources": true,
   "standalone_PDF_text_verified": true,

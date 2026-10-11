@@ -37,11 +37,10 @@
   },
   "standalone_reference_algorithm_rows_columns_removed": true,
   "all_retained_values_exact": true,
-  "protected_unchanged_scientific_files": 54,
-  "figure_resources_in_standalone_TeX_unchanged": true,
+  "protected_unchanged_scientific_files": 46,
   "normalization_reference_disclosed_in_methods_and_raw_data": true,
   "direct_Greedy_initialization_truthfully_labelled": true,
-  "cloud_pdf_sha256": "53895f67bc2b52028377653b548c37034c48241e03bf5bf3201ffdb69dafa8eb",
+  "cloud_pdf_sha256": "3bf79d2a8ce60ce238d40e784d756ce0e9ddfd72680627fd1459bb376846e278",
   "configuration_methods_displayed_individually": [
     "LSCBO",
     "Adapted CBO",
@@ -51,5 +50,7 @@
     "Adapted AOA"
   ],
   "other_seven_table_values_exactly_unchanged": true,
-  "comparison_figure_layout_and_assets_unchanged": true
+  "figure_resources_updated_for_current_legend_layout": true,
+  "comparison_figure_data_and_styles_unchanged": true,
+  "current_figure_layout_audit": "图例与版式核验.json"
 }

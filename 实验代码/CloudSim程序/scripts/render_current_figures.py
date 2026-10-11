@@ -20,9 +20,9 @@ def main():
     import analysis_helpers as helper
     sys.argv=['plots','--data',str(published/'数据/冷启动_3990行.csv'),'--out',str(args.out),
               '--figure','all','--cost-display','absolute']
-    plots.main()
+    shared_position=plots.main()
     analysis=json.loads((published/'数据/图表与统计汇总/analysis.json').read_text(encoding='utf-8'))
-    helper.draw_fig8(analysis['profiles'],args.out)
+    helper.draw_fig8(analysis['profiles'],args.out,legend_location=shared_position)
     print('Rendered:',args.out)
 
 if __name__=='__main__':main()

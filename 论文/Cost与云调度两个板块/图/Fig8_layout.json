@@ -1,0 +1,460 @@
+{
+  "legend_policy": "boxed shared position determined first from Fig7(d)",
+  "each_panel_has_legend": true,
+  "axes_bbox_from_bottom_pt": [
+    97.25340472440945,
+    54.432,
+    436.5094677165354,
+    284.25600000000003
+  ],
+  "legend_bbox_from_bottom_pt": [
+    127.36888976377955,
+    267.67099999999994,
+    312.2488897637795,
+    281.281
+  ],
+  "legend_position": "upper left",
+  "legend_gid": "legend_Fig8_0",
+  "legend_labels": [
+    "Weight profiles",
+    "VM-capacity profiles"
+  ],
+  "legend_boxed": true,
+  "legend_anchor": [
+    0.08,
+    1.0
+  ],
+  "legend_rows": 1,
+  "legend_columns": 2,
+  "covered_data_artists": 0,
+  "profiles": [
+    {
+      "experiment": "weight_sensitivity",
+      "profile": "W0_equal",
+      "label": "Equal",
+      "metric": "mean_paired_F_increase_over_greedy_percent",
+      "mean": 1879.2362749533336,
+      "low": 1817.6830405048333,
+      "high": 1942.3741491219998,
+      "mean_F": 19.792362749533336,
+      "wins": 0,
+      "ties": 0,
+      "losses": 150,
+      "clusters": 30,
+      "rows": 150,
+      "scales": [
+        100,
+        300,
+        500,
+        800,
+        1000
+      ],
+      "resamples": 50000,
+      "rng": "PCG64",
+      "rng_seed": 20260912,
+      "quantile_method": "linear"
+    },
+    {
+      "experiment": "weight_sensitivity",
+      "profile": "W1_makespan_priority",
+      "label": "Makespan",
+      "metric": "mean_paired_F_increase_over_greedy_percent",
+      "mean": 1161.7051438800002,
+      "low": 1122.0301140423333,
+      "high": 1202.5102890381668,
+      "mean_F": 12.617051438799999,
+      "wins": 0,
+      "ties": 0,
+      "losses": 150,
+      "clusters": 30,
+      "rows": 150,
+      "scales": [
+        100,
+        300,
+        500,
+        800,
+        1000
+      ],
+      "resamples": 50000,
+      "rng": "PCG64",
+      "rng_seed": 20260912,
+      "quantile_method": "linear"
+    },
+    {
+      "experiment": "weight_sensitivity",
+      "profile": "W2_energy_priority",
+      "label": "Energy",
+      "metric": "mean_paired_F_increase_over_greedy_percent",
+      "mean": 1142.9424640466668,
+      "low": 1104.0333690356667,
+      "high": 1182.6440674476667,
+      "mean_F": 12.429424640466669,
+      "wins": 0,
+      "ties": 0,
+      "losses": 150,
+      "clusters": 30,
+      "rows": 150,
+      "scales": [
+        100,
+        300,
+        500,
+        800,
+        1000
+      ],
+      "resamples": 50000,
+      "rng": "PCG64",
+      "rng_seed": 20260912,
+      "quantile_method": "linear"
+    },
+    {
+      "experiment": "weight_sensitivity",
+      "profile": "W3_cost_priority",
+      "label": "Cost",
+      "metric": "mean_paired_F_increase_over_greedy_percent",
+      "mean": 1161.4846878866665,
+      "low": 1121.5426256088333,
+      "high": 1202.7402662316665,
+      "mean_F": 12.614846878866667,
+      "wins": 0,
+      "ties": 0,
+      "losses": 150,
+      "clusters": 30,
+      "rows": 150,
+      "scales": [
+        100,
+        300,
+        500,
+        800,
+        1000
+      ],
+      "resamples": 50000,
+      "rng": "PCG64",
+      "rng_seed": 20260912,
+      "quantile_method": "linear"
+    },
+    {
+      "experiment": "weight_sensitivity",
+      "profile": "W4_balance_priority",
+      "label": "Balance",
+      "metric": "mean_paired_F_increase_over_greedy_percent",
+      "mean": 4078.5471017933323,
+      "low": 3936.114530807,
+      "high": 4224.510805587666,
+      "mean_F": 41.78547101793333,
+      "wins": 0,
+      "ties": 0,
+      "losses": 150,
+      "clusters": 30,
+      "rows": 150,
+      "scales": [
+        100,
+        300,
+        500,
+        800,
+        1000
+      ],
+      "resamples": 50000,
+      "rng": "PCG64",
+      "rng_seed": 20260912,
+      "quantile_method": "linear"
+    },
+    {
+      "experiment": "vm_heterogeneity",
+      "profile": "near_homogeneous_1_5_to_1",
+      "label": "1.5:1",
+      "metric": "mean_paired_F_increase_over_greedy_percent",
+      "mean": 2318.998347877778,
+      "low": 2220.5987496869443,
+      "high": 2415.249411540556,
+      "mean_F": 24.189983478777776,
+      "wins": 0,
+      "ties": 0,
+      "losses": 90,
+      "clusters": 30,
+      "rows": 90,
+      "scales": [
+        500,
+        1000,
+        2000
+      ],
+      "resamples": 50000,
+      "rng": "PCG64",
+      "rng_seed": 20260912,
+      "quantile_method": "linear"
+    },
+    {
+      "experiment": "vm_heterogeneity",
+      "profile": "medium_5_to_1",
+      "label": "5:1",
+      "metric": "mean_paired_F_increase_over_greedy_percent",
+      "mean": 4921.942740644446,
+      "low": 4741.765595907223,
+      "high": 5088.209237993889,
+      "mean_F": 50.21942740644444,
+      "wins": 0,
+      "ties": 0,
+      "losses": 90,
+      "clusters": 30,
+      "rows": 90,
+      "scales": [
+        500,
+        1000,
+        2000
+      ],
+      "resamples": 50000,
+      "rng": "PCG64",
+      "rng_seed": 20260912,
+      "quantile_method": "linear"
+    },
+    {
+      "experiment": "vm_heterogeneity",
+      "profile": "heterogeneous_20_to_1",
+      "label": "20:1",
+      "metric": "mean_paired_F_increase_over_greedy_percent",
+      "mean": 5261.967770588889,
+      "low": 4933.67579876611,
+      "high": 5611.545615963332,
+      "mean_F": 53.61967770588889,
+      "wins": 0,
+      "ties": 0,
+      "losses": 90,
+      "clusters": 30,
+      "rows": 90,
+      "scales": [
+        500,
+        1000,
+        2000
+      ],
+      "resamples": 50000,
+      "rng": "PCG64",
+      "rng_seed": 20260912,
+      "quantile_method": "linear"
+    }
+  ],
+  "bars": [
+    {
+      "gid": "profile_bar_0",
+      "profile_index": 0,
+      "mean": 1879.2362749533336,
+      "color": "#D62728",
+      "expected_vector_points_pt": [
+        [
+          97.25340472440945,
+          59.87820895522401
+        ],
+        [
+          187.42213666863935,
+          59.87820895522401
+        ],
+        [
+          187.42213666863935,
+          72.45564179104491
+        ],
+        [
+          97.25340472440945,
+          72.45564179104491
+        ],
+        [
+          97.25340472440945,
+          59.87820895522401
+        ]
+      ]
+    },
+    {
+      "gid": "profile_bar_1",
+      "profile_index": 1,
+      "mean": 1161.7051438800002,
+      "color": "#D62728",
+      "expected_vector_points_pt": [
+        [
+          97.25340472440945,
+          82.7462686567165
+        ],
+        [
+          152.99385690323405,
+          82.7462686567165
+        ],
+        [
+          152.99385690323405,
+          95.3237014925374
+        ],
+        [
+          97.25340472440945,
+          95.3237014925374
+        ],
+        [
+          97.25340472440945,
+          82.7462686567165
+        ]
+      ]
+    },
+    {
+      "gid": "profile_bar_2",
+      "profile_index": 2,
+      "mean": 1142.9424640466668,
+      "color": "#D62728",
+      "expected_vector_points_pt": [
+        [
+          97.25340472440945,
+          105.61432835820901
+        ],
+        [
+          152.09359381710922,
+          105.61432835820901
+        ],
+        [
+          152.09359381710922,
+          118.19176119402994
+        ],
+        [
+          97.25340472440945,
+          118.19176119402994
+        ],
+        [
+          97.25340472440945,
+          105.61432835820901
+        ]
+      ]
+    },
+    {
+      "gid": "profile_bar_3",
+      "profile_index": 3,
+      "mean": 1161.4846878866665,
+      "color": "#D62728",
+      "expected_vector_points_pt": [
+        [
+          97.25340472440945,
+          128.48238805970158
+        ],
+        [
+          152.98327907561688,
+          128.48238805970158
+        ],
+        [
+          152.98327907561688,
+          141.05982089552245
+        ],
+        [
+          97.25340472440945,
+          141.05982089552245
+        ],
+        [
+          97.25340472440945,
+          128.48238805970158
+        ]
+      ]
+    },
+    {
+      "gid": "profile_bar_4",
+      "profile_index": 4,
+      "mean": 4078.5471017933323,
+      "color": "#D62728",
+      "expected_vector_points_pt": [
+        [
+          97.25340472440945,
+          151.3504477611941
+        ],
+        [
+          292.94855239957406,
+          151.3504477611941
+        ],
+        [
+          292.94855239957406,
+          163.927880597015
+        ],
+        [
+          97.25340472440945,
+          163.927880597015
+        ],
+        [
+          97.25340472440945,
+          151.3504477611941
+        ]
+      ]
+    },
+    {
+      "gid": "profile_bar_5",
+      "profile_index": 5,
+      "mean": 2318.998347877778,
+      "color": "#0072B2",
+      "expected_vector_points_pt": [
+        [
+          97.25340472440945,
+          182.22232835820898
+        ],
+        [
+          208.52261722090398,
+          182.22232835820898
+        ],
+        [
+          208.52261722090398,
+          194.79976119402988
+        ],
+        [
+          97.25340472440945,
+          194.79976119402988
+        ],
+        [
+          97.25340472440945,
+          182.22232835820898
+        ]
+      ]
+    },
+    {
+      "gid": "profile_bar_6",
+      "profile_index": 6,
+      "mean": 4921.942740644446,
+      "color": "#0072B2",
+      "expected_vector_points_pt": [
+        [
+          97.25340472440945,
+          205.09038805970152
+        ],
+        [
+          333.41601053460124,
+          205.09038805970152
+        ],
+        [
+          333.41601053460124,
+          217.66782089552242
+        ],
+        [
+          97.25340472440945,
+          217.66782089552242
+        ],
+        [
+          97.25340472440945,
+          205.09038805970152
+        ]
+      ]
+    },
+    {
+      "gid": "profile_bar_7",
+      "profile_index": 7,
+      "mean": 5261.967770588889,
+      "color": "#0072B2",
+      "expected_vector_points_pt": [
+        [
+          97.25340472440945,
+          227.95844776119407
+        ],
+        [
+          349.73094984692943,
+          227.95844776119407
+        ],
+        [
+          349.73094984692943,
+          240.53588059701497
+        ],
+        [
+          97.25340472440945,
+          240.53588059701497
+        ],
+        [
+          97.25340472440945,
+          227.95844776119407
+        ]
+      ]
+    }
+  ]
+}
