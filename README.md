@@ -31,6 +31,6 @@ python 实验代码/CloudSim程序/scripts/render_current_figures.py --out D:/Co
 
 The audit checks release hashes, raw objective values and evaluation budgets, numerical summaries, seed-cluster intervals, direct diagnostics, confirmation statistics, and vector plots. It writes its report outside the repository. It does not rerun the full simulations.
 
-The frozen cloud Java source has SHA-256 `a52444877768a42129eb9dcd637f9a3d18f25eb94a8441e21b541ff773854b15`. CEC2017 source and numerical results are retained unchanged. Cloud plots retain the current colors and line widths; each plot has its own boxed legend. Fig6 and every Fig7 panel use two rows and three columns; the cost axis is labeled Cost (units), and load imbalance is dimensionless.
+The frozen cloud Java source has SHA-256 `a52444877768a42129eb9dcd637f9a3d18f25eb94a8441e21b541ff773854b15`. CEC2017 source and numerical results are retained unchanged. Cloud plots retain the current colors and line widths; each plot has its own boxed legend. Fig6 and every Fig7 panel use two rows and three columns; the metric axes omit unit labels, and Fig6/Fig7 legend boxes use the same 10 pt left margin. Axis labels use 9.5 pt and tick labels 8.5 pt.
 
 Download the current experiment set through GitHub **Code → Download ZIP**.

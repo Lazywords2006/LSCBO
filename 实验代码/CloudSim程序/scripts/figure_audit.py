@@ -33,8 +33,9 @@ def verify_figures():
             assert layout['panel_title_position']=='none'
         else:
             assert '(c) Cost' in text and 'Cost excess' not in text
-            assert layout['panels'][2]['ylabel']=='Cost (units)' and 'Batch reservation cost' not in text
-            assert re.search(r'^Cost \(units\)$',text,re.M)
+            assert [p['ylabel'] for p in layout['panels']]==['Makespan','Energy','Cost','Load imbalance']
+            assert not any(unit in text for unit in ['(s)','(Wh)','(units)'])
+            assert re.search(r'^Cost$',text,re.M)
         assert layout['each_panel_has_legend']
         for panel in layout['panels']:
             assert panel['legend_boxed'] and panel['covered_data_artists']==0
@@ -43,10 +44,12 @@ def verify_figures():
             legend_box=np.array(panel['legend_bbox_from_bottom_pt'])
             assert axes_box[0]<=legend_box[0]<legend_box[2]<=axes_box[2]
             assert axes_box[1]<=legend_box[1]<legend_box[3]<=axes_box[3]
-            anchor_x=.01 if name=='Fig6' else .08
-            assert panel['legend_anchor']==[anchor_x,1.] and panel['legend_position']=='upper left'
+            anchor_x=(10.-2.625)/(axes_box[2]-axes_box[0])
+            assert np.allclose(panel['legend_anchor'],[anchor_x,1.],rtol=0,atol=1e-12)
+            assert panel['legend_position']=='upper left'
             assert panel['legend_rows']==2 and panel['legend_columns']==3
-            assert abs(legend_box[0]-axes_box[0]-anchor_x*(axes_box[2]-axes_box[0])-2.625)<1e-4
+            assert abs(legend_box[0]-axes_box[0]-10.)<1e-4
+            assert panel['axis_label_fontsize_pt']==9.5 and panel['tick_label_fontsize_pt']==8.5
             box=panel['caption_bbox_from_bottom_pt']
             if name=='Fig6':
                 assert box is None and panel['title'] is None

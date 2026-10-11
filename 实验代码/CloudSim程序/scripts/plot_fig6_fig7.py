@@ -31,8 +31,8 @@ DATA = RELEASE / "实验数据/CloudSim/data/冷启动_3990行.csv"
 SCALES = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
 METRICS = ["makespan", "energy", "cost", "imbalance"]
 TITLES = ["(a) Makespan", "(b) Energy", "(c) Cost", "(d) Load imbalance"]
-UNITS = {"makespan": "Makespan (s)", "energy": "Energy (Wh)",
-         "cost": "Cost (units)", "imbalance": "Load imbalance"}
+UNITS = {"makespan": "Makespan", "energy": "Energy",
+         "cost": "Cost", "imbalance": "Load imbalance"}
 STYLES = {
     "LSCBO": ("#E8302F", "LSCBO", 1.7),
     "CBO": ("#5B4373", "CBO", 1.0),
@@ -44,6 +44,9 @@ STYLES = {
 }
 ORDER = ["LSCBO", "WOA", "PSO", "CBO", "AOA", "GWO"]
 FIGURE_WIDTH_INCHES = WIDTH_INCHES * 1.22
+LEGEND_LEFT_MARGIN_PT = 10.0
+AXIS_LABEL_SIZE = 9.5
+TICK_LABEL_SIZE = 8.5
 
 
 
@@ -65,8 +68,8 @@ def line_panel(ax, means, metric, ylabel, logy=False):
         c, lb, lw = STYLES[m]
         ax.plot(SCALES, [means[(s, m, metric)] for s in SCALES], color=c,
                 linewidth=lw, label=lb, zorder=7 if m == "LSCBO" else 4)
-    ax.set_xlabel("Number of tasks", labelpad=3)
-    ax.set_ylabel(ylabel, labelpad=3)
+    ax.set_xlabel("Number of tasks", labelpad=3, fontsize=AXIS_LABEL_SIZE)
+    ax.set_ylabel(ylabel, labelpad=3, fontsize=AXIS_LABEL_SIZE)
     ax.xaxis.set_major_locator(MaxNLocator(nbins=6))
     if logy:
         ax.set_yscale("log")
@@ -75,13 +78,16 @@ def line_panel(ax, means, metric, ylabel, logy=False):
     else:
         ax.yaxis.set_major_locator(MaxNLocator(nbins=5))
     grid(ax, which="y")
-    ax.tick_params(labelsize=9.2, length=2.6, pad=2.5)
+    ax.tick_params(labelsize=TICK_LABEL_SIZE, length=2.6, pad=2.5)
     ax.margins(x=.03, y=.08)
 
 
-def legend(ax, location="upper left", anchor=(.08,1.), columns=2):
+def legend(ax, location="upper left", anchor=None, columns=3):
     """Determine Fig7(d) first, then keep that shared location in every plot."""
     handles = ax.lines[:len(ORDER)]
+    if anchor is None:
+        axis_width_pt = ax.get_position().width * ax.figure.get_figwidth() * 72
+        anchor = ((LEGEND_LEFT_MARGIN_PT - .35 * 7.5) / axis_width_pt, 1.)
     original_limits = ax.get_ylim()
     locations = [location]*12
     for step, location in enumerate(locations):
@@ -173,11 +179,14 @@ def save_figure(fig, name, panels):
         assert axis_box[1] <= legend_box[1] < legend_box[3] <= axis_box[3]
         records.append({"title": caption.get_text() if caption is not None else None,
                         "ylabel": ax.get_ylabel(),
+                        "axis_label_fontsize_pt": ax.yaxis.label.get_fontsize(),
+                        "tick_label_fontsize_pt": ax.get_xticklabels()[0].get_fontsize(),
                         "panel_center_x_pt": (box.x0 + box.x1) / 2 * fig.get_figwidth() * 72,
                         "panel_bottom_from_top_pt": (1 - box.y0) * fig.get_figheight() * 72,
                         "caption_bbox_from_bottom_pt": [v * 72 / fig.dpi for v in caption.get_window_extent(renderer).extents] if caption is not None else None,
                         "axes_bbox_from_bottom_pt": axis_box.tolist(),
                         "legend_bbox_from_bottom_pt": legend_box.tolist(),
+                        "legend_left_margin_pt": float(legend_box[0]-axis_box[0]),
                         "legend_gid": leg.get_gid(),
                         "legend_labels": [t.get_text() for t in leg.get_texts()],
                         "legend_position": leg._chosen_location,
@@ -251,7 +260,7 @@ def main():
         fig, ax = plt.subplots(figsize=(FIGURE_WIDTH_INCHES, 3.35))
         fig.subplots_adjust(left=.125, right=.985, bottom=.23, top=.96)
         line_panel(ax, means, "objective", "Mean objective $F$ (log scale)", logy=True)
-        legend(ax, shared_position, anchor=(.01,1.), columns=3)
+        legend(ax, shared_position, columns=3)
         panels = [(ax, None)]
         save_figure(fig, "Fig6", panels)
         plt.close(fig)

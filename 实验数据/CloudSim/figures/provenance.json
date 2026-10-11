@@ -53,11 +53,11 @@
   "legend_position": "upper left",
   "legend_anchor": {
     "Fig6": [
-      0.01,
+      0.018958205167466394,
       1.0
     ],
     "Fig7": [
-      0.08,
+      0.043983035988522025,
       1.0
     ],
     "Fig8": [
@@ -80,6 +80,19 @@
     "(c) Cost",
     "(d) Load imbalance"
   ],
-  "Fig7_cost_axis_label": "Cost (units)",
-  "Fig6_extra_panel_title": null
+  "Fig7_cost_axis_label": "Cost",
+  "Fig6_extra_panel_title": null,
+  "legend_left_margin_pt": {
+    "Fig6": 10.0,
+    "Fig7": 10.0
+  },
+  "Fig7_axis_labels": [
+    "Makespan",
+    "Energy",
+    "Cost",
+    "Load imbalance"
+  ],
+  "Fig6_Fig7_display_units": false,
+  "axis_label_fontsize_pt": 9.5,
+  "tick_label_fontsize_pt": 8.5
 }

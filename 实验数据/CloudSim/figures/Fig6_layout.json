@@ -5,6 +5,8 @@
     {
       "title": null,
       "ylabel": "Mean objective $F$ (log scale)",
+      "axis_label_fontsize_pt": 9.5,
+      "tick_label_fontsize_pt": 8.5,
       "panel_center_x_pt": 251.04948661417325,
       "panel_bottom_from_top_pt": 185.72400000000002,
       "caption_bbox_from_bottom_pt": null,
@@ -15,11 +17,12 @@
         231.55200000000002
       ],
       "legend_bbox_from_bottom_pt": [
-        63.05781335433071,
+        66.54267716535433,
         207.77699999999996,
-        182.59281335433067,
+        186.07767716535432,
         228.92699999999996
       ],
+      "legend_left_margin_pt": 10.0,
       "legend_gid": "legend_Fig6_0",
       "legend_labels": [
         "LSCBO",
@@ -32,7 +35,7 @@
       "legend_position": "upper left",
       "legend_boxed": true,
       "legend_anchor": [
-        0.01,
+        0.018958205167466394,
         1.0
       ],
       "legend_rows": 2,
