@@ -1,0 +1,52 @@
+{
+  "source": "D:\\Code\\LSCBO\\论文\\整批租赁修订内容\\数据\\冷启动_3990行.csv",
+  "source_sha256": "0ad513279ae21452734f8f7910577e695904d0aa6b008a9a043c55620208a4b3",
+  "seeds": [
+    43,
+    72
+  ],
+  "cost_model": "batch_reserved_seconds",
+  "cost_display": "absolute synthetic units",
+  "absolute_cost_zoom": false,
+  "greedy_curve": false,
+  "Fig6_panels": 1,
+  "Fig7_panel_labels": "below and centered",
+  "line_styles": {
+    "LSCBO": [
+      "#E8302F",
+      "LSCBO",
+      1.7
+    ],
+    "CBO": [
+      "#5B4373",
+      "Adapted CBO",
+      1.0
+    ],
+    "PSO": [
+      "#35506E",
+      "PSO",
+      1.0
+    ],
+    "GWO": [
+      "#2E6B5E",
+      "GWO",
+      1.0
+    ],
+    "WOA": [
+      "#8A6420",
+      "WOA",
+      1.0
+    ],
+    "AOA": [
+      "#A05A78",
+      "Adapted AOA",
+      1.0
+    ],
+    "GREEDY_LPT": [
+      "#2B2F33",
+      "Greedy-LPT",
+      1.4
+    ]
+  },
+  "Fig8_source": "D:\\Code\\LSCBO\\论文\\整批租赁修订内容\\整合结果\\fig8_profile_bootstrap.csv"
+}

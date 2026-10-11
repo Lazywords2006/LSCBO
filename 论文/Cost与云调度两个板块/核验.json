@@ -1,0 +1,41 @@
+{
+  "scope": [
+    "Cost paragraph in 3.1.2 and necessary normalization implication in 3.1.3",
+    "Section 4.2 only"
+  ],
+  "numbers_and_source_unchanged": true,
+  "documents": [
+    {
+      "name": "Cost_Block",
+      "pages": 2,
+      "sha256": "70423ce8a6c008218ceaf1bc4abf7442d53775d57dcde6b1634d141f11d9f361",
+      "raster_images": 0
+    },
+    {
+      "name": "Cloud_Scheduling_Block",
+      "pages": 11,
+      "sha256": "4c4a694f0518061a50eee97b648028e5b5aeb9cafd2b849ab63540a3c3e06ea9",
+      "raster_images": 0
+    }
+  ],
+  "figures": [
+    {
+      "name": "Fig6",
+      "same_verified_vector_asset": true,
+      "sha256": "e212fd0d0eb1ad99e9ec51a4667265bf295b52df46d9109eab4a07c1b0c72cef"
+    },
+    {
+      "name": "Fig7",
+      "same_verified_vector_asset": true,
+      "sha256": "389ab490f1f0dbc5586371e5cd574eb83196663dfbba289247fcc8280c19d45b"
+    },
+    {
+      "name": "Fig8",
+      "same_verified_vector_asset": true,
+      "sha256": "9e5e753088d6e19d6f70ed21a91612847807c874df5534cb3333735eb1c8e3b6"
+    }
+  ],
+  "formal_manuscript_unchanged": true,
+  "all_section_4_2_data_audited": true,
+  "data_audit_sha256": "ce49cf0ad0bf7369ac88d02a28634efc9c006094d5e92064ba0b6fa6ba1dcebe"
+}

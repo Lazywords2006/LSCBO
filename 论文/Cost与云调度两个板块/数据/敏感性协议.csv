@@ -1,0 +1,30 @@
+key,value
+createdAt,2026-10-11T20:05:06.7407573
+mode,formalfull
+adoptedCostModel,batch_reserved_seconds
+adoptedCostDefinition,batch makespan times sum of all available VM rates; fixed fleet; simultaneous release; continuous-time synthetic rental units
+rows,3060
+runtimeMs,80761
+cloudsimValidation,false
+seedRange,43-72
+experiments,weight_sensitivity,vm_heterogeneity
+parallelism,6
+cloudsimVersion,8.0.0
+populationSize,100
+maxIterations,100
+totalEvaluationBudget,10000
+lscboGlobalBudget,600
+localSearchMaxTrials,9400
+localSearchRoundTrials,400
+levyBeta,1.5
+levyAlpha,0.03
+levyFraction,0.3
+objective,weighted normalized makespan energy cost imbalance
+decoder,direct continuous-to-VM assignment; any task-to-VM schedule is representable
+imbalance,standard deviation of VM completion times divided by mean completion time
+protocol,ERTH-mode cold start 2026-10-11
+initialization,all population coordinates random.nextDouble; Greedy is normalization only
+primaryScales,100-1000 in increments of 100
+externalMainScales,2000-10000 in increments of 1000
+unrecordedMetricCalls,one normalization reference call per row plus one local-entry call when local search runs
+datacenter,1 datacenter, 4 cores per host, host count expands when needed to allocate all VMs

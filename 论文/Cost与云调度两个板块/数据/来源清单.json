@@ -1,0 +1,34 @@
+{
+  "冷启动_3990行.csv": {
+    "source": "D:\\Code\\LSCBO\\论文\\整批租赁修订内容\\数据\\冷启动_3990行.csv",
+    "sha256": "0ad513279ae21452734f8f7910577e695904d0aa6b008a9a043c55620208a4b3"
+  },
+  "冷启动_敏感性_3060行.csv": {
+    "source": "D:\\Code\\LSCBO\\论文\\整批租赁修订内容\\数据\\冷启动_敏感性_3060行.csv",
+    "sha256": "63e3bf7b039caaf885f598a81a73e869d118eb73cac340f8dced5c87850c394d"
+  },
+  "直接精修_4500条计时.csv": {
+    "source": "D:\\Code\\LSCBO\\论文\\整批租赁修订内容\\整合结果\\direct_timing.csv",
+    "sha256": "d4803d54df00bac718751dd14a69efc1127b0d3334d132418ce87a9a4477b739"
+  },
+  "直接精修_900条质量.csv": {
+    "source": "D:\\Code\\LSCBO\\论文\\整批租赁修订内容\\整合结果\\direct_quality.csv",
+    "sha256": "7cc5665ddc4f76055cddc8b332f2eb6d922e0614eb75625c7ef20beef98b279a"
+  },
+  "主实验实例参数.csv": {
+    "source": "D:\\Code\\LSCBO\\论文\\整批租赁修订内容\\数据\\main\\cost_scenarios.csv",
+    "sha256": "afe58d2d155d388ba6cb2fed70ef21ac606a492086713e7f070e7221477a72e4"
+  },
+  "敏感性实例参数.csv": {
+    "source": "D:\\Code\\LSCBO\\论文\\整批租赁修订内容\\数据\\sensitivity\\cost_scenarios.csv",
+    "sha256": "25fb8f0f1d4bb714c55a5ad7834540dc8971cb9b2e9f67dd6e4b1c0ad876c02b"
+  },
+  "主实验协议.csv": {
+    "source": "D:\\Code\\LSCBO\\论文\\整批租赁修订内容\\数据\\main\\claim_metadata.csv",
+    "sha256": "1b98cb32882746cd5be6881cc09b78a84c602950822f1ea892dfaca2740a2a8a"
+  },
+  "敏感性协议.csv": {
+    "source": "D:\\Code\\LSCBO\\论文\\整批租赁修订内容\\数据\\sensitivity\\claim_metadata.csv",
+    "sha256": "379fc0c40dab15e9d434e48f998ebf5434e1729ebef058c9da9d088ee529a203"
+  }
+}

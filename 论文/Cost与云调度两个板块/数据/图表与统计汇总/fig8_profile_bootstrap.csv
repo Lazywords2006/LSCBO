@@ -1,0 +1,9 @@
+experiment,profile,label,metric,mean,low,high,mean_F,wins,ties,losses,clusters,rows,scales,resamples,rng,rng_seed,quantile_method
+weight_sensitivity,W0_equal,Equal,mean_paired_F_increase_over_greedy_percent,1879.23627495,1817.6830405,1942.37414912,19.7923627495,0,0,150,30,150,"[100, 300, 500, 800, 1000]",50000,PCG64,20260912,linear
+weight_sensitivity,W1_makespan_priority,Makespan,mean_paired_F_increase_over_greedy_percent,1161.70514388,1122.03011404,1202.51028904,12.6170514388,0,0,150,30,150,"[100, 300, 500, 800, 1000]",50000,PCG64,20260912,linear
+weight_sensitivity,W2_energy_priority,Energy,mean_paired_F_increase_over_greedy_percent,1142.94246405,1104.03336904,1182.64406745,12.4294246405,0,0,150,30,150,"[100, 300, 500, 800, 1000]",50000,PCG64,20260912,linear
+weight_sensitivity,W3_cost_priority,Cost,mean_paired_F_increase_over_greedy_percent,1161.48468789,1121.54262561,1202.74026623,12.6148468789,0,0,150,30,150,"[100, 300, 500, 800, 1000]",50000,PCG64,20260912,linear
+weight_sensitivity,W4_balance_priority,Balance,mean_paired_F_increase_over_greedy_percent,4078.54710179,3936.11453081,4224.51080559,41.7854710179,0,0,150,30,150,"[100, 300, 500, 800, 1000]",50000,PCG64,20260912,linear
+vm_heterogeneity,near_homogeneous_1_5_to_1,1.5:1,mean_paired_F_increase_over_greedy_percent,2318.99834788,2220.59874969,2415.24941154,24.1899834788,0,0,90,30,90,"[500, 1000, 2000]",50000,PCG64,20260912,linear
+vm_heterogeneity,medium_5_to_1,5:1,mean_paired_F_increase_over_greedy_percent,4921.94274064,4741.76559591,5088.20923799,50.2194274064,0,0,90,30,90,"[500, 1000, 2000]",50000,PCG64,20260912,linear
+vm_heterogeneity,heterogeneous_20_to_1,20:1,mean_paired_F_increase_over_greedy_percent,5261.96777059,4933.67579877,5611.54561596,53.6196777059,0,0,90,30,90,"[500, 1000, 2000]",50000,PCG64,20260912,linear

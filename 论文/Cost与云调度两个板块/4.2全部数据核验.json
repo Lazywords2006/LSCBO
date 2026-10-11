@@ -1,0 +1,199 @@
+{
+  "cost_model": "batch_reserved_seconds",
+  "primary_and_external_main_rows": 3990,
+  "weight_rows": 2250,
+  "capacity_rows": 810,
+  "direct_timing_rows": 4500,
+  "direct_unique_quality_rows": 900,
+  "confirmation_optimized_rows": 4200,
+  "table_audit": {
+    "cloud_main_objective": {
+      "rows": 10,
+      "checked_cells": 80,
+      "passed": true
+    },
+    "main_improvement": {
+      "rows": 10,
+      "checked_cells": 60,
+      "passed": true
+    },
+    "main_scale_dispersion": {
+      "rows": 20,
+      "checked_cells": 140,
+      "passed": true
+    },
+    "direct_pair": {
+      "rows": 2,
+      "checked_cells": 10,
+      "passed": true
+    },
+    "weight_scale_details": {
+      "rows": 25,
+      "checked_cells": 150,
+      "passed": true
+    },
+    "heterogeneity_scale_details": {
+      "rows": 9,
+      "checked_cells": 54,
+      "passed": true
+    },
+    "runtime_descriptive": {
+      "rows": 10,
+      "checked_cells": 30,
+      "passed": true
+    },
+    "configuration_map": {
+      "rows": 3,
+      "passed": true
+    }
+  },
+  "text_numerical_claims_checked": 19,
+  "figures": [
+    {
+      "name": "Fig6",
+      "vector_curves": 6,
+      "data_points": 60,
+      "legend_matches_curves": true,
+      "sha256": "e212fd0d0eb1ad99e9ec51a4667265bf295b52df46d9109eab4a07c1b0c72cef"
+    },
+    {
+      "name": "Fig7",
+      "vector_curves": 24,
+      "data_points": 240,
+      "legend_matches_curves": true,
+      "sha256": "389ab490f1f0dbc5586371e5cd574eb83196663dfbba289247fcc8280c19d45b"
+    },
+    {
+      "name": "Fig8",
+      "raster_images": 0,
+      "sha256": "9e5e753088d6e19d6f70ed21a91612847807c874df5534cb3333735eb1c8e3b6"
+    }
+  ],
+  "Fig8_means_and_seed_cluster_intervals_recomputed": true,
+  "max_vector_coordinate_error_pt": 2.4739610637425358e-05,
+  "all_checks_passed": true,
+  "prior_assignment_level_recomputation_reused_with_unchanged_hashed_sources": true,
+  "standalone_PDF_text_verified": true,
+  "checks": {
+    "rows": 7050,
+    "experiment_counts": {
+      "E4_main": 3990,
+      "weight_sensitivity": 2250,
+      "vm_heterogeneity": 810
+    },
+    "duplicate_keys": 0,
+    "nonfinite_numeric_values": 0,
+    "paired_blocks_main_all": 570,
+    "paired_blocks_main_primary": 300,
+    "paired_blocks_ablation": 0,
+    "objective_formula_rounding_interval_passed": true,
+    "max_objective_error_using_printed_ratios": 0.015717450688725876,
+    "formula_max_rounding_interval_width": 0.0407447455484089,
+    "stage_counts": [
+      {
+        "experiment": "E4_main",
+        "variant": "AOA",
+        "initialEvaluations": 100,
+        "iterationEvaluations": 9900,
+        "localSearchEvaluations": 0,
+        "totalEvaluations": 10000
+      },
+      {
+        "experiment": "E4_main",
+        "variant": "CBO",
+        "initialEvaluations": 100,
+        "iterationEvaluations": 9900,
+        "localSearchEvaluations": 0,
+        "totalEvaluations": 10000
+      },
+      {
+        "experiment": "E4_main",
+        "variant": "GREEDY_LPT",
+        "initialEvaluations": 1,
+        "iterationEvaluations": 0,
+        "localSearchEvaluations": 0,
+        "totalEvaluations": 1
+      },
+      {
+        "experiment": "E4_main",
+        "variant": "GWO",
+        "initialEvaluations": 100,
+        "iterationEvaluations": 9900,
+        "localSearchEvaluations": 0,
+        "totalEvaluations": 10000
+      },
+      {
+        "experiment": "E4_main",
+        "variant": "LSCBO",
+        "initialEvaluations": 100,
+        "iterationEvaluations": 500,
+        "localSearchEvaluations": 9400,
+        "totalEvaluations": 10000
+      },
+      {
+        "experiment": "E4_main",
+        "variant": "PSO",
+        "initialEvaluations": 100,
+        "iterationEvaluations": 9900,
+        "localSearchEvaluations": 0,
+        "totalEvaluations": 10000
+      },
+      {
+        "experiment": "E4_main",
+        "variant": "WOA",
+        "initialEvaluations": 100,
+        "iterationEvaluations": 9900,
+        "localSearchEvaluations": 0,
+        "totalEvaluations": 10000
+      },
+      {
+        "experiment": "vm_heterogeneity",
+        "variant": "CBO",
+        "initialEvaluations": 100,
+        "iterationEvaluations": 9900,
+        "localSearchEvaluations": 0,
+        "totalEvaluations": 10000
+      },
+      {
+        "experiment": "vm_heterogeneity",
+        "variant": "GREEDY_LPT",
+        "initialEvaluations": 1,
+        "iterationEvaluations": 0,
+        "localSearchEvaluations": 0,
+        "totalEvaluations": 1
+      },
+      {
+        "experiment": "vm_heterogeneity",
+        "variant": "LSCBO",
+        "initialEvaluations": 100,
+        "iterationEvaluations": 500,
+        "localSearchEvaluations": 9400,
+        "totalEvaluations": 10000
+      },
+      {
+        "experiment": "weight_sensitivity",
+        "variant": "CBO",
+        "initialEvaluations": 100,
+        "iterationEvaluations": 9900,
+        "localSearchEvaluations": 0,
+        "totalEvaluations": 10000
+      },
+      {
+        "experiment": "weight_sensitivity",
+        "variant": "GREEDY_LPT",
+        "initialEvaluations": 1,
+        "iterationEvaluations": 0,
+        "localSearchEvaluations": 0,
+        "totalEvaluations": 1
+      },
+      {
+        "experiment": "weight_sensitivity",
+        "variant": "LSCBO",
+        "initialEvaluations": 100,
+        "iterationEvaluations": 500,
+        "localSearchEvaluations": 9400,
+        "totalEvaluations": 10000
+      }
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+--- 
++++ 
+@@ -725,7 +725,7 @@
+         return new FeatureSet(false, true, true, false, false, Perturbation.NONE);
+     }
+ 
+-    private static OptimizationResult optimize(Algorithm algorithm, FeatureSet features,
++    static OptimizationResult optimize(Algorithm algorithm, FeatureSet features,
+                                                Scenario scenario, WeightProfile weights,
+                                                Norm norm, long seed) {
+         Random random = new Random(seed);
+@@ -992,18 +992,27 @@
+         }
+     }
+ 
++    static final ThreadLocal<ColdAudit> COLD_AUDIT = new ThreadLocal<>();
++    static final class ColdAudit {
++        long scoreCalls;
++        int acceptedExchanges;
++        int[] localStart;
++    }
++
+     static final class LocalSearchResult {
+         int[] schedule;
+         Metrics metrics;
+         int evaluations;
+     }
+ 
+-    private static LocalSearchResult localSearch(int[] startingSchedule, Scenario scenario,
++    static LocalSearchResult localSearch(int[] startingSchedule, Scenario scenario,
+                                                  WeightProfile weights, Norm norm,
+                                                  Random random, int maxTrials,
+                                                  LocalSearchMode mode) {
+         LocalSearchResult result = new LocalSearchResult();
+         int[] best = startingSchedule.clone();
++        ColdAudit coldAudit = COLD_AUDIT.get();
++        if (coldAudit != null) coldAudit.localStart = startingSchedule.clone();
+         Metrics bestMetrics = evaluate(best, scenario, weights, norm);
+         int evaluations = 0;
+         boolean hasMove = false;
+@@ -1059,6 +1068,7 @@
+                 }
+             }
+             if (roundBest != null) {
++                if (coldAudit != null) coldAudit.acceptedExchanges++;
+                 best = roundBest;
+                 bestMetrics = roundBestMetrics;
+             }
+@@ -1149,6 +1159,8 @@
+     }
+ 
+     static Metrics evaluateRaw(int[] schedule, Scenario scenario, WeightProfile weights, Norm norm) {
++        ColdAudit coldAudit = COLD_AUDIT.get();
++        if (coldAudit != null) coldAudit.scoreCalls++;
+         double[] vmLoads = loads(schedule, scenario);
+         double totalLoad = 0.0;
+         double maxLoad = 0.0;

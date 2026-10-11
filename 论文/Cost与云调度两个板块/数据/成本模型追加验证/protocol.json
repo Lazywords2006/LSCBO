@@ -1,0 +1,83 @@
+{
+  "created": "2026-10-11T19:50:16.242500",
+  "status": "exploratory; candidates screened on existing schedules before optimization; frozen here before new model optimization",
+  "discovery_seeds": [
+    43,
+    72
+  ],
+  "confirmation_seeds": [
+    103,
+    132
+  ],
+  "scales": [
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900,
+    1000
+  ],
+  "methods": [
+    "LSCBO",
+    "CBO",
+    "PSO",
+    "GWO",
+    "WOA",
+    "AOA",
+    "GREEDY_LPT"
+  ],
+  "population": 100,
+  "budget": 10000,
+  "global_local_LSCBO": [
+    600,
+    9400
+  ],
+  "vm_count": 50,
+  "weights": [
+    0.25,
+    0.25,
+    0.25,
+    0.25
+  ],
+  "rates": "original synthetic .05+.15*sqrt((MIPS-500)/1500)",
+  "normalization": "Greedy-LPT per instance; cost reference recomputed for each model",
+  "models": [
+    {
+      "id": "batch_reserved_seconds",
+      "formula": "C=max_j H_j * sum_j r_j",
+      "label": "整批统一释放，连续秒租赁",
+      "sources": [
+        "https://www.cs.vu.nl/~amo/papers/bats.pdf"
+      ],
+      "adaptation": "BaTS reservation-time multiplied by fleet-price structure; fixed 50 VMs, all leased at t=0 and released together at the observed batch makespan; continuous-time limit of reservation billing. This fleet policy and continuous-time specialization are our assumptions. No exact source formula or live tariff claim. Normalized cost equals normalized makespan exactly, so this duplicates that criterion."
+    },
+    {
+      "id": "batch_reserved_min60",
+      "formula": "C=max(60,ceil(max_j H_j))*sum_j r_j",
+      "label": "整批统一释放，按秒计费最低60秒",
+      "sources": [
+        "https://www.cs.vu.nl/~amo/papers/bats.pdf",
+        "https://zaixing-sun.github.io/publications/Sun2022-TSC.pdf"
+      ],
+      "adaptation": "Same fixed-fleet policy. ET2FA supplies the billing time rule, not the common-release policy. No startup, DAG, hibernation, storage or elastic VM count. At small task counts minimum billing can make all methods tie."
+    },
+    {
+      "id": "erth_completion_adapted",
+      "formula": "C=sum_i 8*CT_i*(B_task_i/B_vm_s_i)",
+      "label": "ERTH资源带宽加权完成时间（自定义适配）",
+      "sources": [
+        "https://link.springer.com/article/10.1007/s10462-024-10945-6",
+        "https://shura.shu.ac.uk/27210/1/Pranggono_MetaheuristicMethodJoint(AM).pdf"
+      ],
+      "adaptation": "Hybrid uses the previously frozen ERTH resource-bandwidth ratio and FCFS completion time. Replacing execution time with completion time is our adaptation, not ERTH Eq.4. Resource bandwidth is an abstract CPU-memory resource measure, not a modeled network transfer charge."
+    }
+  ],
+  "selection": "Largest minimum mean paired cost reduction over five competing metaheuristics on discovery; all candidates and prior six models disclosed. Freeze winner and discovery strongest opponent before fresh confirmation103-132. No algorithm, price, weight or seed tuning after selection.",
+  "inference": "Seed-cluster (same seed across10 scales); 30000 percentile bootstrap replicates. Five metaheuristic pairwise seed-cluster Wilcoxon tests with Holm adjustment.",
+  "original_data_sha256": "ae13ed03a88053e3c88b6336ba9a17bdda19948ecb23ac03675886f205435105",
+  "production_source_sha256": "b08be2d9322aa48581784aaab0519f1c35186ebbfee3ee6a26e7b24138a10441"
+}

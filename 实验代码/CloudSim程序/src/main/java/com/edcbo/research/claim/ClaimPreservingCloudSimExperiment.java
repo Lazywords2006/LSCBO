@@ -39,8 +39,9 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 public final class ClaimPreservingCloudSimExperiment {
-    private static final int POPULATION_SIZE = 30;
-    private static final int MAX_ITERATIONS = 200;
+    static final String COST_MODEL = System.getProperty("cost.model", "batch_reserved_seconds");
+    private static final int POPULATION_SIZE = 100;
+    private static final int MAX_ITERATIONS = 100;
     private static final int TOTAL_EVALUATION_BUDGET = POPULATION_SIZE * MAX_ITERATIONS;
     private static final int LSCBO_GLOBAL_BUDGET = 600;
     private static final int LOCAL_SEARCH_MAX_TRIALS = TOTAL_EVALUATION_BUDGET - LSCBO_GLOBAL_BUDGET;
@@ -52,7 +53,8 @@ public final class ClaimPreservingCloudSimExperiment {
 
     private static final int[] SMOKE_SCALES = {50, 100};
     private static final int[] PILOT_SCALES = {200, 500};
-    private static final int[] FULL_SCALES = {200, 500, 1000, 2000, 5000};
+    private static final int[] FULL_SCALES = {100, 200, 300, 400, 500, 600, 700, 800, 900, 1000};
+    private static final int[] EXTENDED_SCALES = {100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000};
     private static final int[] WEIGHT_SCALES = {100, 300, 500, 800, 1000};
     private static final int[] ROBUSTNESS_SCALES = {500, 1000, 2000};
     private static final long[] FULL_SEEDS = rangeSeeds(43, 72);
@@ -118,7 +120,8 @@ public final class ClaimPreservingCloudSimExperiment {
 
     static final class Args {
         String mode = "smoke";
-        Path out = Paths.get("results", "smoke");
+        Path out = Paths.get(System.getenv().getOrDefault("CODEX_RUNTIME_ROOT", "D:/CodexRuntime"),
+                "runs", "lscbo-cold", "smoke");
         boolean cloudsim = true;
         long seedStart = 43;
         long seedEnd = 72;
@@ -134,6 +137,9 @@ public final class ClaimPreservingCloudSimExperiment {
         final VmProfile vmProfile;
         final double[] taskLengths;
         final double[] vmMips;
+        final double[] taskBandwidth;
+        final double[] vmBandwidth;
+        final double[] pricePerSecond;
 
         Scenario(int taskCount, int vmCount, long seed, VmProfile vmProfile,
                  double[] taskLengths, double[] vmMips) {
@@ -143,6 +149,18 @@ public final class ClaimPreservingCloudSimExperiment {
             this.vmProfile = vmProfile;
             this.taskLengths = taskLengths;
             this.vmMips = vmMips;
+            taskBandwidth = new double[taskCount];
+            vmBandwidth = new double[vmCount];
+            pricePerSecond = new double[vmCount];
+            Random taskBwRandom = new Random(30_000L + seed * 173L + taskCount * 19L);
+            Random vmBwRandom = new Random(40_000L + seed * 197L + vmProfile.ordinal() * 23L);
+            for (int i = 0; i < taskCount; i++) taskBandwidth[i] = 10.0 + 40.0 * taskBwRandom.nextDouble();
+            for (int j = 0; j < vmCount; j++) {
+                vmBandwidth[j] = 100.0 + 150.0 * vmBwRandom.nextDouble();
+                double span = Math.max(1.0, vmProfile.maxMips - vmProfile.minMips);
+                double normalized = (vmMips[j] - vmProfile.minMips) / span;
+                pricePerSecond[j] = 0.05 + 0.15 * Math.sqrt(Math.max(0.0, normalized));
+            }
         }
     }
 
@@ -258,6 +276,8 @@ public final class ClaimPreservingCloudSimExperiment {
         int cloudsimFinishedCloudlets;
         double cloudsimMakespan;
         long runtimeMs;
+        int[] savedSchedule;
+        Scenario savedScenario;
 
         String csv() {
             return String.format(Locale.US,
@@ -319,6 +339,9 @@ public final class ClaimPreservingCloudSimExperiment {
             } else if ("mainfull".equalsIgnoreCase(args.mode)) {
                 rows.addAll(runE4(pool, args.mode, FULL_SCALES, seedsFor(args, FULL_SEEDS),
                         Algorithm.values(), 50, VmProfile.DEFAULT, WeightProfile.W0_EQUAL, args.cloudsim));
+            } else if ("mainextended".equalsIgnoreCase(args.mode)) {
+                rows.addAll(runE4(pool, args.mode, EXTENDED_SCALES, seedsFor(args, FULL_SEEDS),
+                        Algorithm.values(), 50, VmProfile.DEFAULT, WeightProfile.W0_EQUAL, args.cloudsim));
             } else if ("mainmini".equalsIgnoreCase(args.mode)) {
                 rows.addAll(runE4(pool, args.mode, FULL_SCALES, PILOT_SEEDS,
                         Algorithm.values(), 50, VmProfile.DEFAULT, WeightProfile.W0_EQUAL, args.cloudsim));
@@ -352,6 +375,7 @@ public final class ClaimPreservingCloudSimExperiment {
         }
 
         writeRaw(args.out.resolve("claim_" + args.mode.toLowerCase(Locale.ROOT) + "_raw.csv"), rows);
+        writeCostScenarios(args.out.resolve("cost_scenarios.csv"), rows);
         writeSummary(args.out.resolve("claim_" + args.mode.toLowerCase(Locale.ROOT) + "_summary.csv"), rows);
         writeMetadata(args.out.resolve("claim_metadata.csv"), args, rows, System.currentTimeMillis() - start);
         writeReport(args.out.resolve("run_report.txt"), args, rows, System.currentTimeMillis() - start);
@@ -686,6 +710,8 @@ public final class ClaimPreservingCloudSimExperiment {
         row.cloudsimFinishedCloudlets = sim.finishedCloudlets;
         row.cloudsimMakespan = sim.cloudsimMakespan;
         row.runtimeMs = System.currentTimeMillis() - start;
+        row.savedSchedule = optimized.schedule.clone();
+        row.savedScenario = scenario;
         return row;
     }
 
@@ -732,7 +758,7 @@ public final class ClaimPreservingCloudSimExperiment {
 
         for (int i = 0; i < POPULATION_SIZE; i++) {
             for (int d = 0; d < dimensions; d++) {
-                population[i][d] = i == 0 ? greedyPosition[d] : random.nextDouble();
+                population[i][d] = random.nextDouble();
                 velocities[i][d] = 0.1 * random.nextGaussian();
                 personalBest[i][d] = population[i][d];
             }
@@ -1148,10 +1174,52 @@ public final class ClaimPreservingCloudSimExperiment {
             double idlePower = 0.6 * maxPower;
             energy += (idlePower + (maxPower - idlePower) * Math.pow(util, 3.0))
                     * makespan / 3600.0;
-            double mipsSpan = Math.max(1.0, scenario.vmProfile.maxMips - scenario.vmProfile.minMips);
-            double normalizedMips = (scenario.vmMips[vm] - scenario.vmProfile.minMips) / mipsSpan;
-            double pricePerSecond = 0.05 + 0.15 * Math.sqrt(Math.max(0.0, normalizedMips));
-            cost += vmLoads[vm] * pricePerSecond;
+            double pricePerSecond = scenario.pricePerSecond[vm];
+            switch (COST_MODEL) {
+                case "original": cost += vmLoads[vm] * pricePerSecond; break;
+                case "flat_busy": cost += vmLoads[vm] * 0.125; break;
+                case "lease_min60":
+                    if (vmLoads[vm] > 0.0) cost += pricePerSecond * Math.max(60.0, Math.ceil(vmLoads[vm]));
+                    break;
+                case "lease_hour":
+                    if (vmLoads[vm] > 0.0) cost += pricePerSecond * 3600.0 * Math.ceil(vmLoads[vm] / 3600.0);
+                    break;
+                case "completion": case "erth_bandwidth": case "batch_reserved_seconds": case "batch_reserved_min60": case "erth_completion_adapted": break;
+                default: throw new IllegalArgumentException("Unknown cost model: " + COST_MODEL);
+            }
+        }
+
+        if (COST_MODEL.equals("completion")) {
+            // Common FCFS service order: ascending original task index.
+            double[] finish = new double[scenario.vmCount];
+            for (int i = 0; i < schedule.length; i++) {
+                int vm = schedule[i];
+                finish[vm] += scenario.taskLengths[i] / scenario.vmMips[vm];
+                cost += scenario.pricePerSecond[vm] * finish[vm];
+            }
+        } else if (COST_MODEL.equals("erth_bandwidth")) {
+            for (int i = 0; i < schedule.length; i++) {
+                int vm = schedule[i];
+                cost += 8.0 * (scenario.taskLengths[i] / scenario.vmMips[vm])
+                        * (scenario.taskBandwidth[i] / scenario.vmBandwidth[vm]);
+            }
+        }
+
+        if (COST_MODEL.equals("batch_reserved_seconds") || COST_MODEL.equals("batch_reserved_min60")) {
+            // Fixed fleet: every available VM is leased at t=0 and released
+            // together when the batch finishes. Rates and fleet are unchanged.
+            double chargedTime = COST_MODEL.equals("batch_reserved_min60")
+                    ? Math.max(60.0, Math.ceil(makespan)) : makespan;
+            for (double rate : scenario.pricePerSecond) cost += chargedTime * rate;
+        } else if (COST_MODEL.equals("erth_completion_adapted")) {
+            // Exploratory hybrid; this completion-time substitution is ours,
+            // not ERTH Eq.4, which uses per-task execution time.
+            double[] finish = new double[scenario.vmCount];
+            for (int i = 0; i < schedule.length; i++) {
+                int vm = schedule[i];
+                finish[vm] += scenario.taskLengths[i] / scenario.vmMips[vm];
+                cost += 8.0 * finish[vm] * scenario.taskBandwidth[i] / scenario.vmBandwidth[vm];
+            }
         }
 
         double objective;
@@ -1249,9 +1317,22 @@ public final class ClaimPreservingCloudSimExperiment {
 
     private static void writeRaw(Path file, List<ResultRow> rows) throws IOException {
         try (PrintWriter out = new PrintWriter(Files.newBufferedWriter(file, StandardCharsets.UTF_8))) {
-            out.println("mode,experiment,algorithm,variant,weightProfile,vmProfile,perturbation,taskCount,vmCount,seed,populationSize,maxIterations,initialEvaluations,iterationEvaluations,localSearchEvaluations,totalEvaluations,normMakespan,normEnergy,normCost,normImbalance,makespan,energy,cost,imbalance,objective,cloudsimFinishedCloudlets,cloudsimMakespan,runtimeMs");
+            out.println("mode,experiment,algorithm,variant,weightProfile,vmProfile,perturbation,taskCount,vmCount,seed,populationSize,maxIterations,initialEvaluations,iterationEvaluations,localSearchEvaluations,totalEvaluations,normMakespan,normEnergy,normCost,normImbalance,makespan,energy,cost,imbalance,objective,cloudsimFinishedCloudlets,cloudsimMakespan,runtimeMs,schedule");
             for (ResultRow row : rows) {
-                out.println(row.csv());
+                out.println(row.csv() + ",\"" + Arrays.toString(row.savedSchedule) + "\"");
+            }
+        }
+    }
+
+    private static void writeCostScenarios(Path file, List<ResultRow> rows) throws IOException {
+        try (PrintWriter out = new PrintWriter(Files.newBufferedWriter(file, StandardCharsets.UTF_8))) {
+            out.println("experiment,weightProfile,vmProfile,taskCount,seed,taskLengths,vmMips,taskBandwidth,vmBandwidth,pricePerSecond");
+            for (ResultRow row : rows) {
+                if (!row.algorithm.equals("GREEDY_LPT")) continue;
+                Scenario s = row.savedScenario;
+                out.println(row.experiment + "," + row.weightProfile + "," + row.vmProfile + "," + s.taskCount + "," + s.seed + ",\"" + Arrays.toString(s.taskLengths)
+                    + "\",\"" + Arrays.toString(s.vmMips) + "\",\"" + Arrays.toString(s.taskBandwidth)
+                    + "\",\"" + Arrays.toString(s.vmBandwidth) + "\",\"" + Arrays.toString(s.pricePerSecond) + "\"");
             }
         }
     }
@@ -1276,6 +1357,8 @@ public final class ClaimPreservingCloudSimExperiment {
             out.println("key,value");
             out.println("createdAt," + LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME));
             out.println("mode," + args.mode);
+            out.println("adoptedCostModel,batch_reserved_seconds");
+            out.println("adoptedCostDefinition,batch makespan times sum of all available VM rates; fixed fleet; simultaneous release; continuous-time synthetic rental units");
             out.println("rows," + rows.size());
             out.println("runtimeMs," + runtimeMs);
             out.println("cloudsimValidation," + args.cloudsim);
@@ -1295,7 +1378,11 @@ public final class ClaimPreservingCloudSimExperiment {
             out.println("objective,weighted normalized makespan energy cost imbalance");
             out.println("decoder,direct continuous-to-VM assignment; any task-to-VM schedule is representable");
             out.println("imbalance,standard deviation of VM completion times divided by mean completion time");
-            out.println("initialization,common greedy LPT earliest-finish warm start plus random positions");
+            out.println("protocol,ERTH-mode cold start 2026-10-11");
+            out.println("initialization,all population coordinates random.nextDouble; Greedy is normalization only");
+            out.println("primaryScales,100-1000 in increments of 100");
+            out.println("externalMainScales,2000-10000 in increments of 1000");
+            out.println("unrecordedMetricCalls,one normalization reference call per row plus one local-entry call when local search runs");
             out.println("datacenter,1 datacenter, 4 cores per host, host count expands when needed to allocate all VMs");
         }
     }

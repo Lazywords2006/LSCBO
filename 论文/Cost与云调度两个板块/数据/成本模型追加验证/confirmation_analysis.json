@@ -1,0 +1,309 @@
+{
+  "results": [
+    {
+      "model": "batch_reserved_seconds",
+      "phase": "confirmation",
+      "strongest_opponent": "PSO",
+      "fixed_target_opponent": "PSO",
+      "selection_score_percent": 25.68092324884602,
+      "unique_best_mean_scales": 10,
+      "best_or_tied_mean_scales": 10,
+      "all_methods_tie_fraction": 0.0,
+      "pairwise": {
+        "CBO": {
+          "mean_paired_reduction_percent": 27.986672095517328,
+          "CI95_seed_cluster": [
+            27.13470597255552,
+            28.835914680922606
+          ],
+          "win_tie_loss": [
+            300,
+            0,
+            0
+          ],
+          "p_seed_cluster_one_sided": 9.313225746154785e-10,
+          "holm_adjusted_p": 4.6566128730773926e-09
+        },
+        "PSO": {
+          "mean_paired_reduction_percent": 25.68092324884602,
+          "CI95_seed_cluster": [
+            24.622939558203626,
+            26.66626961906963
+          ],
+          "win_tie_loss": [
+            300,
+            0,
+            0
+          ],
+          "p_seed_cluster_one_sided": 9.313225746154785e-10,
+          "holm_adjusted_p": 4.6566128730773926e-09
+        },
+        "GWO": {
+          "mean_paired_reduction_percent": 36.19096909789779,
+          "CI95_seed_cluster": [
+            35.49830069319824,
+            36.91319778573383
+          ],
+          "win_tie_loss": [
+            300,
+            0,
+            0
+          ],
+          "p_seed_cluster_one_sided": 9.313225746154785e-10,
+          "holm_adjusted_p": 4.6566128730773926e-09
+        },
+        "WOA": {
+          "mean_paired_reduction_percent": 27.094513137967315,
+          "CI95_seed_cluster": [
+            26.13531048310567,
+            28.07734048256453
+          ],
+          "win_tie_loss": [
+            300,
+            0,
+            0
+          ],
+          "p_seed_cluster_one_sided": 9.313225746154785e-10,
+          "holm_adjusted_p": 4.6566128730773926e-09
+        },
+        "AOA": {
+          "mean_paired_reduction_percent": 35.967985427055815,
+          "CI95_seed_cluster": [
+            35.23469171404031,
+            36.721252554682806
+          ],
+          "win_tie_loss": [
+            300,
+            0,
+            0
+          ],
+          "p_seed_cluster_one_sided": 9.313225746154785e-10,
+          "holm_adjusted_p": 4.6566128730773926e-09
+        },
+        "GREEDY_LPT": {
+          "mean_paired_reduction_percent": -50.742764698922585,
+          "CI95_seed_cluster": [
+            -52.43809664320962,
+            -49.066238726223744
+          ],
+          "win_tie_loss": [
+            0,
+            0,
+            300
+          ],
+          "p_seed_cluster_one_sided": 1.0
+        }
+      },
+      "means": {
+        "AOA": {
+          "makespan": 218.2135527433,
+          "energy": 506.84028356706665,
+          "cost": 1622.5130319538334,
+          "imbalance": 0.4526290895333333,
+          "objective": 29.79595013033333
+        },
+        "CBO": {
+          "makespan": 200.1917769471,
+          "energy": 471.78207132780005,
+          "cost": 1488.2667739622,
+          "imbalance": 0.38070947106666664,
+          "objective": 26.46898006263333
+        },
+        "GREEDY_LPT": {
+          "makespan": 94.08610017193334,
+          "energy": 324.50866190923335,
+          "cost": 699.8784438196667,
+          "imbalance": 0.009004416933333334,
+          "objective": 1.0
+        },
+        "GWO": {
+          "makespan": 218.65126108913333,
+          "energy": 507.9521653219,
+          "cost": 1626.0585624093,
+          "imbalance": 0.4503939646333333,
+          "objective": 29.8704548055
+        },
+        "LSCBO": {
+          "makespan": 145.35125805159998,
+          "energy": 383.0708427677333,
+          "cost": 1080.6382268464001,
+          "imbalance": 0.2699046806,
+          "objective": 19.271488534766668
+        },
+        "PSO": {
+          "makespan": 191.9622738376,
+          "energy": 454.6577274442,
+          "cost": 1427.5066143355334,
+          "imbalance": 0.3768951306,
+          "objective": 25.2331003524
+        },
+        "WOA": {
+          "makespan": 192.86312007236666,
+          "energy": 458.80462364650003,
+          "cost": 1433.2614674712333,
+          "imbalance": 0.38732374410000003,
+          "objective": 25.8330884473
+        }
+      }
+    },
+    {
+      "model": "completion",
+      "phase": "confirmation",
+      "strongest_opponent": "CBO",
+      "fixed_target_opponent": "CBO",
+      "selection_score_percent": 2.2649899311214017,
+      "unique_best_mean_scales": 10,
+      "best_or_tied_mean_scales": 10,
+      "all_methods_tie_fraction": 0.0,
+      "pairwise": {
+        "CBO": {
+          "mean_paired_reduction_percent": 2.2649899311214017,
+          "CI95_seed_cluster": [
+            2.02694342434913,
+            2.507634173505133
+          ],
+          "win_tie_loss": [
+            257,
+            0,
+            43
+          ],
+          "p_seed_cluster_one_sided": 9.313225746154785e-10,
+          "holm_adjusted_p": 4.6566128730773926e-09
+        },
+        "PSO": {
+          "mean_paired_reduction_percent": 4.1533331198656835,
+          "CI95_seed_cluster": [
+            3.8133045583181446,
+            4.508274797018637
+          ],
+          "win_tie_loss": [
+            287,
+            0,
+            13
+          ],
+          "p_seed_cluster_one_sided": 9.313225746154785e-10,
+          "holm_adjusted_p": 4.6566128730773926e-09
+        },
+        "GWO": {
+          "mean_paired_reduction_percent": 4.149211531046643,
+          "CI95_seed_cluster": [
+            3.8693676264107624,
+            4.424250635988838
+          ],
+          "win_tie_loss": [
+            281,
+            0,
+            19
+          ],
+          "p_seed_cluster_one_sided": 9.313225746154785e-10,
+          "holm_adjusted_p": 4.6566128730773926e-09
+        },
+        "WOA": {
+          "mean_paired_reduction_percent": 2.9110063315024135,
+          "CI95_seed_cluster": [
+            2.656100667832164,
+            3.168812984185649
+          ],
+          "win_tie_loss": [
+            267,
+            0,
+            33
+          ],
+          "p_seed_cluster_one_sided": 9.313225746154785e-10,
+          "holm_adjusted_p": 4.6566128730773926e-09
+        },
+        "AOA": {
+          "mean_paired_reduction_percent": 4.42522300311619,
+          "CI95_seed_cluster": [
+            4.152109719883986,
+            4.688114224226872
+          ],
+          "win_tie_loss": [
+            280,
+            0,
+            20
+          ],
+          "p_seed_cluster_one_sided": 9.313225746154785e-10,
+          "holm_adjusted_p": 4.6566128730773926e-09
+        },
+        "GREEDY_LPT": {
+          "mean_paired_reduction_percent": -0.6317554037230256,
+          "CI95_seed_cluster": [
+            -0.9365586004209714,
+            -0.32194224207831706
+          ],
+          "win_tie_loss": [
+            150,
+            0,
+            150
+          ],
+          "p_seed_cluster_one_sided": 0.9996667234227061
+        }
+      },
+      "means": {
+        "AOA": {
+          "makespan": 218.81108086716665,
+          "energy": 507.7812028849,
+          "cost": 5671.786371853433,
+          "imbalance": 0.4519213463666667,
+          "objective": 29.460705158366668
+        },
+        "CBO": {
+          "makespan": 200.5319292021333,
+          "energy": 472.4052636293334,
+          "cost": 5622.163037974634,
+          "imbalance": 0.3800366551666667,
+          "objective": 26.2006348736
+        },
+        "GREEDY_LPT": {
+          "makespan": 94.08610017193334,
+          "energy": 324.50866190923335,
+          "cost": 5585.1237787616,
+          "imbalance": 0.009004416933333334,
+          "objective": 1.0
+        },
+        "GWO": {
+          "makespan": 219.01940055296663,
+          "energy": 508.56464409229994,
+          "cost": 5671.798975385766,
+          "imbalance": 0.4499215815333333,
+          "objective": 29.532959678233336
+        },
+        "LSCBO": {
+          "makespan": 147.9784330638,
+          "energy": 386.5264249259,
+          "cost": 5539.8883108585005,
+          "imbalance": 0.27137075963333335,
+          "objective": 19.30492938416667
+        },
+        "PSO": {
+          "makespan": 193.55375830676667,
+          "energy": 457.39433901816665,
+          "cost": 5719.351121648267,
+          "imbalance": 0.37692259699999997,
+          "objective": 24.948825498966666
+        },
+        "WOA": {
+          "makespan": 193.5782173449,
+          "energy": 459.7800926685333,
+          "cost": 5625.9107171154665,
+          "imbalance": 0.3864201472666667,
+          "objective": 25.515550066
+        }
+      }
+    }
+  ],
+  "verification": [
+    {
+      "model": "batch_reserved_seconds",
+      "rows": 2100,
+      "max_independent_component_error": 5.000003966415534e-09
+    },
+    {
+      "model": "completion",
+      "rows": 2100,
+      "max_independent_component_error": 5.000003966415534e-09
+    }
+  ],
+  "production_source_and_data_unchanged": true
+}

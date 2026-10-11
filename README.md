@@ -1,152 +1,33 @@
-# LSCBO Evolutionary Intelligence Submission Package
+# LSCBO — current Cost and cloud-scheduling revision
 
-This repository contains the reproducibility materials for the current
-Evolutionary Intelligence submission:
+Latest release: **2026-10-11**. This repository is the GitHub repository identified in the paper.
 
-**Pareto-Safe Pair Reassignment for LSCBO-Based Multi-Cost Cloud Task
-Scheduling**
+The current manuscript deliverable contains only the requested **Cost subsection and Section 4.2 cloud-scheduling experiments**, with the updated Fig. 6–8 and every Section 4.2 table. Start with [the current delivery](论文/Cost与云调度两个板块/README.md).
 
-Public repository: https://github.com/Lazywords2006/LSCBO
+| Current item | Location |
+| --- | --- |
+| Cost subsection, PDF and standalone editable TeX | [Cost_Block.pdf](论文/Cost与云调度两个板块/Cost_Block.pdf), [Cost_Block.tex](论文/Cost与云调度两个板块/Cost_Block.tex) |
+| Complete Section 4.2, PDF and standalone editable TeX | [Cloud_Scheduling_Block.pdf](论文/Cost与云调度两个板块/Cloud_Scheduling_Block.pdf), [Cloud_Scheduling_Block.tex](论文/Cost与云调度两个板块/Cloud_Scheduling_Block.tex) |
+| Insertable subsection/chapter fragments | [current delivery](论文/Cost与云调度两个板块/) |
+| Fig. 6–8: PDF, SVG, PNG, curve coordinates and provenance | [figures](论文/Cost与云调度两个板块/图/) |
+| All new cloud raw rows, instance parameters and derived statistics | [data](论文/Cost与云调度两个板块/数据/) |
+| Matching frozen Java source and portable rerun/audit commands | [CloudSim program](实验代码/CloudSim程序/README.md) |
+| Unchanged CEC2017 experiment source/results | [CEC2017 source](实验代码/CEC2017程序/), [CEC2017 data](实验数据/数据/) |
 
-## Current Claim Boundary
+## Current protocol and results
 
-The current submission does **not** claim broad or large overall superiority of
-the LSCBO optimizer in cloud scheduling. The supported claim is narrower:
+All population members are random at initialization. Population 100; recorded iterations 100; candidate budget 10,000. The primary range is 100–1000 tasks with 50 VMs and 30 seeds (43–72). The extended main run covers 19 scales through 10,000 tasks: **3990 rows**. Weight sensitivity adds **2250 rows**, and VM-capacity sensitivity **810 rows**. Direct-refinement diagnostics contain 4500 timing records and 900 unique quality records. Additional model-confirmation runs use fresh seeds 103–132 and contain 4200 optimized rows across the selected and control models.
 
-- Pareto-safe task-pair reassignment can refine a strong Greedy-LPT schedule.
-- The refinement is small in scalar objective value and mainly improves load
-  balance.
-- No reported component is worsened relative to Greedy-LPT in the canonical
-  paired cloud study.
-- The cloud-domain gain is attributed to the pair-reassignment neighborhood, not
-  to the CBO host or the Levy trial.
-- CEC2017 evidence is reported separately: LSCBO has the best average rank among
-  nine optimizers, but it is not distinguished from simulated annealing after
-  Holm correction.
+The adopted synthetic cost model is `batch_reserved_seconds`: `cost = makespan × sum(all available VM rates)`, for a fixed fleet reserved at time zero and released together. Continuous seconds are used; no minimum billing period or commercial tariff is asserted. Instance-wise normalized cost equals normalized makespan, so cost is not an independent optimization dimension in this fixed-fleet model. The Cost block explicitly explains this dependency and the adjusted effective objective weights.
 
-## Submission Files
+LSCBO has the lowest mean normalized objective among the six compared metaheuristics at each of the ten primary scales; its pooled mean is **19.953855**. Greedy-LPT remains the normalization reference (`F = 1`), and all four LSCBO components exceed that reference in the 300 primary blocks. The mean paired cost reduction against PSO is **25.1840%** on the main seeds and **25.6809%** on the separate confirmation seeds. WOA has a lower mean objective at the extended scales 4000–10,000. See Section 4.2 for the full evidence and uncertainty.
 
-The Evolutionary Intelligence submission package is under:
+Scheduling ablation is removed. Fig. 6 has one objective panel. Fig. 7 panel labels are centered below the panels; its six method identities, colors, solid-line widths and legend strokes agree with Fig. 6. There is no absolute-cost zoom or self-relative zero line. Greedy-LPT is disclosed in the tables and is not plotted.
 
-```text
-各个期刊格式的论文/待发布版本/01_Evolutionary_Intelligence/
-```
+## Verification and version policy
 
-Main files:
+Run the [published audit](实验代码/CloudSim程序/README.md#verify-the-published-delivery) to check hashes, all eight Section 4.2 tables, numerical prose, seed-cluster intervals, and vector curves against the raw data. [RELEASE_MANIFEST.json](RELEASE_MANIFEST.json) records every current file hash. The frozen experiment source hash is `a52444877768a42129eb9dcd637f9a3d18f25eb94a8441e21b541ff773854b15`.
 
-- `ANONYMIZED_REPRODUCIBILITY_README.md`
-- `LSCBO_Evolutionary_Intelligence.tex`
-- `LSCBO_Evolutionary_Intelligence.pdf`
-- `LSCBO_Evolutionary_Intelligence_Supplementary.tex`
-- `LSCBO_Evolutionary_Intelligence_Supplementary.pdf`
-- `LSCBO_Evolutionary_Intelligence.zip`
-- `LSCBO_Anonymized_Reproducibility.zip`
+Only one current cloud deliverable is kept in this tree. Superseded warm-start data, duplicate submission packages and stale full-manuscript PDFs were retired from the current tree; they remain recoverable in Git history. This revision does not present a newly integrated full manuscript or a replacement Section 4.3 CloudSim validation. The CEC2017 source and results are retained unchanged.
 
-## Current Authoritative Data
-
-### Cloud scheduling canonical dataset
-
-Authoritative raw CSV:
-
-```text
-论文程序及图表/LSCBO_FULL_EXPERIMENT_PROGRAM_20260609/results/formal-cloudsim_20260619_canonical/combined/final_outputs/claim_full_raw.csv
-```
-
-Scope:
-
-- 5,310 analytic rows.
-- 30 seeds, 43-72.
-- Main comparison: 150 complete paired blocks.
-- Families: main comparison, mechanism ablation, weight sensitivity, and VM
-  heterogeneity.
-- CloudSim Plus is retained as a replay/smoke validation path; the manuscript's
-  formal numerical tables use the stated analytic multi-cost model.
-
-Verification report:
-
-```text
-论文程序及图表/LSCBO_FULL_EXPERIMENT_PROGRAM_20260609/results/formal-cloudsim_20260619_canonical/combined/final_outputs/analysis/CANONICAL_VERIFICATION_REPORT.md
-```
-
-Key verified result:
-
-- Pareto safety: PASS.
-- Objective wins/ties/losses versus Greedy-LPT: 150/0/0.
-- Makespan, energy, cost, and load-balance losses versus Greedy-LPT: 0.
-- Mean objective improvement: 1.647329% on the reference-normalized scale.
-- Mean load-balance improvement: 6.680058%.
-
-### CEC2017 official rerun
-
-For the GitHub/submission surface, the authoritative CEC2017 rerun results are
-inside:
-
-```text
-各个期刊格式的论文/待发布版本/01_Evolutionary_Intelligence/LSCBO_Anonymized_Reproducibility.zip
-```
-
-Archive path after extraction:
-
-```text
-LSCBO_Anonymized_Reproducibility/cec2017/results/
-```
-
-Files:
-
-- `per_run_results.csv` - 7,830 rows.
-- `per_function_statistics.csv`
-- `friedman_ranking.csv`
-- `pairwise_wilcoxon_holm.csv`
-- `convergence_checkpoints.csv`
-- `manifest.json`
-
-Scope:
-
-- Official CEC2017 functions F1 and F3-F30, 29 functions total.
-- 9 algorithms: LSCBO, CBO, PSO, GWO, WOA, SA, AOA, HLBO, and GWCA.
-- 30 runs per algorithm-function cell.
-- 300,000 evaluations per run.
-
-The local expanded Windows rerun package may exist at
-`LSCBO_CEC2017_WINDOWS_16C32G/`, but it is intentionally ignored and is not
-part of the GitHub source surface.
-
-Key verified result:
-
-- LSCBO average rank: 1.689655.
-- SA average rank: 2.655172.
-- LSCBO vs SA Holm-adjusted p-value: 0.0660665.
-
-## Reproducing the Current Tables
-
-Recommended lightweight check sequence:
-
-```bat
-01_verify_environment.bat
-03_analyze_canonical_data.bat
-07_text_risk_scan.bat
-02_compile_paper_pdf.bat
-```
-
-This checks the environment, regenerates the canonical cloud analysis, scans the
-paper text for overclaiming risk, and compiles the PDF. It does **not** rerun the
-full CEC2017 benchmark or the slow full CloudSim E4 replay.
-
-To rerun only the canonical cloud analysis:
-
-```bat
-03_analyze_canonical_data.bat
-```
-
-To compile the Evolutionary Intelligence PDF:
-
-```bat
-02_compile_paper_pdf.bat
-```
-
-## Historical Materials
-
-Older 12,780-row CloudSim-oriented outputs, exploratory reruns, and local test
-artifacts are intentionally excluded from the GitHub source surface for this
-submission. Use the paths listed above for review, submission, and reproduction
-of the current paper.
+Use GitHub **Code → Download ZIP** to download the current set. Runtime builds, dependency caches and new test outputs belong outside the repository; Windows examples use `D:/CodexRuntime`.

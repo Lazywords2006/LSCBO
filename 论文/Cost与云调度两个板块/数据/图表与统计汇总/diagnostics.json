@@ -1,0 +1,190 @@
+{
+  "environment": {
+    "hardware": {
+      "cpu_name": "Intel(R) Core(TM) i7-14650HX",
+      "cores": 16,
+      "logical_cpus": 24,
+      "memory_bytes": 34124718080
+    },
+    "platform": "Windows-11-10.0.26200-SP0",
+    "java": "Microsoft OpenJDK 21.0.7",
+    "application_threads": 1,
+    "warmup_cycles": 2,
+    "repetitions": 5,
+    "main_and_sensitivity_finished_before_timing": true,
+    "cost_model": "batch_reserved_seconds",
+    "source_sha256": "a52444877768a42129eb9dcd637f9a3d18f25eb94a8441e21b541ff773854b15"
+  },
+  "direct": {
+    "timed_rows": 4500,
+    "unique_quality_rows": 900,
+    "paired_blocks": 300,
+    "methods": {
+      "full_cold": {
+        "calls": 10002,
+        "meanF": 19.95385487544066,
+        "meanF_ci95": [
+          19.304322722585834,
+          20.62093853781211
+        ],
+        "mean_accepted_exchanges": 24.0,
+        "mean_block_median_time_ms": 45.523465666666674,
+        "objective_vs_reference": {
+          "lower": 0,
+          "equal": 0,
+          "higher": 300
+        },
+        "objective_vs_full": {
+          "lower": 0,
+          "equal": 300,
+          "higher": 0
+        },
+        "component_vs_reference": {
+          "makespan": {
+            "lower": 0,
+            "equal": 0,
+            "higher": 300
+          },
+          "energy": {
+            "lower": 0,
+            "equal": 0,
+            "higher": 300
+          },
+          "cost": {
+            "lower": 0,
+            "equal": 0,
+            "higher": 300
+          },
+          "imbalance": {
+            "lower": 0,
+            "equal": 0,
+            "higher": 300
+          }
+        }
+      },
+      "pair_only_9400": {
+        "calls": 9402,
+        "meanF": 0.9743732453977899,
+        "meanF_ci95": [
+          0.9726577508504172,
+          0.9760537150543387
+        ],
+        "mean_accepted_exchanges": 16.616666666666667,
+        "mean_block_median_time_ms": 32.30537666666667,
+        "objective_vs_reference": {
+          "lower": 300,
+          "equal": 0,
+          "higher": 0
+        },
+        "objective_vs_full": {
+          "lower": 300,
+          "equal": 0,
+          "higher": 0
+        },
+        "component_vs_reference": {
+          "makespan": {
+            "lower": 75,
+            "equal": 225,
+            "higher": 0
+          },
+          "energy": {
+            "lower": 300,
+            "equal": 0,
+            "higher": 0
+          },
+          "cost": {
+            "lower": 75,
+            "equal": 225,
+            "higher": 0
+          },
+          "imbalance": {
+            "lower": 300,
+            "equal": 0,
+            "higher": 0
+          }
+        }
+      },
+      "pair_only_10000": {
+        "calls": 10002,
+        "meanF": 0.97368400238812,
+        "meanF_ci95": [
+          0.9719676684173179,
+          0.9753559022153104
+        ],
+        "mean_accepted_exchanges": 17.343333333333334,
+        "mean_block_median_time_ms": 34.39558533333334,
+        "objective_vs_reference": {
+          "lower": 300,
+          "equal": 0,
+          "higher": 0
+        },
+        "objective_vs_full": {
+          "lower": 300,
+          "equal": 0,
+          "higher": 0
+        },
+        "component_vs_reference": {
+          "makespan": {
+            "lower": 78,
+            "equal": 222,
+            "higher": 0
+          },
+          "energy": {
+            "lower": 300,
+            "equal": 0,
+            "higher": 0
+          },
+          "cost": {
+            "lower": 78,
+            "equal": 222,
+            "higher": 0
+          },
+          "imbalance": {
+            "lower": 300,
+            "equal": 0,
+            "higher": 0
+          }
+        }
+      }
+    },
+    "direct10000_vs_direct9400": {
+      "objective": {
+        "lower": 190,
+        "equal": 110,
+        "higher": 0
+      },
+      "components": {
+        "makespan": {
+          "lower": 4,
+          "equal": 296,
+          "higher": 0
+        },
+        "energy": {
+          "lower": 183,
+          "equal": 110,
+          "higher": 7
+        },
+        "cost": {
+          "lower": 4,
+          "equal": 296,
+          "higher": 0
+        },
+        "imbalance": {
+          "lower": 190,
+          "equal": 110,
+          "higher": 0
+        }
+      }
+    }
+  },
+  "smoke": {
+    "rows": 12,
+    "all_finished": true,
+    "LSCBO_replay_delta_vs_greedy": [
+      0.891012080000003,
+      0.6497328200000041,
+      3.0522845299999943,
+      3.0501322799999997
+    ]
+  }
+}

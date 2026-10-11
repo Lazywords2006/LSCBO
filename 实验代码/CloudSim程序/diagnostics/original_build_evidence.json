@@ -1,0 +1,7 @@
+{
+  "source_sha256": "a52444877768a42129eb9dcd637f9a3d18f25eb94a8441e21b541ff773854b15",
+  "instrumented_sha256": "df65fe9fa36443e77086c67afa7d677e198275c284667833cf3d5196d12181d5",
+  "study_sha256": "55e8c376a6144456c5285466d8936da6c9d655777946203931cdc5e87b44105a",
+  "runtime": "D:\\CodexRuntime\\runs\\lscbo-batch-chapters-20261011",
+  "cost_model": "batch_reserved_seconds"
+}

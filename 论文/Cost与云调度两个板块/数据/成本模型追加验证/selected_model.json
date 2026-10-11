@@ -1,0 +1,19 @@
+{
+  "model": "batch_reserved_seconds",
+  "opponent": "PSO",
+  "discovery_score": 25.1840452124208,
+  "definition": {
+    "id": "batch_reserved_seconds",
+    "formula": "C=max_j H_j * sum_j r_j",
+    "label": "整批统一释放，连续秒租赁",
+    "sources": [
+      "https://www.cs.vu.nl/~amo/papers/bats.pdf"
+    ],
+    "adaptation": "BaTS reservation-time multiplied by fleet-price structure; fixed 50 VMs, all leased at t=0 and released together at the observed batch makespan; continuous-time limit of reservation billing. This fleet policy and continuous-time specialization are our assumptions. No exact source formula or live tariff claim. Normalized cost equals normalized makespan exactly, so this duplicates that criterion."
+  },
+  "confirmation_seeds": [
+    103,
+    132
+  ],
+  "status": "frozen after discovery and before confirmation"
+}

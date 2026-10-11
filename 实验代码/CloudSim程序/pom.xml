@@ -11,9 +11,14 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <codex.runtime.build>D:/CodexRuntime/runs/lscbo-cloudsim-build</codex.runtime.build>
     </properties>
+
+    <build>
+        <directory>${codex.runtime.build}</directory>
+    </build>
 
     <dependencies>
         <dependency>
