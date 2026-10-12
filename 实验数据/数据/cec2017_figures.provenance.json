@@ -186,6 +186,5 @@
     15,
     20
   ],
-  "band_definition": "Pointwise mean rank +/- 1.96 * sample SD of 29 function ranks / sqrt(29). Descriptive across-function intervals, not run-level or simultaneous confidence bands.",
   "error_definition": "Recorded best_value minus the official per-function optimum. Arithmetic mean over 30 runs is formed before displaying a logarithmic axis. No offset or clipping."
 }

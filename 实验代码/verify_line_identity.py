@@ -62,6 +62,9 @@ def drawing_bounds(drawing):
 
 def check_markers(xml,group,curve,drawings,centers=None,pdf_centers=None):
     uses=group.findall('.//s:use',NS)
+    if curve['marker'] in [None,'None','']:
+        assert not uses,curve['gid']
+        return 0
     actual=np.array([[float(u.attrib['x']),float(u.attrib['y'])] for u in uses])
     if centers is None:centers=np.array(curve['expected_marker_points_pt'])
     else:centers=np.asarray(centers)

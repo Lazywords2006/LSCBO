@@ -321,17 +321,17 @@
         272.156911573
       ],
       "color": "#E8302F",
-      "linewidth": 1.65,
+      "linewidth": 1.7,
       "linestyle": "-",
       "dash_pattern": [
         0.0,
         null
       ],
-      "marker": "o",
-      "markersize": 3.2,
-      "markerfacecolor": "white",
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#E8302F",
       "markeredgecolor": "#E8302F",
-      "markeredgewidth": 0.8,
+      "markeredgewidth": 1.0,
       "markevery": null,
       "marker_indices": [
         0,
@@ -459,24 +459,17 @@
         335.1272651219999
       ],
       "color": "#8A6420",
-      "linewidth": 1.05,
-      "linestyle": "--",
+      "linewidth": 1.0,
+      "linestyle": "-",
       "dash_pattern": [
         0.0,
-        [
-          1.05,
-          2.1,
-          1.05,
-          2.1,
-          4.2,
-          2.1
-        ]
+        null
       ],
-      "marker": "*",
-      "markersize": 3.2,
-      "markerfacecolor": "white",
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#8A6420",
       "markeredgecolor": "#8A6420",
-      "markeredgewidth": 0.8,
+      "markeredgewidth": 1.0,
       "markevery": null,
       "marker_indices": [
         0,
@@ -604,22 +597,17 @@
         333.20200259533334
       ],
       "color": "#0072B2",
-      "linewidth": 1.15,
-      "linestyle": "-.",
+      "linewidth": 1.0,
+      "linestyle": "-",
       "dash_pattern": [
         0.0,
-        [
-          7.359999999999999,
-          1.8399999999999999,
-          1.15,
-          1.8399999999999999
-        ]
+        null
       ],
-      "marker": "^",
-      "markersize": 3.2,
-      "markerfacecolor": "white",
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#0072B2",
       "markeredgecolor": "#0072B2",
-      "markeredgewidth": 0.8,
+      "markeredgewidth": 1.0,
       "markevery": null,
       "marker_indices": [
         0,
@@ -747,20 +735,17 @@
         361.2157654966667
       ],
       "color": "#5B4373",
-      "linewidth": 1.3,
-      "linestyle": "--",
+      "linewidth": 1.0,
+      "linestyle": "-",
       "dash_pattern": [
         0.0,
-        [
-          4.8100000000000005,
-          2.08
-        ]
+        null
       ],
-      "marker": "v",
-      "markersize": 3.2,
-      "markerfacecolor": "white",
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#5B4373",
       "markeredgecolor": "#5B4373",
-      "markeredgewidth": 0.8,
+      "markeredgewidth": 1.0,
       "markevery": null,
       "marker_indices": [
         0,
@@ -888,20 +873,17 @@
         379.498444062
       ],
       "color": "#A05A78",
-      "linewidth": 1.15,
-      "linestyle": ":",
+      "linewidth": 1.0,
+      "linestyle": "-",
       "dash_pattern": [
         0.0,
-        [
-          1.15,
-          1.8974999999999997
-        ]
+        null
       ],
-      "marker": "+",
-      "markersize": 3.2,
-      "markerfacecolor": "white",
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#A05A78",
       "markeredgecolor": "#A05A78",
-      "markeredgewidth": 0.8,
+      "markeredgewidth": 1.0,
       "markevery": null,
       "marker_indices": [
         0,
@@ -1029,20 +1011,17 @@
         390.6072060893334
       ],
       "color": "#2CA02C",
-      "linewidth": 1.05,
-      "linestyle": "--",
+      "linewidth": 1.0,
+      "linestyle": "-",
       "dash_pattern": [
         0.0,
-        [
-          6.300000000000001,
-          2.1
-        ]
+        null
       ],
-      "marker": "x",
-      "markersize": 3.2,
-      "markerfacecolor": "white",
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#2CA02C",
       "markeredgecolor": "#2CA02C",
-      "markeredgewidth": 0.8,
+      "markeredgewidth": 1.0,
       "markevery": null,
       "marker_indices": [
         0,
@@ -1170,17 +1149,17 @@
         706.4861585123332
       ],
       "color": "#E8302F",
-      "linewidth": 1.65,
+      "linewidth": 1.7,
       "linestyle": "-",
       "dash_pattern": [
         0.0,
         null
       ],
-      "marker": "o",
-      "markersize": 3.2,
-      "markerfacecolor": "white",
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#E8302F",
       "markeredgecolor": "#E8302F",
-      "markeredgewidth": 0.8,
+      "markeredgewidth": 1.0,
       "markevery": null,
       "marker_indices": [
         0,
@@ -1308,24 +1287,17 @@
         803.10514211
       ],
       "color": "#8A6420",
-      "linewidth": 1.05,
-      "linestyle": "--",
+      "linewidth": 1.0,
+      "linestyle": "-",
       "dash_pattern": [
         0.0,
-        [
-          1.05,
-          2.1,
-          1.05,
-          2.1,
-          4.2,
-          2.1
-        ]
+        null
       ],
-      "marker": "*",
-      "markersize": 3.2,
-      "markerfacecolor": "white",
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#8A6420",
       "markeredgecolor": "#8A6420",
-      "markeredgewidth": 0.8,
+      "markeredgewidth": 1.0,
       "markevery": null,
       "marker_indices": [
         0,
@@ -1453,22 +1425,17 @@
         793.3196077349999
       ],
       "color": "#0072B2",
-      "linewidth": 1.15,
-      "linestyle": "-.",
+      "linewidth": 1.0,
+      "linestyle": "-",
       "dash_pattern": [
         0.0,
-        [
-          7.359999999999999,
-          1.8399999999999999,
-          1.15,
-          1.8399999999999999
-        ]
+        null
       ],
-      "marker": "^",
-      "markersize": 3.2,
-      "markerfacecolor": "white",
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#0072B2",
       "markeredgecolor": "#0072B2",
-      "markeredgewidth": 0.8,
+      "markeredgewidth": 1.0,
       "markevery": null,
       "marker_indices": [
         0,
@@ -1596,20 +1563,17 @@
         848.6083896256664
       ],
       "color": "#5B4373",
-      "linewidth": 1.3,
-      "linestyle": "--",
+      "linewidth": 1.0,
+      "linestyle": "-",
       "dash_pattern": [
         0.0,
-        [
-          4.8100000000000005,
-          2.08
-        ]
+        null
       ],
-      "marker": "v",
-      "markersize": 3.2,
-      "markerfacecolor": "white",
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#5B4373",
       "markeredgecolor": "#5B4373",
-      "markeredgewidth": 0.8,
+      "markeredgewidth": 1.0,
       "markevery": null,
       "marker_indices": [
         0,
@@ -1737,20 +1701,17 @@
         887.7276315813334
       ],
       "color": "#A05A78",
-      "linewidth": 1.15,
-      "linestyle": ":",
+      "linewidth": 1.0,
+      "linestyle": "-",
       "dash_pattern": [
         0.0,
-        [
-          1.15,
-          1.8974999999999997
-        ]
+        null
       ],
-      "marker": "+",
-      "markersize": 3.2,
-      "markerfacecolor": "white",
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#A05A78",
       "markeredgecolor": "#A05A78",
-      "markeredgewidth": 0.8,
+      "markeredgewidth": 1.0,
       "markevery": null,
       "marker_indices": [
         0,
@@ -1878,20 +1839,17 @@
         904.3401775506667
       ],
       "color": "#2CA02C",
-      "linewidth": 1.05,
-      "linestyle": "--",
+      "linewidth": 1.0,
+      "linestyle": "-",
       "dash_pattern": [
         0.0,
-        [
-          6.300000000000001,
-          2.1
-        ]
+        null
       ],
-      "marker": "x",
-      "markersize": 3.2,
-      "markerfacecolor": "white",
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#2CA02C",
       "markeredgecolor": "#2CA02C",
-      "markeredgewidth": 0.8,
+      "markeredgewidth": 1.0,
       "markevery": null,
       "marker_indices": [
         0,
@@ -2019,17 +1977,17 @@
         2049.7520108573335
       ],
       "color": "#E8302F",
-      "linewidth": 1.65,
+      "linewidth": 1.7,
       "linestyle": "-",
       "dash_pattern": [
         0.0,
         null
       ],
-      "marker": "o",
-      "markersize": 3.2,
-      "markerfacecolor": "white",
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#E8302F",
       "markeredgecolor": "#E8302F",
-      "markeredgewidth": 0.8,
+      "markeredgewidth": 1.0,
       "markevery": null,
       "marker_indices": [
         0,
@@ -2157,24 +2115,17 @@
         2523.928868318667
       ],
       "color": "#8A6420",
-      "linewidth": 1.05,
-      "linestyle": "--",
+      "linewidth": 1.0,
+      "linestyle": "-",
       "dash_pattern": [
         0.0,
-        [
-          1.05,
-          2.1,
-          1.05,
-          2.1,
-          4.2,
-          2.1
-        ]
+        null
       ],
-      "marker": "*",
-      "markersize": 3.2,
-      "markerfacecolor": "white",
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#8A6420",
       "markeredgecolor": "#8A6420",
-      "markeredgewidth": 0.8,
+      "markeredgewidth": 1.0,
       "markevery": null,
       "marker_indices": [
         0,
@@ -2302,22 +2253,17 @@
         2510.5285795879995
       ],
       "color": "#0072B2",
-      "linewidth": 1.15,
-      "linestyle": "-.",
+      "linewidth": 1.0,
+      "linestyle": "-",
       "dash_pattern": [
         0.0,
-        [
-          7.359999999999999,
-          1.8399999999999999,
-          1.15,
-          1.8399999999999999
-        ]
+        null
       ],
-      "marker": "^",
-      "markersize": 3.2,
-      "markerfacecolor": "white",
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#0072B2",
       "markeredgecolor": "#0072B2",
-      "markeredgewidth": 0.8,
+      "markeredgewidth": 1.0,
       "markevery": null,
       "marker_indices": [
         0,
@@ -2445,20 +2391,17 @@
         2721.837269821
       ],
       "color": "#5B4373",
-      "linewidth": 1.3,
-      "linestyle": "--",
+      "linewidth": 1.0,
+      "linestyle": "-",
       "dash_pattern": [
         0.0,
-        [
-          4.8100000000000005,
-          2.08
-        ]
+        null
       ],
-      "marker": "v",
-      "markersize": 3.2,
-      "markerfacecolor": "white",
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#5B4373",
       "markeredgecolor": "#5B4373",
-      "markeredgewidth": 0.8,
+      "markeredgewidth": 1.0,
       "markevery": null,
       "marker_indices": [
         0,
@@ -2586,20 +2529,17 @@
         2862.94525229
       ],
       "color": "#A05A78",
-      "linewidth": 1.15,
-      "linestyle": ":",
+      "linewidth": 1.0,
+      "linestyle": "-",
       "dash_pattern": [
         0.0,
-        [
-          1.15,
-          1.8974999999999997
-        ]
+        null
       ],
-      "marker": "+",
-      "markersize": 3.2,
-      "markerfacecolor": "white",
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#A05A78",
       "markeredgecolor": "#A05A78",
-      "markeredgewidth": 0.8,
+      "markeredgewidth": 1.0,
       "markevery": null,
       "marker_indices": [
         0,
@@ -2727,20 +2667,17 @@
         2940.7580092330004
       ],
       "color": "#2CA02C",
-      "linewidth": 1.05,
-      "linestyle": "--",
+      "linewidth": 1.0,
+      "linestyle": "-",
       "dash_pattern": [
         0.0,
-        [
-          6.300000000000001,
-          2.1
-        ]
+        null
       ],
-      "marker": "x",
-      "markersize": 3.2,
-      "markerfacecolor": "white",
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#2CA02C",
       "markeredgecolor": "#2CA02C",
-      "markeredgewidth": 0.8,
+      "markeredgewidth": 1.0,
       "markevery": null,
       "marker_indices": [
         0,
@@ -2868,17 +2805,17 @@
         0.2776921273333333
       ],
       "color": "#E8302F",
-      "linewidth": 1.65,
+      "linewidth": 1.7,
       "linestyle": "-",
       "dash_pattern": [
         0.0,
         null
       ],
-      "marker": "o",
-      "markersize": 3.2,
-      "markerfacecolor": "white",
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#E8302F",
       "markeredgecolor": "#E8302F",
-      "markeredgewidth": 0.8,
+      "markeredgewidth": 1.0,
       "markevery": null,
       "marker_indices": [
         0,
@@ -3006,24 +2943,17 @@
         0.3297995766666666
       ],
       "color": "#8A6420",
-      "linewidth": 1.05,
-      "linestyle": "--",
+      "linewidth": 1.0,
+      "linestyle": "-",
       "dash_pattern": [
         0.0,
-        [
-          1.05,
-          2.1,
-          1.05,
-          2.1,
-          4.2,
-          2.1
-        ]
+        null
       ],
-      "marker": "*",
-      "markersize": 3.2,
-      "markerfacecolor": "white",
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#8A6420",
       "markeredgecolor": "#8A6420",
-      "markeredgewidth": 0.8,
+      "markeredgewidth": 1.0,
       "markevery": null,
       "marker_indices": [
         0,
@@ -3151,22 +3081,17 @@
         0.3174099026666666
       ],
       "color": "#0072B2",
-      "linewidth": 1.15,
-      "linestyle": "-.",
+      "linewidth": 1.0,
+      "linestyle": "-",
       "dash_pattern": [
         0.0,
-        [
-          7.359999999999999,
-          1.8399999999999999,
-          1.15,
-          1.8399999999999999
-        ]
+        null
       ],
-      "marker": "^",
-      "markersize": 3.2,
-      "markerfacecolor": "white",
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#0072B2",
       "markeredgecolor": "#0072B2",
-      "markeredgewidth": 0.8,
+      "markeredgewidth": 1.0,
       "markevery": null,
       "marker_indices": [
         0,
@@ -3294,20 +3219,17 @@
         0.35285415133333337
       ],
       "color": "#5B4373",
-      "linewidth": 1.3,
-      "linestyle": "--",
+      "linewidth": 1.0,
+      "linestyle": "-",
       "dash_pattern": [
         0.0,
-        [
-          4.8100000000000005,
-          2.08
-        ]
+        null
       ],
-      "marker": "v",
-      "markersize": 3.2,
-      "markerfacecolor": "white",
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#5B4373",
       "markeredgecolor": "#5B4373",
-      "markeredgewidth": 0.8,
+      "markeredgewidth": 1.0,
       "markevery": null,
       "marker_indices": [
         0,
@@ -3435,20 +3357,17 @@
         0.38715049866666656
       ],
       "color": "#A05A78",
-      "linewidth": 1.15,
-      "linestyle": ":",
+      "linewidth": 1.0,
+      "linestyle": "-",
       "dash_pattern": [
         0.0,
-        [
-          1.15,
-          1.8974999999999997
-        ]
+        null
       ],
-      "marker": "+",
-      "markersize": 3.2,
-      "markerfacecolor": "white",
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#A05A78",
       "markeredgecolor": "#A05A78",
-      "markeredgewidth": 0.8,
+      "markeredgewidth": 1.0,
       "markevery": null,
       "marker_indices": [
         0,
@@ -3576,20 +3495,17 @@
         0.3852249153333333
       ],
       "color": "#2CA02C",
-      "linewidth": 1.05,
-      "linestyle": "--",
+      "linewidth": 1.0,
+      "linestyle": "-",
       "dash_pattern": [
         0.0,
-        [
-          6.300000000000001,
-          2.1
-        ]
+        null
       ],
-      "marker": "x",
-      "markersize": 3.2,
-      "markerfacecolor": "white",
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#2CA02C",
       "markeredgecolor": "#2CA02C",
-      "markeredgewidth": 0.8,
+      "markeredgewidth": 1.0,
       "markevery": null,
       "marker_indices": [
         0,

@@ -19,24 +19,15 @@ COLORS={'LSCBO':'#E8302F','CBO':'#5B4373','PSO':'#0072B2','GWO':'#2CA02C','AOA':
         'SA':'#56B4E9','HLBO':'#E69F00','GWCA':'#CC79A7','GREEDY_LPT':'#454545',
         'direct5400':'#56B4E9','direct6000':'#009E73','weights':'#D62728','vms':'#0072B2'}
 
-# Restore the archived Fig4 stroke/marker identities; retain the current colors.
-# Both CEC and cloud plots import this single mapping.
-LINE_STYLES={'LSCBO':('-',1.65),'SA':('-',1.05),'PSO':('-.',1.15),
-             'HLBO':('-.',1.05),'GWCA':((0,(5,1,1,1)),1.05),
-             'CBO':('--',1.3),'GWO':((0,(6,2)),1.05),'AOA':(':',1.15),
-             'WOA':((0,(1,2,1,2,4,2)),1.05)}
-MARKERS={'LSCBO':'o','SA':'s','PSO':'^','HLBO':'D','GWCA':'P',
-         'CBO':'v','GWO':'x','AOA':'+','WOA':'*'}
-MARKER_SIZE=3.2
-MARKER_EDGE_WIDTH=.8
+# Fig7(2) line format: every algorithm is a plain solid line without markers;
+# LSCBO is drawn thicker than the comparators. Both CEC and cloud plots import this mapping.
+LINE_STYLES={method:('-',1.7 if method=='LSCBO' else 1.)
+             for method in ['LSCBO','SA','PSO','HLBO','GWCA','CBO','GWO','AOA','WOA']}
 
 def algorithm_line(method):
-    """One algorithm has one color, stroke, width and hollow marker everywhere."""
+    """One algorithm has one color, solid stroke and width everywhere; no markers."""
     linestyle,width=LINE_STYLES[method]
-    return dict(color=COLORS[method],linestyle=linestyle,linewidth=width,
-                marker=MARKERS[method],markersize=MARKER_SIZE,
-                markerfacecolor='white',markeredgecolor=COLORS[method],
-                markeredgewidth=MARKER_EDGE_WIDTH)
+    return dict(color=COLORS[method],linestyle=linestyle,linewidth=width)
 
 def marker_indices(line):
     count=len(line.get_xdata());every=line.get_markevery()

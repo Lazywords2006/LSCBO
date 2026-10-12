@@ -18,7 +18,7 @@
       "legend_bbox_from_bottom_pt": [
         118.30023307086614,
         266.52900000000005,
-        343.1952330708661,
+        324.0252330708661,
         287.67900000000003
       ],
       "legend_anchor": [
@@ -32,7 +32,7 @@
       "legend_rows": 2,
       "legend_columns": 5,
       "legend_labels": [
-        "LSCBO-core",
+        "LSCBO",
         "SA",
         "PSO",
         "HLBO",

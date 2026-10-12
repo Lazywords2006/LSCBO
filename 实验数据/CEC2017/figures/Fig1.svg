@@ -185,7 +185,7 @@ L 425.372875 12.096
     <g id="ytick_1">
      <g id="line2d_19"/>
      <g id="text_11">
-      <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="103.800233" y="71.485336" transform="rotate(-0 103.800233 71.485336)">LSCBO-core</text>
+      <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: end" x="103.800233" y="71.485336" transform="rotate(-0 103.800233 71.485336)">LSCBO</text>
      </g>
     </g>
     <g id="ytick_2">
@@ -304,15 +304,15 @@ L 441.032882 12.096
    </g>
    <g id="marker_Fig1_0_LSCBO">
     <defs>
-     <path id="m75fb7421ff" d="M 0 3.605551 
+     <path id="m7e45344adb" d="M -0 3.605551 
 L 3.605551 0 
 L 0 -3.605551 
-L -3.605551 0 
+L -3.605551 -0 
 z
 " style="stroke: #e8302f"/>
     </defs>
     <g clip-path="url(#p6f9bbdea95)">
-     <use xlink:href="#m75fb7421ff" x="139.172748" y="68.256" style="fill: #e8302f; stroke: #e8302f"/>
+     <use xlink:href="#m7e45344adb" x="139.172748" y="68.256" style="fill: #e8302f; stroke: #e8302f"/>
     </g>
    </g>
    <g id="text_20">
@@ -489,27 +489,27 @@ z
    <g id="legend_Fig1_0">
     <g id="patch_7">
      <path d="M 118.300233 35.988187 
-L 342.956874 35.988187 
-L 342.956874 14.721 
+L 323.802577 35.988187 
+L 323.802577 14.721 
 L 118.300233 14.721 
 z
 " style="fill: #ffffff; stroke: #6d7380; stroke-width: 0.65; stroke-linejoin: miter"/>
     </g>
     <g id="legend_line_Fig1_0_LSCBO">
      <defs>
-      <path id="m26a86bb786" d="M 0 2.828427 
+      <path id="m08b3249b3c" d="M -0 2.828427 
 L 2.828427 0 
 L 0 -2.828427 
-L -2.828427 0 
+L -2.828427 -0 
 z
 " style="stroke: #e8302f; stroke-linejoin: miter"/>
      </defs>
      <g>
-      <use xlink:href="#m26a86bb786" x="126.550233" y="20.044828" style="fill: #e8302f; stroke: #e8302f; stroke-linejoin: miter"/>
+      <use xlink:href="#m08b3249b3c" x="126.550233" y="20.044828" style="fill: #e8302f; stroke: #e8302f; stroke-linejoin: miter"/>
      </g>
     </g>
     <g id="text_29">
-     <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #e8302f" x="135.175233" y="22.669828" transform="rotate(-0 135.175233 22.669828)">LSCBO-core</text>
+     <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #e8302f" x="135.175233" y="22.669828" transform="rotate(-0 135.175233 22.669828)">LSCBO</text>
     </g>
     <g id="legend_line_Fig1_0_SA">
      <defs>
@@ -547,11 +547,11 @@ z
 " style="stroke: #0072b2"/>
      </defs>
      <g>
-      <use xlink:href="#m5ff3be7fda" x="190.675233" y="20.044828" style="fill: #0072b2; stroke: #0072b2"/>
+      <use xlink:href="#m5ff3be7fda" x="171.520936" y="20.044828" style="fill: #0072b2; stroke: #0072b2"/>
      </g>
     </g>
     <g id="text_31">
-     <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #0072b2" x="199.300233" y="22.669828" transform="rotate(-0 199.300233 22.669828)">PSO</text>
+     <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #0072b2" x="180.145936" y="22.669828" transform="rotate(-0 180.145936 22.669828)">PSO</text>
     </g>
     <g id="legend_line_Fig1_0_HLBO">
      <defs>
@@ -568,11 +568,11 @@ z
 " style="stroke: #e69f00"/>
      </defs>
      <g>
-      <use xlink:href="#m8d7b11ff38" x="190.675233" y="29.553422" style="fill: #e69f00; stroke: #e69f00"/>
+      <use xlink:href="#m8d7b11ff38" x="171.520936" y="29.553422" style="fill: #e69f00; stroke: #e69f00"/>
      </g>
     </g>
     <g id="text_32">
-     <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #e69f00" x="199.300233" y="32.178422" transform="rotate(-0 199.300233 32.178422)">HLBO</text>
+     <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #e69f00" x="180.145936" y="32.178422" transform="rotate(-0 180.145936 32.178422)">HLBO</text>
     </g>
     <g id="legend_line_Fig1_0_GWCA">
      <defs>
@@ -589,11 +589,11 @@ z
 " style="stroke: #cc79a7"/>
      </defs>
      <g>
-      <use xlink:href="#me719d5874a" x="231.287733" y="20.044828" style="fill: #cc79a7; stroke: #cc79a7"/>
+      <use xlink:href="#me719d5874a" x="212.133436" y="20.044828" style="fill: #cc79a7; stroke: #cc79a7"/>
      </g>
     </g>
     <g id="text_33">
-     <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #cc79a7" x="239.912733" y="22.669828" transform="rotate(-0 239.912733 22.669828)">GWCA</text>
+     <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #cc79a7" x="220.758436" y="22.669828" transform="rotate(-0 220.758436 22.669828)">GWCA</text>
     </g>
     <g id="legend_line_Fig1_0_CBO">
      <defs>
@@ -610,11 +610,11 @@ z
 " style="stroke: #5b4373"/>
      </defs>
      <g>
-      <use xlink:href="#m9c4fe47dc0" x="231.287733" y="29.553422" style="fill: #5b4373; stroke: #5b4373"/>
+      <use xlink:href="#m9c4fe47dc0" x="212.133436" y="29.553422" style="fill: #5b4373; stroke: #5b4373"/>
      </g>
     </g>
     <g id="text_34">
-     <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #5b4373" x="239.912733" y="32.178422" transform="rotate(-0 239.912733 32.178422)">CBO</text>
+     <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #5b4373" x="220.758436" y="32.178422" transform="rotate(-0 220.758436 32.178422)">CBO</text>
     </g>
     <g id="legend_line_Fig1_0_GWO">
      <defs>
@@ -631,11 +631,11 @@ z
 " style="stroke: #2ca02c"/>
      </defs>
      <g>
-      <use xlink:href="#md0d077ae2f" x="274.757264" y="20.044828" style="fill: #2ca02c; stroke: #2ca02c"/>
+      <use xlink:href="#md0d077ae2f" x="255.602967" y="20.044828" style="fill: #2ca02c; stroke: #2ca02c"/>
      </g>
     </g>
     <g id="text_35">
-     <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #2ca02c" x="283.382264" y="22.669828" transform="rotate(-0 283.382264 22.669828)">GWO</text>
+     <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #2ca02c" x="264.227967" y="22.669828" transform="rotate(-0 264.227967 22.669828)">GWO</text>
     </g>
     <g id="legend_line_Fig1_0_AOA">
      <defs>
@@ -652,11 +652,11 @@ z
 " style="stroke: #a05a78"/>
      </defs>
      <g>
-      <use xlink:href="#m1b996a7af7" x="274.757264" y="29.553422" style="fill: #a05a78; stroke: #a05a78"/>
+      <use xlink:href="#m1b996a7af7" x="255.602967" y="29.553422" style="fill: #a05a78; stroke: #a05a78"/>
      </g>
     </g>
     <g id="text_36">
-     <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #a05a78" x="283.382264" y="32.178422" transform="rotate(-0 283.382264 32.178422)">AOA</text>
+     <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #a05a78" x="264.227967" y="32.178422" transform="rotate(-0 264.227967 32.178422)">AOA</text>
     </g>
     <g id="legend_line_Fig1_0_WOA">
      <defs>
@@ -673,11 +673,11 @@ z
 " style="stroke: #8a6420"/>
      </defs>
      <g>
-      <use xlink:href="#mcaf35a3cca" x="313.763124" y="20.044828" style="fill: #8a6420; stroke: #8a6420"/>
+      <use xlink:href="#mcaf35a3cca" x="294.608827" y="20.044828" style="fill: #8a6420; stroke: #8a6420"/>
      </g>
     </g>
     <g id="text_37">
-     <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a6420" x="322.388124" y="22.669828" transform="rotate(-0 322.388124 22.669828)">WOA</text>
+     <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a6420" x="303.233827" y="22.669828" transform="rotate(-0 303.233827 22.669828)">WOA</text>
     </g>
    </g>
   </g>
