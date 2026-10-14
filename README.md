@@ -1,12 +1,13 @@
 # LSCBO experiments
 
-Current experiment release: **2026-10-12**. This repository contains experiment code, raw records, numerical summaries, result plots, and reproduction instructions.
+Current experiment release: **2026-10-14**. This repository contains experiment code, raw records, numerical summaries, result plots, and reproduction instructions.
 
 | Experiment material | Location |
 | --- | --- |
 | Cloud-scheduling program and commands | [CloudSim program](实验代码/CloudSim程序/README.md) |
 | Cloud raw data, parameters and numerical summaries | [CloudSim data](实验数据/CloudSim/data/) |
 | Current objective, component and sensitivity plots | [CloudSim figures](实验数据/CloudSim/figures/) |
+| Manuscript Fig6–Fig8 (100–1000 and 1000–3000 tasks) | [manuscript split figures](实验数据/CloudSim/figures/manuscript_split/) |
 | CEC2017 experiment program | [CEC2017 program](实验代码/CEC2017程序/README_中文.md) |
 | CEC2017 results and plots | [CEC2017 figures](实验数据/CEC2017/figures/) and [data index](实验数据/README.md) |
 | Shared plot typography and legend standard | [figure standard](实验代码/FIGURE_STYLE.md) |
@@ -29,6 +30,7 @@ python -m pip install --cache-dir D:/CodexRuntime/cache/pip -r 实验代码/Clou
 python 实验代码/CloudSim程序/scripts/verify_latest.py --runtime D:/CodexRuntime/runs/lscbo-release-audit
 python 实验代码/CloudSim程序/scripts/render_current_figures.py --out D:/CodexRuntime/runs/lscbo-rendered-figures
 python 实验代码/generate_cec_figures.py --output-dir D:/CodexRuntime/runs/lscbo-cec-figures
+python 实验代码/CloudSim程序/scripts/plot_split_figures.py --out D:/CodexRuntime/runs/lscbo-manuscript-split
 python 实验代码/verify_figure_style.py --report D:/CodexRuntime/runs/lscbo-figure-style-audit.json
 ```
 

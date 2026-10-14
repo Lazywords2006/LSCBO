@@ -35,6 +35,7 @@ TITLES = ["(a) Makespan", "(b) Energy", "(c) Cost", "(d) Load imbalance"]
 UNITS = {"makespan": "Makespan", "energy": "Energy",
          "cost": "Cost", "imbalance": "Load imbalance"}
 ORDER = ["LSCBO", "WOA", "PSO", "CBO", "AOA", "GWO"]
+EXTENDED_SCALES = [2000, 3000]  # read for plot_split_figures.py; Fig6/Fig7 here still plot SCALES
 FIGURE_WIDTH_INCHES = WIDTH_INCHES * 1.22
 
 
@@ -45,16 +46,16 @@ def load():
     acc = defaultdict(list)
     for r in csv.DictReader(open(DATA, encoding="utf-8")):
         s = int(r["taskCount"])
-        if s not in SCALES:
+        if s not in SCALES + EXTENDED_SCALES:
             continue
         for c in METRICS + ["objective"]:
             acc[(s, r["algorithm"], c)].append(float(r[c]))
     return {k: float(np.mean(v)) for k, v in acc.items()}
 
 
-def line_panel(ax, means, metric, ylabel, logy=False):
+def line_panel(ax, means, metric, ylabel, logy=False, scales=SCALES):
     for m in ORDER:
-        ax.plot(SCALES, [means[(s, m, metric)] for s in SCALES], **algorithm_line(m),
+        ax.plot(scales, [means[(s, m, metric)] for s in scales], **algorithm_line(m),
                 label=m, zorder=7 if m == "LSCBO" else 4)
     ax.set_xlabel("Number of tasks", labelpad=3, fontsize=AXIS_LABEL_SIZE)
     ax.set_ylabel(ylabel, labelpad=3, fontsize=AXIS_LABEL_SIZE)

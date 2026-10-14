@@ -1,0 +1,1767 @@
+{
+  "data_sha256": "0ad513279ae21452734f8f7910577e695904d0aa6b008a9a043c55620208a4b3",
+  "panel_title_position": "below x labels; centered on each panel",
+  "panels": [
+    {
+      "title": "(a) Makespan",
+      "caption_fontsize_pt": 12.0,
+      "ylabel": "Makespan",
+      "axis_label_fontsize_pt": 9.5,
+      "tick_label_fontsize_pt": 8.5,
+      "y_scale": "linear",
+      "y_ticks": [
+        200.0,
+        400.0,
+        600.0,
+        800.0,
+        1000.0,
+        1200.0
+      ],
+      "y_tick_labels": [
+        "200",
+        "400",
+        "600",
+        "800",
+        "1000",
+        "1200"
+      ],
+      "panel_center_x_pt": 138.12011208254143,
+      "panel_bottom_from_top_pt": 175.78653061224492,
+      "caption_bbox_from_bottom_pt": [
+        97.80011208254143,
+        247.4334693877551,
+        178.44011208254142,
+        260.3934693877551
+      ],
+      "axes_bbox_from_bottom_pt": [
+        54.28097007874016,
+        292.2134693877551,
+        221.95925408634267,
+        446.94
+      ],
+      "legend_bbox_from_bottom_pt": [
+        66.28097007874015,
+        423.165,
+        185.81597007874015,
+        444.315
+      ],
+      "legend_left_margin_pt": 11.999999999999993,
+      "legend_gid": "legend_Fig8_0",
+      "legend_labels": [
+        "LSCBO",
+        "WOA",
+        "PSO",
+        "CBO",
+        "AOA",
+        "GWO"
+      ],
+      "legend_position": "upper left",
+      "legend_boxed": true,
+      "legend_anchor": [
+        0.055910638968460206,
+        1.0
+      ],
+      "legend_rows": 2,
+      "legend_columns": 3,
+      "covered_data_artists": 0,
+      "legend_headroom_steps": 0,
+      "original_y_limits": [
+        203.8593965839067,
+        1194.17336392576
+      ],
+      "display_y_limits": [
+        203.8593965839067,
+        1194.17336392576
+      ]
+    },
+    {
+      "title": "(b) Energy",
+      "caption_fontsize_pt": 12.0,
+      "ylabel": "Energy",
+      "axis_label_fontsize_pt": 9.5,
+      "tick_label_fontsize_pt": 8.5,
+      "y_scale": "linear",
+      "y_ticks": [
+        500.0,
+        1000.0,
+        1500.0,
+        2000.0,
+        2500.0,
+        3000.0
+      ],
+      "y_tick_labels": [
+        "500",
+        "1000",
+        "1500",
+        "2000",
+        "2500",
+        "3000"
+      ],
+      "panel_center_x_pt": 359.45544697257674,
+      "panel_bottom_from_top_pt": 175.78653061224492,
+      "caption_bbox_from_bottom_pt": [
+        328.2254469725768,
+        247.4334693877551,
+        390.68544697257676,
+        260.3934693877551
+      ],
+      "axes_bbox_from_bottom_pt": [
+        275.6163049687755,
+        292.2134693877551,
+        443.294588976378,
+        446.94
+      ],
+      "legend_bbox_from_bottom_pt": [
+        287.6163049687755,
+        423.165,
+        407.1513049687755,
+        444.315
+      ],
+      "legend_left_margin_pt": 12.0,
+      "legend_gid": "legend_Fig8_1",
+      "legend_labels": [
+        "LSCBO",
+        "WOA",
+        "PSO",
+        "CBO",
+        "AOA",
+        "GWO"
+      ],
+      "legend_position": "upper left",
+      "legend_boxed": true,
+      "legend_anchor": [
+        0.055910638968460206,
+        1.0
+      ],
+      "legend_rows": 2,
+      "legend_columns": 3,
+      "covered_data_artists": 0,
+      "legend_headroom_steps": 0,
+      "original_y_limits": [
+        551.5595519250799,
+        2797.995347440253
+      ],
+      "display_y_limits": [
+        551.5595519250799,
+        2797.995347440253
+      ]
+    },
+    {
+      "title": "(c) Cost",
+      "caption_fontsize_pt": 12.0,
+      "ylabel": "Cost",
+      "axis_label_fontsize_pt": 9.5,
+      "tick_label_fontsize_pt": 8.5,
+      "y_scale": "linear",
+      "y_ticks": [
+        1500.0,
+        3000.0,
+        4500.0,
+        6000.0,
+        7500.0,
+        9000.0,
+        10500.0
+      ],
+      "y_tick_labels": [
+        "1500",
+        "3000",
+        "4500",
+        "6000",
+        "7500",
+        "9000",
+        "10500"
+      ],
+      "panel_center_x_pt": 138.12011208254143,
+      "panel_bottom_from_top_pt": 400.14,
+      "caption_bbox_from_bottom_pt": [
+        115.03511208254143,
+        23.080000000000005,
+        161.20511208254143,
+        36.040000000000006
+      ],
+      "axes_bbox_from_bottom_pt": [
+        54.28097007874016,
+        67.86000000000001,
+        221.95925408634267,
+        222.5865306122449
+      ],
+      "legend_bbox_from_bottom_pt": [
+        66.28097007874015,
+        198.8115306122449,
+        185.81597007874015,
+        219.9615306122449
+      ],
+      "legend_left_margin_pt": 11.999999999999993,
+      "legend_gid": "legend_Fig8_2",
+      "legend_labels": [
+        "LSCBO",
+        "WOA",
+        "PSO",
+        "CBO",
+        "AOA",
+        "GWO"
+      ],
+      "legend_position": "upper left",
+      "legend_boxed": true,
+      "legend_anchor": [
+        0.055910638968460206,
+        1.0
+      ],
+      "legend_rows": 2,
+      "legend_columns": 3,
+      "covered_data_artists": 0,
+      "legend_headroom_steps": 0,
+      "original_y_limits": [
+        1534.6901028404802,
+        9003.087769084852
+      ],
+      "display_y_limits": [
+        1534.6901028404802,
+        9003.087769084852
+      ]
+    },
+    {
+      "title": "(d) Load imbalance",
+      "caption_fontsize_pt": 12.0,
+      "ylabel": "Load imbalance",
+      "axis_label_fontsize_pt": 9.5,
+      "tick_label_fontsize_pt": 8.5,
+      "y_scale": "linear",
+      "y_ticks": [
+        0.24,
+        0.27,
+        0.3,
+        0.32999999999999996,
+        0.36,
+        0.39,
+        0.42
+      ],
+      "y_tick_labels": [
+        "0.24",
+        "0.27",
+        "0.30",
+        "0.33",
+        "0.36",
+        "0.39",
+        "0.42"
+      ],
+      "panel_center_x_pt": 359.45544697257674,
+      "panel_bottom_from_top_pt": 400.14,
+      "caption_bbox_from_bottom_pt": [
+        301.94544697257675,
+        23.080000000000005,
+        416.96544697257673,
+        36.040000000000006
+      ],
+      "axes_bbox_from_bottom_pt": [
+        275.6163049687755,
+        67.86000000000001,
+        443.294588976378,
+        222.5865306122449
+      ],
+      "legend_bbox_from_bottom_pt": [
+        287.6163049687755,
+        198.8115306122449,
+        407.1513049687755,
+        219.9615306122449
+      ],
+      "legend_left_margin_pt": 12.0,
+      "legend_gid": "legend_Fig8_3",
+      "legend_labels": [
+        "LSCBO",
+        "WOA",
+        "PSO",
+        "CBO",
+        "AOA",
+        "GWO"
+      ],
+      "legend_position": "upper left",
+      "legend_boxed": true,
+      "legend_anchor": [
+        0.055910638968460206,
+        1.0
+      ],
+      "legend_rows": 2,
+      "legend_columns": 3,
+      "covered_data_artists": 0,
+      "legend_headroom_steps": 1,
+      "original_y_limits": [
+        0.26893545762666665,
+        0.39590716837333323
+      ],
+      "display_y_limits": [
+        0.26893545762666665,
+        0.4111437736629332
+      ]
+    }
+  ],
+  "curves": [
+    {
+      "gid": "curve_Fig8_0_LSCBO",
+      "panel": 0,
+      "algorithm": "LSCBO",
+      "x": [
+        1000,
+        2000,
+        3000
+      ],
+      "y": [
+        272.156911573,
+        592.0240943243334,
+        916.9057247736666
+      ],
+      "color": "#E8302F",
+      "linewidth": 1.7,
+      "linestyle": "-",
+      "dash_pattern": [
+        0.0,
+        null
+      ],
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#E8302F",
+      "markeredgecolor": "#E8302F",
+      "markeredgewidth": 1.0,
+      "markevery": null,
+      "marker_indices": [
+        0,
+        1,
+        2
+      ],
+      "expected_marker_points_pt": [
+        [
+          59.026581890276084,
+          165.1157353976073
+        ],
+        [
+          138.12011208254143,
+          115.13972670142556
+        ],
+        [
+          217.2136422748068,
+          64.38026132298512
+        ]
+      ],
+      "expected_vector_points_pt": [
+        [
+          59.026581890276084,
+          165.1157353976073
+        ],
+        [
+          138.12011208254143,
+          115.13972670142556
+        ],
+        [
+          217.2136422748068,
+          64.38026132298512
+        ]
+      ]
+    },
+    {
+      "gid": "curve_Fig8_0_WOA",
+      "panel": 0,
+      "algorithm": "WOA",
+      "x": [
+        1000,
+        2000,
+        3000
+      ],
+      "y": [
+        335.1272651219999,
+        661.1406861183333,
+        1015.4156356526668
+      ],
+      "color": "#8A6420",
+      "linewidth": 1.0,
+      "linestyle": "-",
+      "dash_pattern": [
+        0.0,
+        null
+      ],
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#8A6420",
+      "markeredgecolor": "#8A6420",
+      "markeredgewidth": 1.0,
+      "markevery": null,
+      "marker_indices": [
+        0,
+        1,
+        2
+      ],
+      "expected_marker_points_pt": [
+        [
+          59.026581890276084,
+          155.27725522124933
+        ],
+        [
+          138.12011208254143,
+          104.34095902905494
+        ],
+        [
+          217.2136422748068,
+          48.98908514666488
+        ]
+      ],
+      "expected_vector_points_pt": [
+        [
+          59.026581890276084,
+          155.27725522124933
+        ],
+        [
+          138.12011208254143,
+          104.34095902905494
+        ],
+        [
+          217.2136422748068,
+          48.98908514666488
+        ]
+      ]
+    },
+    {
+      "gid": "curve_Fig8_0_PSO",
+      "panel": 0,
+      "algorithm": "PSO",
+      "x": [
+        1000,
+        2000,
+        3000
+      ],
+      "y": [
+        333.20200259533334,
+        689.63614299,
+        1041.0587738899999
+      ],
+      "color": "#0072B2",
+      "linewidth": 1.0,
+      "linestyle": "-",
+      "dash_pattern": [
+        0.0,
+        null
+      ],
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#0072B2",
+      "markeredgecolor": "#0072B2",
+      "markeredgewidth": 1.0,
+      "markevery": null,
+      "marker_indices": [
+        0,
+        1,
+        2
+      ],
+      "expected_marker_points_pt": [
+        [
+          59.026581890276084,
+          155.57805799803793
+        ],
+        [
+          138.12011208254143,
+          99.88883240521426
+        ],
+        [
+          217.2136422748068,
+          44.98260443012748
+        ]
+      ],
+      "expected_vector_points_pt": [
+        [
+          59.026581890276084,
+          155.57805799803793
+        ],
+        [
+          138.12011208254143,
+          99.88883240521426
+        ],
+        [
+          217.2136422748068,
+          44.98260443012748
+        ]
+      ]
+    },
+    {
+      "gid": "curve_Fig8_0_CBO",
+      "panel": 0,
+      "algorithm": "CBO",
+      "x": [
+        1000,
+        2000,
+        3000
+      ],
+      "y": [
+        361.2157654966667,
+        736.0685167176667,
+        1086.731922680667
+      ],
+      "color": "#5B4373",
+      "linewidth": 1.0,
+      "linestyle": "-",
+      "dash_pattern": [
+        0.0,
+        null
+      ],
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#5B4373",
+      "markeredgecolor": "#5B4373",
+      "markeredgewidth": 1.0,
+      "markevery": null,
+      "marker_indices": [
+        0,
+        1,
+        2
+      ],
+      "expected_marker_points_pt": [
+        [
+          59.026581890276084,
+          151.20119117998053
+        ],
+        [
+          138.12011208254143,
+          92.63424413129877
+        ],
+        [
+          217.2136422748068,
+          37.84663736557604
+        ]
+      ],
+      "expected_vector_points_pt": [
+        [
+          59.026581890276084,
+          151.20119117998053
+        ],
+        [
+          138.12011208254143,
+          92.63424413129877
+        ],
+        [
+          217.2136422748068,
+          37.84663736557604
+        ]
+      ]
+    },
+    {
+      "gid": "curve_Fig8_0_AOA",
+      "panel": 0,
+      "algorithm": "AOA",
+      "x": [
+        1000,
+        2000,
+        3000
+      ],
+      "y": [
+        379.498444062,
+        754.2441274833333,
+        1125.8758489366667
+      ],
+      "color": "#A05A78",
+      "linewidth": 1.0,
+      "linestyle": "-",
+      "dash_pattern": [
+        0.0,
+        null
+      ],
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#A05A78",
+      "markeredgecolor": "#A05A78",
+      "markeredgewidth": 1.0,
+      "markevery": null,
+      "marker_indices": [
+        0,
+        1,
+        2
+      ],
+      "expected_marker_points_pt": [
+        [
+          59.026581890276084,
+          148.34470776360916
+        ],
+        [
+          138.12011208254143,
+          89.79448897457951
+        ],
+        [
+          217.2136422748068,
+          31.730795214637567
+        ]
+      ],
+      "expected_vector_points_pt": [
+        [
+          59.026581890276084,
+          148.34470776360916
+        ],
+        [
+          138.12011208254143,
+          89.79448897457951
+        ],
+        [
+          217.2136422748068,
+          31.730795214637567
+        ]
+      ]
+    },
+    {
+      "gid": "curve_Fig8_0_GWO",
+      "panel": 0,
+      "algorithm": "GWO",
+      "x": [
+        1000,
+        2000,
+        3000
+      ],
+      "y": [
+        390.6072060893334,
+        761.9373432983334,
+        1119.429923065
+      ],
+      "color": "#2CA02C",
+      "linewidth": 1.0,
+      "linestyle": "-",
+      "dash_pattern": [
+        0.0,
+        null
+      ],
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#2CA02C",
+      "markeredgecolor": "#2CA02C",
+      "markeredgewidth": 1.0,
+      "markevery": null,
+      "marker_indices": [
+        0,
+        1,
+        2
+      ],
+      "expected_marker_points_pt": [
+        [
+          59.026581890276084,
+          146.60907617143863
+        ],
+        [
+          138.12011208254143,
+          88.59250189617711
+        ],
+        [
+          217.2136422748068,
+          32.73790586802335
+        ]
+      ],
+      "expected_vector_points_pt": [
+        [
+          59.026581890276084,
+          146.60907617143863
+        ],
+        [
+          138.12011208254143,
+          88.59250189617711
+        ],
+        [
+          217.2136422748068,
+          32.73790586802335
+        ]
+      ]
+    },
+    {
+      "gid": "curve_Fig8_1_LSCBO",
+      "panel": 1,
+      "algorithm": "LSCBO",
+      "x": [
+        1000,
+        2000,
+        3000
+      ],
+      "y": [
+        706.4861585123332,
+        1497.996253726,
+        2295.9219745003334
+      ],
+      "color": "#E8302F",
+      "linewidth": 1.7,
+      "linestyle": "-",
+      "dash_pattern": [
+        0.0,
+        null
+      ],
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#E8302F",
+      "markeredgecolor": "#E8302F",
+      "markeredgewidth": 1.0,
+      "markevery": null,
+      "marker_indices": [
+        0,
+        1,
+        2
+      ],
+      "expected_marker_points_pt": [
+        [
+          280.36191678031145,
+          165.1157353976073
+        ],
+        [
+          359.45544697257674,
+          110.59932712924063
+        ],
+        [
+          438.54897716484214,
+          55.64103332526645
+        ]
+      ],
+      "expected_vector_points_pt": [
+        [
+          280.36191678031145,
+          165.1157353976073
+        ],
+        [
+          359.45544697257674,
+          110.59932712924063
+        ],
+        [
+          438.54897716484214,
+          55.64103332526645
+        ]
+      ]
+    },
+    {
+      "gid": "curve_Fig8_1_WOA",
+      "panel": 1,
+      "algorithm": "WOA",
+      "x": [
+        1000,
+        2000,
+        3000
+      ],
+      "y": [
+        803.10514211,
+        1597.0438114796668,
+        2433.650908864334
+      ],
+      "color": "#8A6420",
+      "linewidth": 1.0,
+      "linestyle": "-",
+      "dash_pattern": [
+        0.0,
+        null
+      ],
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#8A6420",
+      "markeredgecolor": "#8A6420",
+      "markeredgewidth": 1.0,
+      "markevery": null,
+      "marker_indices": [
+        0,
+        1,
+        2
+      ],
+      "expected_marker_points_pt": [
+        [
+          280.36191678031145,
+          158.46096246655185
+        ],
+        [
+          359.45544697257674,
+          103.77728262325633
+        ],
+        [
+          438.54897716484214,
+          46.15475278183504
+        ]
+      ],
+      "expected_vector_points_pt": [
+        [
+          280.36191678031145,
+          158.46096246655185
+        ],
+        [
+          359.45544697257674,
+          103.77728262325633
+        ],
+        [
+          438.54897716484214,
+          46.15475278183504
+        ]
+      ]
+    },
+    {
+      "gid": "curve_Fig8_1_PSO",
+      "panel": 1,
+      "algorithm": "PSO",
+      "x": [
+        1000,
+        2000,
+        3000
+      ],
+      "y": [
+        793.3196077349999,
+        1643.1797020870004,
+        2477.447850829333
+      ],
+      "color": "#0072B2",
+      "linewidth": 1.0,
+      "linestyle": "-",
+      "dash_pattern": [
+        0.0,
+        null
+      ],
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#0072B2",
+      "markeredgecolor": "#0072B2",
+      "markeredgewidth": 1.0,
+      "markevery": null,
+      "marker_indices": [
+        0,
+        1,
+        2
+      ],
+      "expected_marker_points_pt": [
+        [
+          280.36191678031145,
+          159.13495536991167
+        ],
+        [
+          359.45544697257674,
+          100.59960609912412
+        ],
+        [
+          438.54897716484214,
+          43.13817474510722
+        ]
+      ],
+      "expected_vector_points_pt": [
+        [
+          280.36191678031145,
+          159.13495536991167
+        ],
+        [
+          359.45544697257674,
+          100.59960609912412
+        ],
+        [
+          438.54897716484214,
+          43.13817474510722
+        ]
+      ]
+    },
+    {
+      "gid": "curve_Fig8_1_CBO",
+      "panel": 1,
+      "algorithm": "CBO",
+      "x": [
+        1000,
+        2000,
+        3000
+      ],
+      "y": [
+        848.6083896256664,
+        1729.542449510667,
+        2570.5347404310005
+      ],
+      "color": "#5B4373",
+      "linewidth": 1.0,
+      "linestyle": "-",
+      "dash_pattern": [
+        0.0,
+        null
+      ],
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#5B4373",
+      "markeredgecolor": "#5B4373",
+      "markeredgewidth": 1.0,
+      "markevery": null,
+      "marker_indices": [
+        0,
+        1,
+        2
+      ],
+      "expected_marker_points_pt": [
+        [
+          280.36191678031145,
+          155.3268601549055
+        ],
+        [
+          359.45544697257674,
+          94.65124634200004
+        ],
+        [
+          438.54897716484214,
+          36.7266799219276
+        ]
+      ],
+      "expected_vector_points_pt": [
+        [
+          280.36191678031145,
+          155.3268601549055
+        ],
+        [
+          359.45544697257674,
+          94.65124634200004
+        ],
+        [
+          438.54897716484214,
+          36.7266799219276
+        ]
+      ]
+    },
+    {
+      "gid": "curve_Fig8_1_AOA",
+      "panel": 1,
+      "algorithm": "AOA",
+      "x": [
+        1000,
+        2000,
+        3000
+      ],
+      "y": [
+        887.7276315813334,
+        1768.0291183863335,
+        2643.068740853
+      ],
+      "color": "#A05A78",
+      "linewidth": 1.0,
+      "linestyle": "-",
+      "dash_pattern": [
+        0.0,
+        null
+      ],
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#A05A78",
+      "markeredgecolor": "#A05A78",
+      "markeredgewidth": 1.0,
+      "markevery": null,
+      "marker_indices": [
+        0,
+        1,
+        2
+      ],
+      "expected_marker_points_pt": [
+        [
+          280.36191678031145,
+          152.63246550536098
+        ],
+        [
+          359.45544697257674,
+          92.00042108278598
+        ],
+        [
+          438.54897716484214,
+          31.730795214637624
+        ]
+      ],
+      "expected_vector_points_pt": [
+        [
+          280.36191678031145,
+          152.63246550536098
+        ],
+        [
+          359.45544697257674,
+          92.00042108278598
+        ],
+        [
+          438.54897716484214,
+          31.730795214637624
+        ]
+      ]
+    },
+    {
+      "gid": "curve_Fig8_1_GWO",
+      "panel": 1,
+      "algorithm": "GWO",
+      "x": [
+        1000,
+        2000,
+        3000
+      ],
+      "y": [
+        904.3401775506667,
+        1780.3723125010001,
+        2633.0778447273337
+      ],
+      "color": "#2CA02C",
+      "linewidth": 1.0,
+      "linestyle": "-",
+      "dash_pattern": [
+        0.0,
+        null
+      ],
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#2CA02C",
+      "markeredgecolor": "#2CA02C",
+      "markeredgewidth": 1.0,
+      "markevery": null,
+      "marker_indices": [
+        0,
+        1,
+        2
+      ],
+      "expected_marker_points_pt": [
+        [
+          280.36191678031145,
+          151.48825225537496
+        ],
+        [
+          359.45544697257674,
+          91.15026564729635
+        ],
+        [
+          438.54897716484214,
+          32.418932707067995
+        ]
+      ],
+      "expected_vector_points_pt": [
+        [
+          280.36191678031145,
+          151.48825225537496
+        ],
+        [
+          359.45544697257674,
+          91.15026564729635
+        ],
+        [
+          438.54897716484214,
+          32.418932707067995
+        ]
+      ]
+    },
+    {
+      "gid": "curve_Fig8_2_LSCBO",
+      "panel": 2,
+      "algorithm": "LSCBO",
+      "x": [
+        1000,
+        2000,
+        3000
+      ],
+      "y": [
+        2049.7520108573335,
+        4460.9354917793335,
+        6910.313279131667
+      ],
+      "color": "#E8302F",
+      "linewidth": 1.7,
+      "linestyle": "-",
+      "dash_pattern": [
+        0.0,
+        null
+      ],
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#E8302F",
+      "markeredgecolor": "#E8302F",
+      "markeredgewidth": 1.0,
+      "markevery": null,
+      "marker_indices": [
+        0,
+        1,
+        2
+      ],
+      "expected_marker_points_pt": [
+        [
+          59.026581890276084,
+          389.4692047853624
+        ],
+        [
+          138.12011208254143,
+          339.515510385982
+        ],
+        [
+          217.2136422748068,
+          288.7705254330982
+        ]
+      ],
+      "expected_vector_points_pt": [
+        [
+          59.026581890276084,
+          389.4692047853624
+        ],
+        [
+          138.12011208254143,
+          339.515510385982
+        ],
+        [
+          217.2136422748068,
+          288.7705254330982
+        ]
+      ]
+    },
+    {
+      "gid": "curve_Fig8_2_WOA",
+      "panel": 2,
+      "algorithm": "WOA",
+      "x": [
+        1000,
+        2000,
+        3000
+      ],
+      "y": [
+        2523.928868318667,
+        4984.282352840665,
+        7650.156095105668
+      ],
+      "color": "#8A6420",
+      "linewidth": 1.0,
+      "linestyle": "-",
+      "dash_pattern": [
+        0.0,
+        null
+      ],
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#8A6420",
+      "markeredgecolor": "#8A6420",
+      "markeredgewidth": 1.0,
+      "markevery": null,
+      "marker_indices": [
+        0,
+        1,
+        2
+      ],
+      "expected_marker_points_pt": [
+        [
+          59.026581890276084,
+          379.64544561634864
+        ],
+        [
+          138.12011208254143,
+          328.67307165446914
+        ],
+        [
+          217.2136422748068,
+          273.4428316988121
+        ]
+      ],
+      "expected_vector_points_pt": [
+        [
+          59.026581890276084,
+          379.64544561634864
+        ],
+        [
+          138.12011208254143,
+          328.67307165446914
+        ],
+        [
+          217.2136422748068,
+          273.4428316988121
+        ]
+      ]
+    },
+    {
+      "gid": "curve_Fig8_2_PSO",
+      "panel": 2,
+      "algorithm": "PSO",
+      "x": [
+        1000,
+        2000,
+        3000
+      ],
+      "y": [
+        2510.5285795879995,
+        5197.679866454334,
+        7849.999494118999
+      ],
+      "color": "#0072B2",
+      "linewidth": 1.0,
+      "linestyle": "-",
+      "dash_pattern": [
+        0.0,
+        null
+      ],
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#0072B2",
+      "markeredgecolor": "#0072B2",
+      "markeredgewidth": 1.0,
+      "markevery": null,
+      "marker_indices": [
+        0,
+        1,
+        2
+      ],
+      "expected_marker_points_pt": [
+        [
+          59.026581890276084,
+          379.92306610164627
+        ],
+        [
+          138.12011208254143,
+          324.2520086101219
+        ],
+        [
+          217.2136422748068,
+          269.30257602725777
+        ]
+      ],
+      "expected_vector_points_pt": [
+        [
+          59.026581890276084,
+          379.92306610164627
+        ],
+        [
+          138.12011208254143,
+          324.2520086101219
+        ],
+        [
+          217.2136422748068,
+          269.30257602725777
+        ]
+      ]
+    },
+    {
+      "gid": "curve_Fig8_2_CBO",
+      "panel": 2,
+      "algorithm": "CBO",
+      "x": [
+        1000,
+        2000,
+        3000
+      ],
+      "y": [
+        2721.837269821,
+        5546.879832752999,
+        8189.024301164
+      ],
+      "color": "#5B4373",
+      "linewidth": 1.0,
+      "linestyle": "-",
+      "dash_pattern": [
+        0.0,
+        null
+      ],
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#5B4373",
+      "markeredgecolor": "#5B4373",
+      "markeredgewidth": 1.0,
+      "markevery": null,
+      "marker_indices": [
+        0,
+        1,
+        2
+      ],
+      "expected_marker_points_pt": [
+        [
+          59.026581890276084,
+          375.54527825623677
+        ],
+        [
+          138.12011208254143,
+          317.0174582166001
+        ],
+        [
+          217.2136422748068,
+          262.27882949824664
+        ]
+      ],
+      "expected_vector_points_pt": [
+        [
+          59.026581890276084,
+          375.54527825623677
+        ],
+        [
+          138.12011208254143,
+          317.0174582166001
+        ],
+        [
+          217.2136422748068,
+          262.27882949824664
+        ]
+      ]
+    },
+    {
+      "gid": "curve_Fig8_2_AOA",
+      "panel": 2,
+      "algorithm": "AOA",
+      "x": [
+        1000,
+        2000,
+        3000
+      ],
+      "y": [
+        2862.94525229,
+        5684.506862054333,
+        8488.025861068
+      ],
+      "color": "#A05A78",
+      "linewidth": 1.0,
+      "linestyle": "-",
+      "dash_pattern": [
+        0.0,
+        null
+      ],
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#A05A78",
+      "markeredgecolor": "#A05A78",
+      "markeredgewidth": 1.0,
+      "markevery": null,
+      "marker_indices": [
+        0,
+        1,
+        2
+      ],
+      "expected_marker_points_pt": [
+        [
+          59.026581890276084,
+          372.62187359236844
+        ],
+        [
+          138.12011208254143,
+          314.16617020089734
+        ],
+        [
+          217.2136422748068,
+          256.0842646023927
+        ]
+      ],
+      "expected_vector_points_pt": [
+        [
+          59.026581890276084,
+          372.62187359236844
+        ],
+        [
+          138.12011208254143,
+          314.16617020089734
+        ],
+        [
+          217.2136422748068,
+          256.0842646023927
+        ]
+      ]
+    },
+    {
+      "gid": "curve_Fig8_2_GWO",
+      "panel": 2,
+      "algorithm": "GWO",
+      "x": [
+        1000,
+        2000,
+        3000
+      ],
+      "y": [
+        2940.7580092330004,
+        5739.602796377334,
+        8438.144069599333
+      ],
+      "color": "#2CA02C",
+      "linewidth": 1.0,
+      "linestyle": "-",
+      "dash_pattern": [
+        0.0,
+        null
+      ],
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#2CA02C",
+      "markeredgecolor": "#2CA02C",
+      "markeredgewidth": 1.0,
+      "markevery": null,
+      "marker_indices": [
+        0,
+        1,
+        2
+      ],
+      "expected_marker_points_pt": [
+        [
+          59.026581890276084,
+          371.0097877799617
+        ],
+        [
+          138.12011208254143,
+          313.02472016708776
+        ],
+        [
+          217.2136422748068,
+          257.1176906302479
+        ]
+      ],
+      "expected_vector_points_pt": [
+        [
+          59.026581890276084,
+          371.0097877799617
+        ],
+        [
+          138.12011208254143,
+          313.02472016708776
+        ],
+        [
+          217.2136422748068,
+          257.1176906302479
+        ]
+      ]
+    },
+    {
+      "gid": "curve_Fig8_3_LSCBO",
+      "panel": 3,
+      "algorithm": "LSCBO",
+      "x": [
+        1000,
+        2000,
+        3000
+      ],
+      "y": [
+        0.2776921273333333,
+        0.31099880333333335,
+        0.3263478783333333
+      ],
+      "color": "#E8302F",
+      "linewidth": 1.7,
+      "linestyle": "-",
+      "dash_pattern": [
+        0.0,
+        null
+      ],
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#E8302F",
+      "markeredgecolor": "#E8302F",
+      "markeredgewidth": 1.0,
+      "markevery": null,
+      "marker_indices": [
+        0,
+        1,
+        2
+      ],
+      "expected_marker_points_pt": [
+        [
+          280.36191678031145,
+          390.61250427264497
+        ],
+        [
+          359.45544697257674,
+          354.373931400494
+        ],
+        [
+          438.54897716484214,
+          337.6737187191802
+        ]
+      ],
+      "expected_vector_points_pt": [
+        [
+          280.36191678031145,
+          390.61250427264497
+        ],
+        [
+          359.45544697257674,
+          354.373931400494
+        ],
+        [
+          438.54897716484214,
+          337.6737187191802
+        ]
+      ]
+    },
+    {
+      "gid": "curve_Fig8_3_WOA",
+      "panel": 3,
+      "algorithm": "WOA",
+      "x": [
+        1000,
+        2000,
+        3000
+      ],
+      "y": [
+        0.3297995766666666,
+        0.32601625233333326,
+        0.3308597123333333
+      ],
+      "color": "#8A6420",
+      "linewidth": 1.0,
+      "linestyle": "-",
+      "dash_pattern": [
+        0.0,
+        null
+      ],
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#8A6420",
+      "markeredgecolor": "#8A6420",
+      "markeredgewidth": 1.0,
+      "markevery": null,
+      "marker_indices": [
+        0,
+        1,
+        2
+      ],
+      "expected_marker_points_pt": [
+        [
+          280.36191678031145,
+          333.91817668955287
+        ],
+        [
+          359.45544697257674,
+          338.03453686168416
+        ],
+        [
+          438.54897716484214,
+          332.7647201389542
+        ]
+      ],
+      "expected_vector_points_pt": [
+        [
+          280.36191678031145,
+          333.91817668955287
+        ],
+        [
+          359.45544697257674,
+          338.03453686168416
+        ],
+        [
+          438.54897716484214,
+          332.7647201389542
+        ]
+      ]
+    },
+    {
+      "gid": "curve_Fig8_3_PSO",
+      "panel": 3,
+      "algorithm": "PSO",
+      "x": [
+        1000,
+        2000,
+        3000
+      ],
+      "y": [
+        0.3174099026666666,
+        0.33231349966666657,
+        0.34104010333333334
+      ],
+      "color": "#0072B2",
+      "linewidth": 1.0,
+      "linestyle": "-",
+      "dash_pattern": [
+        0.0,
+        null
+      ],
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#0072B2",
+      "markeredgecolor": "#0072B2",
+      "markeredgewidth": 1.0,
+      "markevery": null,
+      "marker_indices": [
+        0,
+        1,
+        2
+      ],
+      "expected_marker_points_pt": [
+        [
+          280.36191678031145,
+          347.3984802812771
+        ],
+        [
+          359.45544697257674,
+          331.1829598270093
+        ],
+        [
+          438.54897716484214,
+          321.688176772078
+        ]
+      ],
+      "expected_vector_points_pt": [
+        [
+          280.36191678031145,
+          347.3984802812771
+        ],
+        [
+          359.45544697257674,
+          331.1829598270093
+        ],
+        [
+          438.54897716484214,
+          321.688176772078
+        ]
+      ]
+    },
+    {
+      "gid": "curve_Fig8_3_CBO",
+      "panel": 3,
+      "algorithm": "CBO",
+      "x": [
+        1000,
+        2000,
+        3000
+      ],
+      "y": [
+        0.35285415133333337,
+        0.35846968433333326,
+        0.364274269
+      ],
+      "color": "#5B4373",
+      "linewidth": 1.0,
+      "linestyle": "-",
+      "dash_pattern": [
+        0.0,
+        null
+      ],
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#5B4373",
+      "markeredgecolor": "#5B4373",
+      "markeredgewidth": 1.0,
+      "markevery": null,
+      "marker_indices": [
+        0,
+        1,
+        2
+      ],
+      "expected_marker_points_pt": [
+        [
+          280.36191678031145,
+          308.83416998487746
+        ],
+        [
+          359.45544697257674,
+          302.724316757961
+        ],
+        [
+          438.54897716484214,
+          296.40877015596516
+        ]
+      ],
+      "expected_vector_points_pt": [
+        [
+          280.36191678031145,
+          308.83416998487746
+        ],
+        [
+          359.45544697257674,
+          302.724316757961
+        ],
+        [
+          438.54897716484214,
+          296.40877015596516
+        ]
+      ]
+    },
+    {
+      "gid": "curve_Fig8_3_AOA",
+      "panel": 3,
+      "algorithm": "AOA",
+      "x": [
+        1000,
+        2000,
+        3000
+      ],
+      "y": [
+        0.38715049866666656,
+        0.37514628400000005,
+        0.37669480966666663
+      ],
+      "color": "#A05A78",
+      "linewidth": 1.0,
+      "linestyle": "-",
+      "dash_pattern": [
+        0.0,
+        null
+      ],
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#A05A78",
+      "markeredgecolor": "#A05A78",
+      "markeredgewidth": 1.0,
+      "markevery": null,
+      "marker_indices": [
+        0,
+        1,
+        2
+      ],
+      "expected_marker_points_pt": [
+        [
+          280.36191678031145,
+          271.51880768070777
+        ],
+        [
+          359.45544697257674,
+          284.5797209934304
+        ],
+        [
+          438.54897716484214,
+          282.89488278814406
+        ]
+      ],
+      "expected_vector_points_pt": [
+        [
+          280.36191678031145,
+          271.51880768070777
+        ],
+        [
+          359.45544697257674,
+          284.5797209934304
+        ],
+        [
+          438.54897716484214,
+          282.89488278814406
+        ]
+      ]
+    },
+    {
+      "gid": "curve_Fig8_3_GWO",
+      "panel": 3,
+      "algorithm": "GWO",
+      "x": [
+        1000,
+        2000,
+        3000
+      ],
+      "y": [
+        0.3852249153333333,
+        0.37609129933333346,
+        0.37625266800000007
+      ],
+      "color": "#2CA02C",
+      "linewidth": 1.0,
+      "linestyle": "-",
+      "dash_pattern": [
+        0.0,
+        null
+      ],
+      "marker": "None",
+      "markersize": 6.0,
+      "markerfacecolor": "#2CA02C",
+      "markeredgecolor": "#2CA02C",
+      "markeredgewidth": 1.0,
+      "markevery": null,
+      "marker_indices": [
+        0,
+        1,
+        2
+      ],
+      "expected_marker_points_pt": [
+        [
+          280.36191678031145,
+          273.61389492226846
+        ],
+        [
+          359.45544697257674,
+          283.55151850867014
+        ],
+        [
+          438.54897716484214,
+          283.37594499343015
+        ]
+      ],
+      "expected_vector_points_pt": [
+        [
+          280.36191678031145,
+          273.61389492226846
+        ],
+        [
+          359.45544697257674,
+          283.55151850867014
+        ],
+        [
+          438.54897716484214,
+          283.37594499343015
+        ]
+      ]
+    }
+  ],
+  "absolute_cost_zoom": null,
+  "legend_policy": "boxed shared position determined first from Fig7(d)",
+  "each_panel_has_legend": true
+}
