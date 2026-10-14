@@ -69,6 +69,6 @@
   "same_algorithm_style_across_CEC_and_cloud": true,
   "line_format": "solid lines without markers or dashes (Fig7(2) format); LSCBO 1.7 pt, other methods 1.0 pt",
   "Fig4_shaded_bands": false,
-  "Fig5_manuscript_layout": "Fig3_grid (3 rows x 2 columns, one shared boxed legend)",
+  "Fig5_manuscript_layout": "Fig3_grid (3 rows x 2 columns, each panel drawn at stand-alone size with a two-row boxed legend in Fig4 order; reduced on insertion)",
   "LSCBO_label": "LSCBO"
 }

@@ -3,8 +3,8 @@
   "standard": "Fig7 physical typography and boxed upper-left legends",
   "panels": [
     {
-      "xlabel": "Objective evaluations (thousands)",
-      "ylabel": "Mean function rank (lower is better)",
+      "xlabel": "Objective evaluations",
+      "ylabel": "Mean function rank",
       "axis_label_fontsize_pt": 9.5,
       "x_axis_label_fontsize_pt": 9.5,
       "tick_label_fontsize_pt": 8.5,

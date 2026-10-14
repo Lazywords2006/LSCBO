@@ -178,7 +178,7 @@ L 425.372875 12.096
      </g>
     </g>
     <g id="text_10">
-     <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: middle" x="273.666557" y="277.560922" transform="rotate(-0 273.666557 277.560922)">Friedman average rank (lower is better)</text>
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: middle" x="273.666557" y="277.560922" transform="rotate(-0 273.666557 277.560922)">Friedman average rank</text>
     </g>
    </g>
    <g id="matplotlib.axis_2">

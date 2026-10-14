@@ -59,7 +59,7 @@ L 0 2.6
       </g>
      </g>
      <g id="text_2">
-      <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle" x="122.509134" y="265.574672" transform="rotate(-0 122.509134 265.574672)">50</text>
+      <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle" x="122.509134" y="265.574672" transform="rotate(-0 122.509134 265.574672)">50k</text>
      </g>
     </g>
     <g id="xtick_3">
@@ -69,7 +69,7 @@ L 0 2.6
       </g>
      </g>
      <g id="text_3">
-      <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle" x="186.213883" y="265.574672" transform="rotate(-0 186.213883 265.574672)">100</text>
+      <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle" x="186.213883" y="265.574672" transform="rotate(-0 186.213883 265.574672)">100k</text>
      </g>
     </g>
     <g id="xtick_4">
@@ -79,7 +79,7 @@ L 0 2.6
       </g>
      </g>
      <g id="text_4">
-      <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle" x="249.918633" y="265.574672" transform="rotate(-0 249.918633 265.574672)">150</text>
+      <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle" x="249.918633" y="265.574672" transform="rotate(-0 249.918633 265.574672)">150k</text>
      </g>
     </g>
     <g id="xtick_5">
@@ -89,7 +89,7 @@ L 0 2.6
       </g>
      </g>
      <g id="text_5">
-      <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle" x="313.623383" y="265.574672" transform="rotate(-0 313.623383 265.574672)">200</text>
+      <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle" x="313.623383" y="265.574672" transform="rotate(-0 313.623383 265.574672)">200k</text>
      </g>
     </g>
     <g id="xtick_6">
@@ -99,7 +99,7 @@ L 0 2.6
       </g>
      </g>
      <g id="text_6">
-      <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle" x="377.328132" y="265.574672" transform="rotate(-0 377.328132 265.574672)">250</text>
+      <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle" x="377.328132" y="265.574672" transform="rotate(-0 377.328132 265.574672)">250k</text>
      </g>
     </g>
     <g id="xtick_7">
@@ -109,11 +109,11 @@ L 0 2.6
       </g>
      </g>
      <g id="text_7">
-      <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle" x="441.032882" y="265.574672" transform="rotate(-0 441.032882 265.574672)">300</text>
+      <text style="font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle" x="441.032882" y="265.574672" transform="rotate(-0 441.032882 265.574672)">300k</text>
      </g>
     </g>
     <g id="text_8">
-     <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: middle" x="249.918633" y="277.560922" transform="rotate(-0 249.918633 277.560922)">Objective evaluations (thousands)</text>
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: middle" x="249.918633" y="277.560922" transform="rotate(-0 249.918633 277.560922)">Objective evaluations</text>
     </g>
    </g>
    <g id="matplotlib.axis_2">
@@ -258,7 +258,7 @@ L 441.032882 249.746824
      </g>
     </g>
     <g id="text_18">
-     <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: middle" x="43.320556" y="133.056" transform="rotate(-90 43.320556 133.056)">Mean function rank (lower is better)</text>
+     <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: middle" x="43.320556" y="133.056" transform="rotate(-90 43.320556 133.056)">Mean function rank</text>
     </g>
    </g>
    <g id="curve_Fig2_0_WOA">

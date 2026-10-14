@@ -196,7 +196,7 @@ def draw_ranks(means,output,editable):
         ax.scatter(rank,pos,color=STYLES[method][0],marker='D' if method=='LSCBO' else 'o',s=26,zorder=3,label=method)
         ax.text(rank+.14,pos,f'{rank:.3f}',va='center',fontsize=TICK_LABEL_SIZE,weight='bold' if method=='LSCBO' else 'normal')
     ax.set_yticks(range(9),[DISPLAY_LABELS[method] for method in METHODS]);ax.set_ylim(8.6,-2.6)
-    ax.set_xlim(.85,9.4);ax.set_xticks(range(1,10));ax.set_xlabel('Friedman average rank (lower is better)',labelpad=3)
+    ax.set_xlim(.85,9.4);ax.set_xticks(range(1,10));ax.set_xlabel('Friedman average rank',labelpad=3)
     grid(ax,'x');ax.tick_params(axis='y',length=0)
     boxed_legend(ax,handles(rank=True));save(fig,'Fig1',output,editable)
 
@@ -208,8 +208,8 @@ def draw_aggregate(means,output,editable):
         data=summary[summary.algorithm.eq(method)].sort_values('evaluations')
         x,y=data.evaluations.to_numpy()/1000,data['mean'].to_numpy()
         ax.plot(x,y,**algorithm_line(method),markevery=(METHODS.index(method)%5,12),label=method)
-    ax.set_xlim(0,300);ax.set_xticks([0,50,100,150,200,250,300]);ax.set_ylim(9.15,.65);ax.set_yticks(range(1,10))
-    ax.set_xlabel('Objective evaluations (thousands)',labelpad=3);ax.set_ylabel('Mean function rank (lower is better)',labelpad=3)
+    ax.set_xlim(0,300);ax.set_xticks([0,50,100,150,200,250,300],['0','50k','100k','150k','200k','250k','300k']);ax.set_ylim(9.15,.65);ax.set_yticks(range(1,10))
+    ax.set_xlabel('Objective evaluations',labelpad=3);ax.set_ylabel('Mean function rank',labelpad=3)
     grid(ax,'y');boxed_legend(ax,handles());save(fig,'Fig2',output,editable)
 
 def function_panel(ax,means,function,legend=True):
@@ -217,8 +217,8 @@ def function_panel(ax,means,function,legend=True):
     for method in reversed(METHODS):
         data=subset[subset.algorithm.eq(method)].sort_values('evaluations');color,linestyle,width=STYLES[method]
         ax.plot(data.evaluations/1000,data.mean_error,**algorithm_line(method),markevery=(METHODS.index(method)%5,12),label=method)
-    ax.set_yscale('log');ax.set_xlim(0,300);ax.set_xticks([0,100,200,300])
-    ax.set_xlabel('Objective evaluations (thousands)',labelpad=3);ax.set_ylabel('Mean benchmark error',labelpad=3)
+    ax.set_yscale('log');ax.set_xlim(0,300);ax.set_xticks([0,100,200,300],['0','100k','200k','300k'])
+    ax.set_xlabel('Objective evaluations',labelpad=3);ax.set_ylabel('Mean benchmark error',labelpad=3)
     grid(ax,'y')
     lo,hi=subset.mean_error.min(),subset.mean_error.max()
     if function in {5,10,20}:
@@ -232,7 +232,20 @@ def function_panel(ax,means,function,legend=True):
         ax.set_yticks(10.**exponents,[f'1e{int(e)}' for e in exponents])
     ax.yaxis.set_minor_locator(LogLocator(base=10,subs=[2,3,4,5,6,7,8,9]))
     ax.yaxis.set_minor_formatter(NullFormatter());ax.tick_params(axis='y',which='minor',length=1.5)
-    if legend:boxed_legend(ax,handles())
+    if legend:boxed_legend(ax,handles());fill_yticks(ax,function)
+
+def fill_yticks(ax,function):
+    # Equal spacing on the log axis, as for F1: one tick per decade (F1, F3, F15) or per doubling (F5) or per half-doubling with round values, ratios 1.40-1.43 (F10, F20).
+    low,high=ax.get_ylim()
+    if function in {5,10,20}:
+        candidates={5:[100,200,400,800],10:[2500,3500,5000,7000,10000],20:[250,350,500,700,1000,1400]}[function]
+        ticks=np.array([v for v in candidates if low*.97<=v<=high*1.25],float)
+        labels=[f'{v:g}' for v in ticks]
+        low,high=min(low,ticks.min()),max(high,ticks.max())
+    else:
+        exponents=np.arange(int(np.ceil(np.log10(low))),int(np.floor(np.log10(high)))+1)
+        ticks=10.**exponents;labels=[f'1e{int(e)}' for e in exponents]
+    ax.set_yticks(ticks,labels);ax.set_ylim(low,high)
 
 def draw_functions(means,output,editable):
     # Full-width individual panels keep the native Fig7 font sizes when placed separately.
@@ -249,18 +262,13 @@ def draw_functions(means,output,editable):
 
 
 def draw_function_grid(means,output):
-    # Manuscript Fig5: the six panels in three rows and two columns at the standard
-    # figure width, so the printed fonts match the other figures. A half-width panel
-    # cannot hold the nine-entry legend, so one boxed legend is shared above the grid.
+    # Manuscript Fig5: three rows and two columns. Every panel is drawn as large as a stand-alone
+    # Fig4-sized panel so that it holds the same two-row, nine-column-order legend as Fig4; the whole
+    # figure is then reduced to the text width when inserted (the printed type is correspondingly small).
     titles=[f'({chr(97+i)}) CEC F{function}' for i,function in enumerate(SELECTED)]
-    fig,axes=plt.subplots(3,2,figsize=(FIGURE_WIDTH_INCHES,8.2))
-    fig.subplots_adjust(left=.105,right=.965,bottom=.075,top=.93,wspace=.36,hspace=.64)
-    for ax,function in zip(axes.flat,SELECTED):function_panel(ax,means,function,legend=False)
-    leg=fig.legend(handles=handles(),loc='upper center',bbox_to_anchor=(.5,.995),ncol=5,
-        fontsize=LEGEND_FONT_SIZE,frameon=True,fancybox=False,facecolor='white',framealpha=1.,
-        edgecolor='#6D7380',borderpad=.30,labelspacing=.30,handlelength=1.6,
-        handletextpad=.35,columnspacing=.70,labelcolor='linecolor')
-    leg.get_frame().set_linewidth(.65)
+    fig,axes=plt.subplots(3,2,figsize=(FIGURE_WIDTH_INCHES*2.12,10.8))
+    fig.subplots_adjust(left=.065,right=.985,bottom=.085,top=.96,wspace=.26,hspace=.58)
+    for ax,function in zip(axes.flat,SELECTED):function_panel(ax,means,function,legend=False);boxed_legend(ax,handles());fill_yticks(ax,function)
     captions=place_captions(fig,list(axes.flat),titles,2)
     output.mkdir(parents=True,exist_ok=True)
     fig.canvas.draw();renderer=fig.canvas.get_renderer();height_pt=fig.get_figheight()*72
@@ -274,10 +282,10 @@ def draw_function_grid(means,output):
             if line.get_label() not in METHODS:continue
             curves.append({'panel':index,'function':ax._cec_function,'algorithm':line.get_label(),
                 'x':np.asarray(line.get_xdata(),float).tolist(),'y':np.asarray(line.get_ydata(),float).tolist(),**line_metadata(line)})
-    layout={'data_sha256':DATA_SHA256,'standard':'Fig7 physical typography; one shared boxed legend above a 3x2 grid',
+    layout={'data_sha256':DATA_SHA256,'standard':'Fig7 physical typography; one two-row boxed legend (Fig4 order) inside each panel of a 3x2 grid; whole figure enlarged and reduced on insertion',
         'figure_width_pt':fig.get_figwidth()*72,'figure_height_pt':height_pt,'panels':panels,'curves':curves,
-        'shared_legend':{'labels':[t.get_text() for t in leg.get_texts()],'columns':5,
-            'bbox_from_bottom_pt':(leg.get_window_extent(renderer).extents*72/fig.dpi).tolist()},
+        'panel_legends':[{'panel':i,'labels':[t.get_text() for t in a.get_legend().get_texts()],'columns':5,
+            'bbox_from_bottom_pt':(a.get_legend().get_window_extent(renderer).extents*72/fig.dpi).tolist()} for i,a in enumerate(axes.flat)],
         'mean_cells_retained':26100,'checkpoints_per_curve':100}
     (output/'Fig3_grid_layout.json').write_text(json.dumps(layout,indent=2),encoding='utf-8')
     fig.savefig(output/'Fig3_grid.pdf',metadata={'CreationDate':None,'ModDate':None})

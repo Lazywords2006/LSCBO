@@ -129,7 +129,7 @@ def main():
     for name in ['Fig6','Fig7','Fig8']:
         layout=json.loads((args.cloud/f'{name}_layout.json').read_text(encoding='utf-8'))
         xml=ET.parse(args.cloud/f'{name}.svg').getroot();doc=fitz.open(args.cloud/f'{name}.pdf');check_text(doc)
-        panels=layout['panels'] if name!='Fig8' else [layout]
+        panels=layout['panels'] if 'panels' in layout else [layout]
         for index,panel in enumerate(panels):check_panel(panel,xml,doc,index)
         for curve in layout.get('curves',[]):
             assert identities[curve['algorithm']]==identity(curve)

@@ -3,7 +3,7 @@
   "standard": "Fig7 physical typography and boxed upper-left legends",
   "panels": [
     {
-      "xlabel": "Friedman average rank (lower is better)",
+      "xlabel": "Friedman average rank",
       "ylabel": "",
       "axis_label_fontsize_pt": 9.5,
       "x_axis_label_fontsize_pt": 9.5,
